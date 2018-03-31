@@ -13,6 +13,8 @@ namespace ds {
         sf::CircleShape shape;
         ds::Animation animation;
         ds::TextButton button;
+        ds::TextButton button2;
+        ds::TextButton button3;
     public:
         using Screen::Screen;
 
