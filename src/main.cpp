@@ -9,8 +9,6 @@ int main() {
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
-    ds::Timer timer;
-
     ds::TextureLoader loader;
     sf::Texture* texture = loader.getTexture("../res/hero.png");
 
@@ -25,18 +23,9 @@ int main() {
         while (window.pollEvent(event)) {
             if (event.type == sf::Event::Closed) {
                 window.close();
-            } else if (event.type == sf::Event::KeyPressed) {
-                if (event.key.code == sf::Keyboard::Space) {
-                    if (timer.isRunning()) {
-                        timer.pause();
-                    } else {
-                        timer.unpause();
-                    }
-                }
             }
         }
         animation.play();
-        timer.update();
 
         window.clear();
         window.draw(shape);
