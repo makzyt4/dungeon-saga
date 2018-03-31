@@ -6,6 +6,7 @@
 namespace ds {
     class TextButton : public MenuObject {
     private:
+        sf::Font* font;
         std::string text;
         sf::Vector2i size;
     public:

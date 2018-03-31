@@ -3,8 +3,9 @@
 void ds::TestScreen::init() {
     button.setLoader(loader);
     button.init();
-    button.setSize(sf::Vector2i(5, 3));
+    button.setSize(sf::Vector2i(15, 13));
     button.setPosition(50, 50);
+    button.setText("test");
 
     shape = sf::CircleShape(100.f);
     shape.setFillColor(sf::Color::Green);

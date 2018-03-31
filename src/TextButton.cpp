@@ -19,6 +19,7 @@ void ds::TextButton::setSize(sf::Vector2i size) {
 
 void ds::TextButton::init() {
     texture = loader->getTexture("menus.png");
+    font = loader->getFont("visitor.ttf");
     text = "";
 }
 
@@ -76,4 +77,14 @@ void ds::TextButton::draw(sf::RenderWindow* window) {
             window->draw(sprite);
         }
     }
+
+    sf::Text text;
+    text.setFont(*font);
+    text.setString(this->text);
+    text.setCharacterSize(20);
+    text.setFillColor(sf::Color::White);
+    text.setPosition(rect.left + (rect.width - text.getLocalBounds().width) / 2,
+            rect.top + (rect.height - text.getLocalBounds().height) / 2 - 10);
+
+    window->draw(text);
 }
