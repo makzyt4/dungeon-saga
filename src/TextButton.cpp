@@ -18,7 +18,7 @@ void ds::TextButton::setSize(sf::Vector2i size) {
 }
 
 void ds::TextButton::init() {
-    texture = loader->getTexture("../res/menus.png");
+    texture = loader->getTexture("menus.png");
     text = "";
 }
 

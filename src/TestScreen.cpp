@@ -9,7 +9,7 @@ void ds::TestScreen::init() {
     shape = sf::CircleShape(100.f);
     shape.setFillColor(sf::Color::Green);
 
-    sf::Texture* texture = loader->getTexture("../res/hero.png");
+    sf::Texture* texture = loader->getTexture("hero.png");
 
     animation = ds::Animation(sf::seconds(0.5));
     animation.setSpriteSheet(texture);
