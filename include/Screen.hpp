@@ -4,6 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "Controllable.hpp"
 #include "Drawable.hpp"
+#include "ResourceLoader.hpp"
 #include "Updatable.hpp"
 
 namespace ds {
@@ -13,12 +14,13 @@ namespace ds {
           public Updatable {
 
     protected:
-        const sf::RenderWindow* window;
+        sf::RenderWindow* window;
+        ResourceLoader* loader;
 
     public:
-        explicit Screen(const sf::RenderWindow& window);
+        explicit Screen(sf::RenderWindow* window, ResourceLoader* loader);
 
-        void run();
+        virtual void init() = 0;
     };
 }
 
