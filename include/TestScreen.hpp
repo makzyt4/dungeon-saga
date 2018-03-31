@@ -5,12 +5,14 @@
 #include "Screen.hpp"
 #include "Animation.hpp"
 #include "ResourceLoader.hpp"
+#include "TextButton.hpp"
 
 namespace ds {
     class TestScreen : public Screen {
     private:
         sf::CircleShape shape;
         ds::Animation animation;
+        ds::TextButton button;
     public:
         using Screen::Screen;
 

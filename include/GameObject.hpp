@@ -14,11 +14,14 @@ namespace ds {
         sf::IntRect rect;
 
     public:
+        GameObject();
         GameObject(ResourceLoader* loader);
 
         sf::IntRect getRect() const;
 
-        virtual void getSprite() = 0;
+        void setLoader(ResourceLoader* loader);
+
+        virtual void init() = 0;
         virtual void setPosition(int x, int y) = 0;
     };
 }
