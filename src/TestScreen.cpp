@@ -28,6 +28,7 @@ void ds::TestScreen::control() {
 
     while (window->pollEvent(event)) {
         if (event.type == sf::Event::Closed) {
+            code = ds::ExitCode::Quit;
             window->close();
         }
     }

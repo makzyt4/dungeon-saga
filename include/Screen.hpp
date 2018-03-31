@@ -6,6 +6,7 @@
 #include "Drawable.hpp"
 #include "ResourceLoader.hpp"
 #include "Updatable.hpp"
+#include "ExitCode.hpp"
 
 namespace ds {
     class Screen
@@ -16,11 +17,14 @@ namespace ds {
     protected:
         sf::RenderWindow* window;
         ResourceLoader* loader;
+        ExitCode code;
 
     public:
         explicit Screen(sf::RenderWindow* window, ResourceLoader* loader);
 
         virtual void init() = 0;
+
+        ExitCode getCode();
     };
 }
 
