@@ -5,6 +5,7 @@ void ds::TestScreen::init() {
     button.init();
     button.setSize(sf::Vector2i(5, 3));
     button.setPosition(0, 0);
+
     shape = sf::CircleShape(100.f);
     shape.setFillColor(sf::Color::Green);
 
@@ -35,6 +36,14 @@ void ds::TestScreen::control() {
         if (event.type == sf::Event::Closed) {
             code = ds::ExitCode::Quit;
             window->close();
+        } else if (event.type == sf::Event::MouseButtonPressed
+                   && event.mouseButton.button == sf::Mouse::Left) {
+            if (button.getRect().contains(event.mouseButton.x,
+                                          event.mouseButton.y)) {
+                button.setState(MenuState::Clicked);
+            }
+        } else if (event.type == sf::Event::MouseButtonReleased) {
+            button.setState(MenuState::Normal);
         }
     }
     animation.play();
