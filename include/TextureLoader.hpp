@@ -2,6 +2,7 @@
 #define DS_RESOURCE_LOADER_HPP
 
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 namespace ds {
     class TextureLoader {
