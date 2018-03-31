@@ -5,7 +5,8 @@
 
 int main() {
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(200, 200),
-                                                                 "SFML works!");
+                                "SFML works!",
+                                sf::Style::None | sf::Style::Close);
     ds::ResourceLoader* loader = new ds::ResourceLoader();
 
     ds::Screen* screen = new ds::TestScreen(window, loader);

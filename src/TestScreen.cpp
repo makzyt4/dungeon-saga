@@ -42,6 +42,13 @@ void ds::TestScreen::control() {
                                           event.mouseButton.y)) {
                 button.setState(MenuState::Clicked);
             }
+        } else if (event.type == sf::Event::MouseMoved) {
+            if (button.getRect().contains(event.mouseMove.x,
+                                          event.mouseMove.y)) {
+                button.setState(MenuState::Highlighted);
+            } else {
+                button.setState(MenuState::Normal);
+            }
         } else if (event.type == sf::Event::MouseButtonReleased) {
             button.setState(MenuState::Normal);
         }
