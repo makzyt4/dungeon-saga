@@ -2,14 +2,14 @@
 #include <SFML/Graphics.hpp>
 #include "../include/Animation.hpp"
 #include "../include/Timer.hpp"
-#include "../include/TextureLoader.hpp"
+#include "../include/ResourceLoader.hpp"
 
 int main() {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
 
-    ds::TextureLoader loader;
+    ds::ResourceLoader loader;
     sf::Texture* texture = loader.getTexture("../res/hero.png");
 
     ds::Animation animation(sf::seconds(0.5));
