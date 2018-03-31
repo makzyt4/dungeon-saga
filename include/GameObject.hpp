@@ -6,7 +6,7 @@
 
 namespace ds {
     class GameObject : public Updatable {
-    private:
+    protected:
         sf::IntRect rect;
 
     public:
