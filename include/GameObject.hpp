@@ -2,11 +2,12 @@
 #define DS_GAME_OBJECT_HPP
 
 #include <SFML/Graphics.hpp>
+#include "DrawableObject.hpp"
 #include "ResourceLoader.hpp"
 #include "Updatable.hpp"
 
 namespace ds {
-    class GameObject {
+    class GameObject : public DrawableObject {
     protected:
         ds::ResourceLoader* loader;
         sf::Texture* texture;
@@ -17,7 +18,6 @@ namespace ds {
 
         sf::IntRect getRect() const;
 
-        virtual void init() = 0;
         virtual void getSprite() = 0;
         virtual void setPosition(int x, int y) = 0;
     };
