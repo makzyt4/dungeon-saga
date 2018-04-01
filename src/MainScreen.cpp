@@ -32,6 +32,18 @@ void ds::MainScreen::init() {
 }
 
 void ds::MainScreen::update() {
+    sf::Event event;
+
+    while (window->pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            code = ds::ExitCode::Quit;
+            window->close();
+        } else if (event.type == sf::Event::Resized) {
+            generateView();
+        }
+
+        layout->listenToElements(&event);
+    }
 }
 
 void ds::MainScreen::draw() {
@@ -45,18 +57,5 @@ void ds::MainScreen::draw() {
 }
 
 void ds::MainScreen::control() {
-    sf::Event event;
-
-    while (window->pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            code = ds::ExitCode::Quit;
-            window->close();
-        } else if (event.type == sf::Event::Resized) {
-            generateView();
-        }
-
-        layout->listenToElements(&event);
-    }
-
     sf::sleep(sf::milliseconds(17));
 }

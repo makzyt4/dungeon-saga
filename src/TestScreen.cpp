@@ -5,6 +5,14 @@ void ds::TestScreen::init() {
 }
 
 void ds::TestScreen::update() {
+    sf::Event event;
+
+    while (window->pollEvent(event)) {
+        if (event.type == sf::Event::Closed) {
+            code = ds::ExitCode::Quit;
+            window->close();
+        }
+    }
 }
 
 void ds::TestScreen::draw() {
@@ -14,14 +22,5 @@ void ds::TestScreen::draw() {
 }
 
 void ds::TestScreen::control() {
-    sf::Event event;
-
-    while (window->pollEvent(event)) {
-        if (event.type == sf::Event::Closed) {
-            code = ds::ExitCode::Quit;
-            window->close();
-        }
-    }
-
     sf::sleep(sf::milliseconds(17));
 }
