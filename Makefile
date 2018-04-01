@@ -5,7 +5,7 @@ SRC := src
 OBJ := obj
 SOURCES := $(wildcard $(SRC)/*.cpp)
 OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES))
-LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
+LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 ifeq ($(OS),Windows_NT)
 	TARGET=bin/dungeon-saga.exe
