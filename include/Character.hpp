@@ -2,10 +2,11 @@
 #define DS_CHARACTER_HPP
 
 #include <SFML/Graphics.hpp>
+#include "DrawableObject.hpp"
 #include "LookingDirection.hpp"
 
 namespace ds {
-    class Character {
+    class Character : public DrawableObject {
     private:
         LookingDirection direction;
         sf::IntRect hitbox;
