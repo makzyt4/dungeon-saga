@@ -10,7 +10,7 @@ namespace ds {
         int intelligence;
         int agility;
     public:
-        void init();
+        void init(ResourceLoader* loader);
         void update(sf::Event* event);
         void draw(sf::RenderWindow* window);
     };

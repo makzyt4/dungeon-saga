@@ -5,6 +5,7 @@
 #include "Animation.hpp"
 #include "DrawableObject.hpp"
 #include "LookingDirection.hpp"
+#include "ResourceLoader.hpp"
 
 namespace ds {
     class Character : public DrawableObject {
@@ -25,7 +26,7 @@ namespace ds {
         ds::Animation* currentAnimation;
 
     public:
-        virtual void init() = 0;
+        virtual void init(ResourceLoader* loader) = 0;
         virtual void update(sf::Event* event) = 0;
         virtual void setPosition(int x, int y) = 0;
 

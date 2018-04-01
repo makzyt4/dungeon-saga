@@ -1,6 +1,6 @@
 #include "../include/PlayerCharacter.hpp"
 
-void ds::PlayerCharacter::init() {
+void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     direction = ds::LookingDirection::Right;
     rect = sf::IntRect(0, 0, 12, 31);
     health = sf::Vector2i(5, 5);
