@@ -4,6 +4,8 @@
 namespace ds {
     enum class ExitCode {
         Running,
+        MainMenu,
+        Game,
         Quit
     };
 }
