@@ -29,6 +29,7 @@ namespace ds {
         ExitCode getCode();
 
         virtual void init() = 0;
+        void generateView();
     };
 }
 

@@ -10,12 +10,14 @@
 namespace ds {
     class RelativeLayout {
     private:
+        sf::RenderWindow* window;
         ResourceLoader* loader;
+
         std::vector<MenuObject*> elements;
         MenuObject* selected;
 
     public:
-        RelativeLayout(ResourceLoader* loader);
+        RelativeLayout(sf::RenderWindow* window, ResourceLoader* loader);
 
         void addElement(MenuObject* element);
         void onMouseMoved(MenuObject* object, sf::Event* event,
