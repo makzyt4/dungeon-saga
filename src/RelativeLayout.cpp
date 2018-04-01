@@ -46,6 +46,11 @@ void ds::RelativeLayout::onMouseLeftPressed(MenuObject* object,
 
     if (event->type == sf::Event::MouseButtonPressed) {
         if (object->getRect().contains(mouse.x, mouse.y)) {
+            sf::SoundBuffer* buffer = loader->getSoundBuffer("click.ogg");
+            sf::Sound* sound = new sf::Sound();
+            sound->setBuffer(*buffer);
+            sound->play();
+
             object->setState(ds::MenuState::Clicked);
             func();
             selected = object;
