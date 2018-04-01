@@ -46,17 +46,19 @@ void ds::MainScreen::control() {
             window->close();
         }
 
-        layout->onMouseLeftReleased(&startButton, &event, [](){});
-        layout->onMouseLeftReleased(&optionsButton, &event, [](){});
-        layout->onMouseLeftReleased(&quitButton, &event, [](){});
+        // layout->onMouseLeftReleased(&startButton, &event, [](){});
+        // layout->onMouseLeftReleased(&optionsButton, &event, [](){});
+        // layout->onMouseLeftReleased(&quitButton, &event, [](){});
+        //
+        // layout->onMouseMove(&startButton, &event, [](){});
+        // layout->onMouseMove(&optionsButton, &event, [](){});
+        // layout->onMouseMove(&quitButton, &event, [](){});
+        //
+        // layout->onMouseLeftPressed(&startButton, &event, [](){});
+        // layout->onMouseLeftPressed(&optionsButton, &event, [](){});
+        // layout->onMouseLeftPressed(&quitButton, &event, [](){});
 
-        layout->onMouseMove(&startButton, &event, [](){});
-        layout->onMouseMove(&optionsButton, &event, [](){});
-        layout->onMouseMove(&quitButton, &event, [](){});
-
-        layout->onMouseLeftPressed(&startButton, &event, [](){});
-        layout->onMouseLeftPressed(&optionsButton, &event, [](){});
-        layout->onMouseLeftPressed(&quitButton, &event, [](){});
+        layout->listenToElements(&event);
     }
 
     sf::sleep(sf::milliseconds(17));

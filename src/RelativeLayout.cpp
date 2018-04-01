@@ -69,3 +69,7 @@ void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object, sf::Event* even
         }
     }
 }
+
+void ds::RelativeLayout::listenToElements(sf::Event* event) {
+    
+}

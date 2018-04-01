@@ -24,6 +24,7 @@ namespace ds {
                                 std::function<void()> function);
         void onMouseLeftReleased(MenuObject* object, sf::Event* event,
                                  std::function<void()> function);
+        void listenToElements(sf::Event* event);
     };
 }
 
