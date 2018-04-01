@@ -45,19 +45,7 @@ void ds::MainScreen::control() {
             code = ds::ExitCode::Quit;
             window->close();
         }
-
-        // layout->onMouseLeftReleased(&startButton, &event, [](){});
-        // layout->onMouseLeftReleased(&optionsButton, &event, [](){});
-        // layout->onMouseLeftReleased(&quitButton, &event, [](){});
-        //
-        // layout->onMouseMove(&startButton, &event, [](){});
-        // layout->onMouseMove(&optionsButton, &event, [](){});
-        // layout->onMouseMove(&quitButton, &event, [](){});
-        //
-        // layout->onMouseLeftPressed(&startButton, &event, [](){});
-        // layout->onMouseLeftPressed(&optionsButton, &event, [](){});
-        // layout->onMouseLeftPressed(&quitButton, &event, [](){});
-
+        
         layout->listenToElements(&event);
     }
 

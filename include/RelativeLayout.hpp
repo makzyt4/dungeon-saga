@@ -18,7 +18,7 @@ namespace ds {
         RelativeLayout(ResourceLoader* loader);
 
         void addElement(MenuObject* element);
-        void onMouseMove(MenuObject* object, sf::Event* event,
+        void onMouseMoved(MenuObject* object, sf::Event* event,
                          std::function<void()> function);
         void onMouseLeftPressed(MenuObject* object, sf::Event* event,
                                 std::function<void()> function);

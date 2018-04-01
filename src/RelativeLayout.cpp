@@ -11,7 +11,7 @@ void ds::RelativeLayout::addElement(ds::MenuObject* element) {
     elements.push_back(element);
 }
 
-void ds::RelativeLayout::onMouseMove(MenuObject* object, sf::Event* event,
+void ds::RelativeLayout::onMouseMoved(MenuObject* object, sf::Event* event,
                                      std::function<void()> func) {
     if (selected == object) {
         return;
@@ -71,5 +71,9 @@ void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object, sf::Event* even
 }
 
 void ds::RelativeLayout::listenToElements(sf::Event* event) {
-    
+    for (MenuObject* element : elements) {
+        onMouseLeftPressed(element, event, element->getActionPressed());
+        onMouseMoved(element, event, element->getActionMoved());
+        onMouseLeftReleased(element, event, element->getActionReleased());
+    }
 }

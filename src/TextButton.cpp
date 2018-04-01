@@ -19,6 +19,9 @@ void ds::TextButton::setSize(sf::Vector2i size) {
 }
 
 void ds::TextButton::init() {
+    actionMoved = [](){};
+    actionPressed = [](){};
+    actionReleased = [](){};
     texture = loader->getTexture("menus.png");
     font = loader->getFont("visitor.ttf");
     text = "";
