@@ -2,6 +2,7 @@
 
 void ds::TestScreen::init() {
     hero.init(loader);
+    hero.setPosition(400, 300);
 
     generateView();
 }
@@ -11,6 +12,8 @@ void ds::TestScreen::update() {
 
 void ds::TestScreen::draw() {
     window->clear();
+
+    hero.draw(window);
 
     window->display();
 }
@@ -24,6 +27,8 @@ void ds::TestScreen::control() {
             window->close();
         }
     }
+
+    hero.update();
 
     sf::sleep(sf::milliseconds(17));
 }

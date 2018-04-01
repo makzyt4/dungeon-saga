@@ -18,7 +18,7 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     currentAnimation = &standingRight;
 }
 
-void ds::PlayerCharacter::update(sf::Event* event) {
+void ds::PlayerCharacter::update() {
     currentAnimation->play();
 }
 

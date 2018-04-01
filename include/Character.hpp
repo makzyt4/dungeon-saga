@@ -27,7 +27,7 @@ namespace ds {
 
     public:
         virtual void init(ResourceLoader* loader) = 0;
-        virtual void update(sf::Event* event) = 0;
+        virtual void update() = 0;
         virtual void setPosition(int x, int y) = 0;
 
         sf::IntRect getRect();

@@ -11,7 +11,7 @@ namespace ds {
         int agility;
     public:
         void init(ResourceLoader* loader);
-        void update(sf::Event* event);
+        void update();
         void draw(sf::RenderWindow* window);
         void setPosition(int x, int y);
     };
