@@ -1,7 +1,11 @@
-CC=g++
-CFLAGS=-Wall -Werror -std=c++11
-SOURCES=$(wildcard src/*.cpp)
-LDFLAGS=-lsfml-graphics -lsfml-window -lsfml-system
+CC := g++
+CFLAGS := -Wall -Werror -std=c++11
+BIN := bin
+SRC := src
+OBJ := obj
+SOURCES := $(wildcard $(SRC)/*.cpp)
+OBJECTS := $(patsubst $(SRC)/%.cpp, $(OBJ)/%.o, $(SOURCES))
+LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system
 
 ifeq ($(OS),Windows_NT)
 	TARGET=bin/dungeon-saga.exe
@@ -17,11 +21,17 @@ else
 	RMDIR=rm -rf $(1)
 endif
 
-default: install
-
-install:
+all: $(OBJECTS)
 	$(call MKDIR,bin)
-	$(CC) $(CFLAGS) $(SOURCES) $(LIBS) $(INCLUDES) -o $(TARGET) $(LDFLAGS)
+	$(CC) $^ -o $(TARGET) $(INCLUDES) $(LIBS) $(LDFLAGS)
+
+$(OBJ)/%.o: $(SRC)/%.cpp
+	@ $(call MKDIR,$(OBJ))
+	$(CC) -I$(SRC) -c $< -o $@ $(INCLUDES) $(LIBS) $(LDFLAGS)
+
+create_out_dir:
+	$(call MKDIR,obj)
 
 clean:
 	$(call RMDIR,bin)
+	$(call RMDIR,out)
