@@ -1,8 +1,6 @@
 #include "../include/RelativeLayout.hpp"
 
-ds::RelativeLayout::RelativeLayout(sf::RenderWindow* window,
-                                   ds::ResourceLoader* loader) {
-    this->window = window;
+ds::RelativeLayout::RelativeLayout(ds::ResourceLoader* loader) {
     this->loader = loader;
     selected = NULL;
 }
@@ -21,14 +19,13 @@ void ds::RelativeLayout::onMouseMoved(MenuObject* object, sf::Event* event,
 
     int x = event->mouseMove.x;
     int y = event->mouseMove.y;
-    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
-
-    object->setState(ds::MenuState::Normal);
 
     if (event->type == sf::Event::MouseMoved) {
-        if (object->getRect().contains(mouse.x, mouse.y)) {
+        if (object->getRect().contains(x, y)) {
             object->setState(ds::MenuState::Highlighted);
             func();
+        } else {
+            object->setState(ds::MenuState::Normal);
         }
     }
 }
@@ -42,10 +39,9 @@ void ds::RelativeLayout::onMouseLeftPressed(MenuObject* object,
 
     int x = event->mouseButton.x;
     int y = event->mouseButton.y;
-    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
 
     if (event->type == sf::Event::MouseButtonPressed) {
-        if (object->getRect().contains(mouse.x, mouse.y)) {
+        if (object->getRect().contains(x, y)) {
             object->setState(ds::MenuState::Clicked);
             func();
             selected = object;
@@ -64,14 +60,12 @@ void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object,
 
     int x = event->mouseButton.x;
     int y = event->mouseButton.y;
-    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
+
+    object->setState(ds::MenuState::Normal);
 
     if (event->type == sf::Event::MouseButtonReleased && selected == object) {
-        object->setState(ds::MenuState::Highlighted);
-
-        if (object->getRect().contains(mouse.x, mouse.y)) {
+        if (object->getRect().contains(x, y)) {
             func();
-            selected = NULL;
         }
     }
 }

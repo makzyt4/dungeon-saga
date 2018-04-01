@@ -27,8 +27,6 @@ void ds::MainScreen::init() {
         (window->getSize().x - quitButton.getRect().width) / 2,
         (window->getSize().y - quitButton.getRect().height) / 2 + 40);
     quitButton.setText("Quit");
-
-    generateView();
 }
 
 void ds::MainScreen::update() {
@@ -51,8 +49,6 @@ void ds::MainScreen::control() {
         if (event.type == sf::Event::Closed) {
             code = ds::ExitCode::Quit;
             window->close();
-        } else if (event.type == sf::Event::Resized) {
-            generateView();
         }
 
         layout->listenToElements(&event);

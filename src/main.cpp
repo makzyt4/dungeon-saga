@@ -5,7 +5,8 @@
 
 int main() {
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600),
-                                "Dungeon Saga");
+                                "Dungeon Saga",
+                                sf::Style::None | sf::Style::Close);
     ds::ResourceLoader* loader = new ds::ResourceLoader();
 
     ds::Screen* screen = new ds::MainScreen(window, loader);
