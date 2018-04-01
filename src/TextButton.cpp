@@ -14,7 +14,10 @@ void ds::TextButton::setText(std::string text) {
 
 void ds::TextButton::setSize(sf::Vector2i size) {
     this->size = size;
-    setPosition(rect.left, rect.top);
+    rect.width = 8 * size.x;
+    rect.height = 8 * size.y;
+
+    std::cout << "SIZE: " << rect.width << ", " << rect.height << std::endl;
 }
 
 void ds::TextButton::init() {
@@ -26,8 +29,6 @@ void ds::TextButton::init() {
 void ds::TextButton::setPosition(int x, int y) {
     rect.left = x;
     rect.top = y;
-    rect.width = 8 * size.x;
-    rect.height = 8 * size.y;
 }
 
 void ds::TextButton::draw(sf::RenderWindow* window) {
