@@ -3,9 +3,13 @@
 
 #include "Screen.hpp"
 #include "TextButton.hpp"
+#include "PlayerCharacter.hpp"
 
 namespace ds {
     class TestScreen : public Screen {
+    private:
+        PlayerCharacter* hero;
+
     public:
         using Screen::Screen;
 

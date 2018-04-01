@@ -1,6 +1,9 @@
 #include "../include/TestScreen.hpp"
 
 void ds::TestScreen::init() {
+    hero = new PlayerCharacter();
+    hero->init(loader);
+
     generateView();
 }
 

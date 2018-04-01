@@ -21,3 +21,11 @@ void ds::PlayerCharacter::draw(sf::RenderWindow* window) {
 
     window->draw(sprite);
 }
+
+void ds::PlayerCharacter::setPosition(int x, int y) {
+    position.x = x;
+    position.y = y;
+
+    rect.left = x + 10;
+    rect.top = y + 1;
+}
