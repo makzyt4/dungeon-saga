@@ -2,10 +2,12 @@
 #define DS_CHARACTER_HPP
 
 #include <SFML/Graphics.hpp>
+#include "LookingDirection.hpp"
 
 namespace ds {
     class Character {
     private:
+        LookingDirection direction;
         sf::IntRect hitbox;
         int health;
         int healthMax;
