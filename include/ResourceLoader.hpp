@@ -5,16 +5,19 @@
 #include <SFML/Graphics.hpp>
 #include "TextureLoader.hpp"
 #include "FontLoader.hpp"
+#include "SoundLoader.hpp"
 
 namespace ds {
     class ResourceLoader {
     private:
         TextureLoader textureLoader;
         FontLoader fontLoader;
+        SoundLoader soundLoader;
     public:
         ResourceLoader();
         sf::Texture* getTexture(std::string path);
         sf::Font* getFont(std::string path);
+        sf::SoundBuffer* getSoundBuffer(std::string path);
     };
 }
 

@@ -11,3 +11,7 @@ sf::Texture* ds::ResourceLoader::getTexture(std::string path) {
 sf::Font* ds::ResourceLoader::getFont(std::string path) {
     return fontLoader.getFont(path);
 }
+
+sf::SoundBuffer* ds::ResourceLoader::getSoundBuffer(std::string path) {
+    return soundLoader.getSoundBuffer(path);
+}
