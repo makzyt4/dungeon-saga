@@ -1,5 +1,6 @@
 #include <iostream>
 #include <SFML/Graphics.hpp>
+#include "../include/TestScreen.hpp"
 #include "../include/MainScreen.hpp"
 #include "../include/ExitCode.hpp"
 
@@ -8,7 +9,7 @@ int main() {
                                 "Dungeon Saga");
     ds::ResourceLoader* loader = new ds::ResourceLoader();
 
-    ds::Screen* screen = new ds::MainScreen(window, loader);
+    ds::Screen* screen = new ds::TestScreen(window, loader);
     screen->init();
 
     ds::ExitCode code = ds::ExitCode::Running;
