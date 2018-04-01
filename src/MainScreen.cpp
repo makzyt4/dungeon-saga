@@ -5,8 +5,9 @@ void ds::MainScreen::init() {
     layout->addElement(&optionsButton);
     layout->addElement(&quitButton);
 
-    quitButton.setActionReleased([](){
-        std::cout << "TEST" << std::endl;
+    quitButton.setActionReleased([this](){
+        code = ds::ExitCode::Quit;
+        window->close();
     });
 
     startButton.setSize(sf::Vector2i(12, 4));
