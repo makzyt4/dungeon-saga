@@ -8,7 +8,7 @@
 namespace ds {
     class TestScreen : public Screen {
     private:
-        PlayerCharacter* hero;
+        PlayerCharacter hero;
 
     public:
         using Screen::Screen;

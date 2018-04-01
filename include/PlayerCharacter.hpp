@@ -13,7 +13,7 @@ namespace ds {
         void init(ResourceLoader* loader);
         void update(sf::Event* event);
         void draw(sf::RenderWindow* window);
-        void setPosition(int x, int y);yy
+        void setPosition(int x, int y);
     };
 }
 
