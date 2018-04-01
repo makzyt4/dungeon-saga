@@ -1,24 +1,22 @@
 #include "../include/MainScreen.hpp"
 
 void ds::MainScreen::init() {
-    startButton.setLoader(loader);
-    startButton.init();
+    layout->addElement(&startButton);
+    layout->addElement(&optionsButton);
+    layout->addElement(&quitButton);
+
     startButton.setSize(sf::Vector2i(12, 4));
     startButton.setPosition(
         (window->getSize().x - startButton.getRect().width) / 2,
         (window->getSize().y - startButton.getRect().height) / 2 - 40);
     startButton.setText("New Game");
 
-    optionsButton.setLoader(loader);
-    optionsButton.init();
     optionsButton.setSize(sf::Vector2i(12, 4));
     optionsButton.setPosition(
         (window->getSize().x - optionsButton.getRect().width) / 2,
         (window->getSize().y - optionsButton.getRect().height) / 2);
     optionsButton.setText("Options");
 
-    quitButton.setLoader(loader);
-    quitButton.init();
     quitButton.setSize(sf::Vector2i(12, 4));
     quitButton.setPosition(
         (window->getSize().x - quitButton.getRect().width) / 2,
@@ -47,33 +45,18 @@ void ds::MainScreen::control() {
             code = ds::ExitCode::Quit;
             window->close();
         }
-        startButton.setState(MenuState::Normal);
-        optionsButton.setState(MenuState::Normal);
-        quitButton.setState(MenuState::Normal);
 
-        onMouseMove(&startButton, &event, [&]() -> void {
-            startButton.setState(MenuState::Highlighted);
-        });
+        layout->onMouseLeftReleased(&startButton, &event, [](){});
+        layout->onMouseLeftReleased(&optionsButton, &event, [](){});
+        layout->onMouseLeftReleased(&quitButton, &event, [](){});
 
-        onMouseMove(&optionsButton, &event, [&]() -> void {
-            optionsButton.setState(MenuState::Highlighted);
-        });
+        layout->onMouseMove(&startButton, &event, [](){});
+        layout->onMouseMove(&optionsButton, &event, [](){});
+        layout->onMouseMove(&quitButton, &event, [](){});
 
-        onMouseMove(&quitButton, &event, [&]() -> void {
-            quitButton.setState(MenuState::Highlighted);
-        });
-
-        onClick(&startButton, &event, [&]() -> void {
-            startButton.setState(MenuState::Clicked);
-        });
-
-        onClick(&optionsButton, &event, [&]() -> void {
-            optionsButton.setState(MenuState::Clicked);
-        });
-
-        onClick(&quitButton, &event, [&]() -> void {
-            quitButton.setState(MenuState::Clicked);
-        });
+        layout->onMouseLeftPressed(&startButton, &event, [](){});
+        layout->onMouseLeftPressed(&optionsButton, &event, [](){});
+        layout->onMouseLeftPressed(&quitButton, &event, [](){});
     }
 
     sf::sleep(sf::milliseconds(17));

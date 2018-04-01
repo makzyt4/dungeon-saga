@@ -5,7 +5,7 @@
 
 int main() {
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600),
-                                "SFML works!",
+                                "Dungeon Saga",
                                 sf::Style::None | sf::Style::Close);
     ds::ResourceLoader* loader = new ds::ResourceLoader();
 

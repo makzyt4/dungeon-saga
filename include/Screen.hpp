@@ -9,6 +9,7 @@
 #include "Updatable.hpp"
 #include "ExitCode.hpp"
 #include "MenuObject.hpp"
+#include "RelativeLayout.hpp"
 
 namespace ds {
     class Screen
@@ -17,6 +18,7 @@ namespace ds {
           public Updatable {
 
     protected:
+        RelativeLayout* layout;
         sf::RenderWindow* window;
         ResourceLoader* loader;
         ExitCode code;
@@ -25,9 +27,6 @@ namespace ds {
         explicit Screen(sf::RenderWindow* window, ResourceLoader* loader);
 
         ExitCode getCode();
-
-        void onClick(MenuObject* object, sf::Event* event, std::function<void()> func);
-        void onMouseMove(MenuObject* object, sf::Event* event, std::function<void()> func);
 
         virtual void init() = 0;
     };
