@@ -1,6 +1,8 @@
 #include "../include/RelativeLayout.hpp"
 
-ds::RelativeLayout::RelativeLayout(ds::ResourceLoader* loader) {
+ds::RelativeLayout::RelativeLayout(sf::RenderWindow* window,
+                                   ds::ResourceLoader* loader) {
+    this->window = window;
     this->loader = loader;
     selected = NULL;
 }
@@ -19,9 +21,10 @@ void ds::RelativeLayout::onMouseMoved(MenuObject* object, sf::Event* event,
 
     int x = event->mouseMove.x;
     int y = event->mouseMove.y;
+    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
 
     if (event->type == sf::Event::MouseMoved) {
-        if (object->getRect().contains(x, y)) {
+        if (object->getRect().contains(mouse.x, mouse.y)) {
             object->setState(ds::MenuState::Highlighted);
             func();
         } else {
@@ -39,9 +42,10 @@ void ds::RelativeLayout::onMouseLeftPressed(MenuObject* object,
 
     int x = event->mouseButton.x;
     int y = event->mouseButton.y;
+    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
 
     if (event->type == sf::Event::MouseButtonPressed) {
-        if (object->getRect().contains(x, y)) {
+        if (object->getRect().contains(mouse.x, mouse.y)) {
             object->setState(ds::MenuState::Clicked);
             func();
             selected = object;
@@ -60,11 +64,12 @@ void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object,
 
     int x = event->mouseButton.x;
     int y = event->mouseButton.y;
+    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
 
     object->setState(ds::MenuState::Normal);
 
     if (event->type == sf::Event::MouseButtonReleased && selected == object) {
-        if (object->getRect().contains(x, y)) {
+        if (object->getRect().contains(mouse.x, mouse.y)) {
             func();
         }
     }
