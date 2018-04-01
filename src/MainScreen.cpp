@@ -5,6 +5,10 @@ void ds::MainScreen::init() {
     layout->addElement(&optionsButton);
     layout->addElement(&quitButton);
 
+    quitButton.setActionReleased([](){
+        std::cout << "TEST" << std::endl;
+    });
+
     startButton.setSize(sf::Vector2i(12, 4));
     startButton.setPosition(
         (window->getSize().x - startButton.getRect().width) / 2,
@@ -45,7 +49,7 @@ void ds::MainScreen::control() {
             code = ds::ExitCode::Quit;
             window->close();
         }
-        
+
         layout->listenToElements(&event);
     }
 

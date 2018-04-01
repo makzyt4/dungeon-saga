@@ -12,7 +12,7 @@ void ds::RelativeLayout::addElement(ds::MenuObject* element) {
 }
 
 void ds::RelativeLayout::onMouseMoved(MenuObject* object, sf::Event* event,
-                                     std::function<void()> func) {
+                                      std::function<void()> func) {
     if (selected == object) {
         return;
     }
@@ -30,8 +30,9 @@ void ds::RelativeLayout::onMouseMoved(MenuObject* object, sf::Event* event,
     }
 }
 
-void ds::RelativeLayout::onMouseLeftPressed(MenuObject* object, sf::Event* event,
-                                        std::function<void()> func) {
+void ds::RelativeLayout::onMouseLeftPressed(MenuObject* object,
+                                            sf::Event* event,
+                                            std::function<void()> func) {
     if (event->mouseButton.button != sf::Mouse::Left) {
         return;
     }
@@ -40,8 +41,7 @@ void ds::RelativeLayout::onMouseLeftPressed(MenuObject* object, sf::Event* event
     int y = event->mouseButton.y;
 
     if (event->type == sf::Event::MouseButtonPressed) {
-        if (object->getRect().contains(x, y)
-            && object->getState() == ds::MenuState::Normal) {
+        if (object->getRect().contains(x, y)) {
             object->setState(ds::MenuState::Clicked);
             func();
             selected = object;
@@ -51,7 +51,8 @@ void ds::RelativeLayout::onMouseLeftPressed(MenuObject* object, sf::Event* event
     }
 }
 
-void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object, sf::Event* event,
+void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object,
+                                             sf::Event* event,
                                              std::function<void()> func) {
     if (event->mouseButton.button != sf::Mouse::Left) {
         return;
@@ -62,9 +63,8 @@ void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object, sf::Event* even
 
     object->setState(ds::MenuState::Normal);
 
-    if (event->type == sf::Event::MouseButtonPressed) {
-        if (object->getRect().contains(x, y)
-            && selected == object) {
+    if (event->type == sf::Event::MouseButtonReleased && selected == object) {
+        if (object->getRect().contains(x, y)) {
             func();
         }
     }
@@ -72,8 +72,8 @@ void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object, sf::Event* even
 
 void ds::RelativeLayout::listenToElements(sf::Event* event) {
     for (MenuObject* element : elements) {
-        onMouseLeftPressed(element, event, element->getActionPressed());
         onMouseMoved(element, event, element->getActionMoved());
         onMouseLeftReleased(element, event, element->getActionReleased());
+        onMouseLeftPressed(element, event, element->getActionPressed());
     }
 }
