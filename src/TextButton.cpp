@@ -16,8 +16,6 @@ void ds::TextButton::setSize(sf::Vector2i size) {
     this->size = size;
     rect.width = 8 * size.x;
     rect.height = 8 * size.y;
-
-    std::cout << "SIZE: " << rect.width << ", " << rect.height << std::endl;
 }
 
 void ds::TextButton::init() {
