@@ -9,8 +9,10 @@ namespace ds {
     private:
         LookingDirection direction;
         sf::IntRect hitbox;
-        int health;
-        int healthMax;
+        int level;
+        sf::Vector2i health;
+        sf::Vector2i baseAttackDmg;
+        sf::Vector2i currentAttackDmg;
 
         ds::Animation* currentAnimation;
 
