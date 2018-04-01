@@ -28,6 +28,7 @@ namespace ds {
         sf::Time getFrameTime() const;
 
         void setSpriteSheet(sf::Texture* spriteSheet);
+        void setFrameTime(sf::Time frameTime);
 
         void addFrame(sf::IntRect frame);
         void play();

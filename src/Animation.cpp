@@ -34,6 +34,10 @@ void ds::Animation::setSpriteSheet(sf::Texture* spriteSheet) {
     this->spriteSheet = spriteSheet;
 }
 
+void ds::Animation::setFrameTime(sf::Time frameTime) {
+    this->frameTime = frameTime;
+}
+
 void ds::Animation::addFrame(sf::IntRect frame) {
     frames.push_back(frame);
 }
