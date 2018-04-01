@@ -8,6 +8,14 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     currentAttackDmg = baseAttackDmg;
     level = 1;
     speed = 1.f;
+
+    sf::Texture* texture = loader->getTexture("hero.png");
+    standingRight.setFrameTime(sf::seconds(0.5));
+    standingRight.setSpriteSheet(texture);
+    standingRight.addFrame(sf::IntRect(0, 0, 32, 32));
+    standingRight.addFrame(sf::IntRect(32, 0, 32, 32));
+
+    currentAnimation = &standingRight;
 }
 
 void ds::PlayerCharacter::update(sf::Event* event) {
