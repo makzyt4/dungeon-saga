@@ -27,11 +27,10 @@ namespace ds {
     public:
         virtual void init() = 0;
         virtual void update(sf::Event* event) = 0;
+        virtual void setPosition(int x, int y) = 0;
 
         sf::IntRect getRect();
         ds::Animation* getCurrentAnimation();
-
-        void setPosition(int x, int y);
     };
 }
 
