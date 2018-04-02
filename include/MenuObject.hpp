@@ -20,6 +20,7 @@ namespace ds {
         std::function<void()> getActionPressed();
         std::function<void()> getActionReleased();
         std::function<void()> getActionMoved();
+        bool isCollidable();
 
         void setState(MenuState state);
         void setActionPressed(std::function<void()> func);

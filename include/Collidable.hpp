@@ -5,8 +5,6 @@
 
 namespace ds {
     class Collidable {
-    protected:
-        sf::IntRect rect;
     public:
         virtual bool isCollidable() = 0;
     };

@@ -2,11 +2,12 @@
 #define DS_GAME_OBJECT_HPP
 
 #include <SFML/Graphics.hpp>
+#include "Collidable.hpp"
 #include "DrawableObject.hpp"
 #include "ResourceLoader.hpp"
 
 namespace ds {
-    class GameObject : public DrawableObject {
+    class GameObject : public DrawableObject, public Collidable {
     protected:
         ds::ResourceLoader* loader;
         sf::Texture* texture;

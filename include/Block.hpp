@@ -6,7 +6,7 @@
 #include "GameObject.hpp"
 
 namespace ds {
-    class Block : public Collidable, GameObject {
+    class Block : public GameObject {
     protected:
         bool destructible;
         bool destroyed;
@@ -17,6 +17,7 @@ namespace ds {
 
         void setDestructible(const bool& destructible);
         void setDestroyed(const bool& destroyed);
+        void setPosition(int x, int y);
     };
 }
 

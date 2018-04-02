@@ -31,3 +31,7 @@ void ds::MenuObject::setActionReleased(std::function<void()> func) {
 void ds::MenuObject::setActionMoved(std::function<void()> func) {
     actionMoved = func;
 }
+
+bool ds::MenuObject::isCollidable() {
+    return false;
+}
