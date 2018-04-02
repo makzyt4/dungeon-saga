@@ -80,3 +80,7 @@ void ds::PlayerCharacter::handleKeys(sf::Event* event) {
         velocity.x *= 0.9;
     }
 }
+
+bool ds::PlayerCharacter::isCollidable() {
+    return false;
+}

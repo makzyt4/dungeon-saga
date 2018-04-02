@@ -4,10 +4,9 @@
 #include <SFML/Graphics.hpp>
 #include "DrawableObject.hpp"
 #include "ResourceLoader.hpp"
-#include "Collidable.hpp"
 
 namespace ds {
-    class GameObject : public DrawableObject, public Collidable {
+    class GameObject : public DrawableObject {
     protected:
         ds::ResourceLoader* loader;
         sf::Texture* texture;

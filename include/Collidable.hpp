@@ -4,7 +4,7 @@
 namespace ds {
     class Collidable {
     public:
-        virtual void isCollidable() = 0;
+        virtual bool isCollidable() = 0;
     };
 }
 
