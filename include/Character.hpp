@@ -12,7 +12,6 @@ namespace ds {
     class Character : public DrawableObject, public Collidable {
     protected:
         LookingDirection direction;
-        sf::IntRect rect;
         sf::Vector2f position;
         sf::Vector2f velocity;
         sf::Vector2i health;
