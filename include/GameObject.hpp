@@ -7,7 +7,7 @@
 #include "Updatable.hpp"
 
 namespace ds {
-    class GameObject : public DrawableObject {
+    class GameObject : public DrawableObject, public Collidable {
     protected:
         ds::ResourceLoader* loader;
         sf::Texture* texture;

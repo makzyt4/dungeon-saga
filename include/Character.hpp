@@ -8,7 +8,7 @@
 #include "ResourceLoader.hpp"
 
 namespace ds {
-    class Character : public DrawableObject {
+    class Character : public DrawableObject, public Collidable {
     protected:
         LookingDirection direction;
         sf::IntRect rect;
