@@ -3,6 +3,7 @@
 
 #include <map>
 #include <array>
+#include <SFML/Graphics.hpp>
 #include "ResourceLoader.hpp"
 
 namespace ds {
@@ -14,6 +15,9 @@ namespace ds {
         Font();
 
         std::uint64_t getChar(char c);
+        void drawCharacter(sf::RenderWindow* window, char c,
+                           sf::Vector2i position, std::size_t size,
+                           sf::Color color);
     };
 }
 

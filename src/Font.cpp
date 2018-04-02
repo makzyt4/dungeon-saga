@@ -109,3 +109,23 @@ std::uint64_t ds::Font::getChar(char c) {
 
     return it->second;
 }
+
+void ds::Font::drawCharacter(sf::RenderWindow* window, char c,
+                             sf::Vector2i position, std::size_t size,
+                             sf::Color color) {
+    const char ch = getChar(c);
+    int x = position.x;
+    int y = position.y;
+
+    for (int i = 0; i < 8; i++) {
+        for (int j = 0; j < 8; j++) {
+            if (ch & (1 << ((7 - j) + 8 * (7 - i)))) {
+                sf::RectangleShape rect;
+                rect.setPosition(x + i * size, y + j * size);
+                rect.setSize(sf::Vector2f(size, size));
+                rect.setFillColor(color);
+                window->draw(rect);
+            }
+        }
+    }
+}
