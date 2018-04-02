@@ -6,14 +6,17 @@
 #include "GameObject.hpp"
 
 namespace ds {
-    class Block : public Collidable, DrawableObject, GameObject {
+    class Block : public Collidable, GameObject {
     protected:
         bool destructible;
+        bool destroyed;
 
     public:
         bool isDestructible() const;
+        bool isDestroyed() const;
 
         void setDestructible(const bool& destructible);
+        void setDestroyed(const bool& destroyed);
     };
 }
 
