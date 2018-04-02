@@ -59,6 +59,10 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
 
     onGround = false;
     for (Block* block : elements->getBlocks()) {
+        if (!block->isCollidable()) {
+            continue;
+        }
+
         sf::IntRect tmpRect;
 
         // If block on the ground

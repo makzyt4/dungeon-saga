@@ -8,6 +8,7 @@
 #include "GameElementArray.hpp"
 #include "BrickBlock.hpp"
 #include "Text.hpp"
+#include "BrickBlockBackground.hpp"
 
 namespace ds {
     class TestScreen : public Screen {

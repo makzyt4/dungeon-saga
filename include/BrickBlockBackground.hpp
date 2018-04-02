@@ -1,10 +1,10 @@
-#ifndef DS_BRICK_BLOCK_HPP
-#define DS_BRICK_BLOCK_HPP
+#ifndef DS_BRICK_BLOCK_BACKGROUND_HPP
+#define DS_BRICK_BLOCK_BACKGROUND_HPP
 
 #include "Block.hpp"
 
 namespace ds {
-    class BrickBlock : public Block {
+    class BrickBlockBackground : public Block {
     public:
         using Block::Block;
 
@@ -15,4 +15,4 @@ namespace ds {
     };
 }
 
-#endif // DS_BRICK_BLOCK_HPP
+#endif // DS_BRICK_BLOCK_BACKGROUND_HPP

@@ -26,6 +26,15 @@ void ds::TestScreen::init() {
         elements.addBlock(brick);
     }
 
+    for (int i = 0; i < 10; i++) {
+        Block* brick = new BrickBlockBackground();
+        brick->setLoader(loader);
+        brick->init();
+        brick->setPosition(320 + i * 16, 304);
+
+        elements.addBlock(brick);
+    }
+
 
     elements.addBlock(brick);
     elements.addBlock(brick2);
