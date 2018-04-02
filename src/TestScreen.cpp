@@ -1,6 +1,9 @@
 #include "../include/TestScreen.hpp"
 
 void ds::TestScreen::init() {
+    text.setPosition(sf::Vector2i(400, 300));
+    text.setString("TEST");
+
     hero.init(loader);
     hero.setPosition(400, 300);
 
@@ -49,6 +52,7 @@ void ds::TestScreen::draw() {
 
     elements.drawAll(window);
     hero.draw(window);
+    text.draw(window);
 
     window->display();
 }

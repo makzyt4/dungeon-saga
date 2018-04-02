@@ -7,12 +7,14 @@
 #include "PlayerCharacter.hpp"
 #include "GameElementArray.hpp"
 #include "BrickBlock.hpp"
+#include "Text.hpp"
 
 namespace ds {
     class TestScreen : public Screen {
     private:
         PlayerCharacter hero;
         GameElementArray elements;
+        Text text;
 
     public:
         using Screen::Screen;

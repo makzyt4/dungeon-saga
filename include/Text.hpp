@@ -8,20 +8,27 @@
 namespace ds {
     class Text : public DrawableObject {
     private:
-        sf::IntRect position;
+        sf::Vector2i position;
         sf::Color color;
         std::string string;
-        std::size_t size;
+        std::size_t fontSize;
         Font font;
+        int width;
+        int height;
+        std::size_t currentWidth;
 
     public:
+        Text();
+
         std::string getString() const;
-        sf::IntRect getPosition() const;
-        std::size_t getSize() const;
+        sf::Vector2i getPosition() const;
+        std::size_t getFontSize() const;
+        sf::Vector2i getSize() const;
 
         void setString(const std::string& string);
-        void setPosition(const sf::IntRect& position);
-        void setSize(const std::size_t size);
+        void setPosition(const sf::Vector2i& position);
+        void setFontSize(const std::size_t size);
+        void setColor(const sf::Color& color);
 
         void draw(sf::RenderWindow* window);
     };
