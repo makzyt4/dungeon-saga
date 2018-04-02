@@ -16,9 +16,9 @@ void ds::TestScreen::update() {
             window->close();
         }
 
-        hero.handleKeys(&event);
     }
 
+    hero.handleKeys();
     hero.update();
 }
 

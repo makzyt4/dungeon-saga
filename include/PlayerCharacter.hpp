@@ -1,6 +1,7 @@
 #ifndef DS_PLAYER_CHARACTER_HPP
 #define DS_PLAYER_CHARACTER_HPP
 
+#include <cmath>
 #include "Character.hpp"
 
 namespace ds {
@@ -13,8 +14,8 @@ namespace ds {
         void init(ResourceLoader* loader);
         void update();
         void draw(sf::RenderWindow* window);
-        void setPosition(int x, int y);
-        void handleKeys(sf::Event* event);
+        void setPosition(float x, float y);
+        void handleKeys();
         bool isCollidable();
     };
 }

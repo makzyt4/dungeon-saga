@@ -7,7 +7,7 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     baseAttackDmg = sf::Vector2i(1, 2);
     currentAttackDmg = baseAttackDmg;
     level = 1;
-    speed = 1.f;
+    speed = 1.0f;
 
     sf::Texture* texture = loader->getTexture("hero.png");
     standingRight.setFrameTime(sf::seconds(0.5));
@@ -42,15 +42,17 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
 void ds::PlayerCharacter::update() {
     currentAnimation->play();
 
-    if (velocity.x != 0) { // If moving
+    if (fabs(velocity.x) > 0.1) { // If moving
         currentAnimation = direction == ds::LookingDirection::Left ?
                            &movingLeft : &movingRight;
     } else { // If standing
+        velocity.x = 0;
         currentAnimation = direction == ds::LookingDirection::Left ?
                            &standingLeft : &standingRight;
     }
 
     setPosition(position.x + velocity.x, position.y + velocity.y);
+    velocity.x *= 0.8;
 }
 
 void ds::PlayerCharacter::draw(sf::RenderWindow* window) {
@@ -61,7 +63,7 @@ void ds::PlayerCharacter::draw(sf::RenderWindow* window) {
     window->draw(sprite);
 }
 
-void ds::PlayerCharacter::setPosition(int x, int y) {
+void ds::PlayerCharacter::setPosition(float x, float y) {
     position.x = x;
     position.y = y;
 
@@ -69,18 +71,16 @@ void ds::PlayerCharacter::setPosition(int x, int y) {
     rect.top = y + 1;
 }
 
-void ds::PlayerCharacter::handleKeys(sf::Event* event) {
+void ds::PlayerCharacter::handleKeys() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         velocity.x = -speed;
         direction = ds::LookingDirection::Left;
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         velocity.x = speed;
         direction = ds::LookingDirection::Right;
-    } else {
-        velocity.x *= 0.9;
     }
 }
 
 bool ds::PlayerCharacter::isCollidable() {
-    return false;
+    return true;
 }
