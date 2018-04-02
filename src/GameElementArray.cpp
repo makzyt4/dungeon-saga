@@ -7,7 +7,6 @@ void ds::GameElementArray::addBlock(Block* block, int x, int y) {
         if (block2->getRect().intersects(block->getRect())) {
             blocks.erase(std::remove(blocks.begin(),
                                      blocks.end(), block2), blocks.end());
-            break;
         }
     }
 

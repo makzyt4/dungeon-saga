@@ -22,6 +22,11 @@ void ds::TestScreen::init() {
         brick->init();
         elements.addBlock(brick, 20 + i, 24);
     }
+
+    Block* door = new BrickDoorBackground();
+    door->setLoader(loader);
+    door->init();
+    elements.addBlock(door, 22, 22);
 }
 
 void ds::TestScreen::update() {
@@ -33,6 +38,11 @@ void ds::TestScreen::update() {
             window->close();
         }
     }
+
+    sf::Vector2i center = hero.getCenter();
+
+    sf::Vector2i textPos = sf::Vector2i(center.x - 100, center.y - 100);
+    text.setPosition(textPos);
 
     generateView(hero.getCenter());
     hero.handleKeys();

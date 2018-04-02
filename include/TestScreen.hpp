@@ -9,6 +9,7 @@
 #include "BrickBlock.hpp"
 #include "Text.hpp"
 #include "BrickBlockBackground.hpp"
+#include "BrickDoorBackground.hpp"
 
 namespace ds {
     class TestScreen : public Screen {
