@@ -41,8 +41,11 @@ void ds::TestScreen::update() {
 
     sf::Vector2i center = hero.getCenter();
 
-    sf::Vector2i textPos = sf::Vector2i(center.x - 100, center.y - 100);
+
+    sf::Vector2i textPos = sf::Vector2i(center.x - window->getSize().x / 4,
+                                        center.y - window->getSize().y / 4);
     text.setPosition(textPos);
+    printf("%d, %d\n", textPos.x, textPos.y);
 
     generateView(hero.getCenter());
     hero.handleKeys();
