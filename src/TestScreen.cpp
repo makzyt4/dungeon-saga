@@ -55,10 +55,11 @@ void ds::TestScreen::control() {
 
 void ds::TestScreen::drawBlocks() {
     for (Block* block : elements.getBlocks()) {
+        sf::Vector2i center = hero.getCenter();
         float distance =
-            std::sqrt(std::pow(hero.getRect().left - block->getRect().left, 2) +
-                      std::pow(hero.getRect().top - block->getRect().top, 2));
-        if (distance <= std::max(window->getSize().x, window->getSize().y) / 4) {
+            std::sqrt(std::pow(center.x - block->getRect().left, 2) +
+                      std::pow(center.y - block->getRect().top, 2)) * 3;
+        if (distance <= std::max(window->getSize().x, window->getSize().y)) {
             block->draw(window);
         }
     }
