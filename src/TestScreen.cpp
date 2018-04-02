@@ -4,6 +4,13 @@ void ds::TestScreen::init() {
     hero.init(loader);
     hero.setPosition(400, 300);
 
+    Block* brick = new BrickBlock();
+    brick->setLoader(loader);
+    brick->init();
+    brick->setPosition(420, 320);
+
+    elements.addBlock(brick);
+
     generateView();
 }
 
@@ -15,16 +22,16 @@ void ds::TestScreen::update() {
             code = ds::ExitCode::Quit;
             window->close();
         }
-
     }
 
     hero.handleKeys();
-    hero.update(&collidables);
+    hero.update(&elements);
 }
 
 void ds::TestScreen::draw() {
     window->clear();
 
+    elements.drawAll(window);
     hero.draw(window);
 
     window->display();

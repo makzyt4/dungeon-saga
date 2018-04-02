@@ -39,7 +39,7 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     currentAnimation = &standingRight;
 }
 
-void ds::PlayerCharacter::update(std::vector<Collidable*>* collidables) {
+void ds::PlayerCharacter::update(GameElementArray* elements) {
     currentAnimation->play();
 
     if (fabs(velocity.x) > 0.1) { // If moving

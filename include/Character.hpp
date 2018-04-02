@@ -6,7 +6,7 @@
 #include "DrawableObject.hpp"
 #include "LookingDirection.hpp"
 #include "ResourceLoader.hpp"
-#include "Collidable.hpp"
+#include "GameElementArray.hpp"
 
 namespace ds {
     class Character : public DrawableObject, public Collidable {
@@ -30,7 +30,7 @@ namespace ds {
 
     public:
         virtual void init(ResourceLoader* loader) = 0;
-        virtual void update(std::vector<Collidable*>* collidables) = 0;
+        virtual void update(GameElementArray* elements) = 0;
         virtual void setPosition(float x, float y) = 0;
 
         sf::IntRect getRect();

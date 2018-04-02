@@ -5,13 +5,14 @@
 #include "Screen.hpp"
 #include "TextButton.hpp"
 #include "PlayerCharacter.hpp"
-#include "Collidable.hpp"
+#include "GameElementArray.hpp"
+#include "BrickBlock.hpp"
 
 namespace ds {
     class TestScreen : public Screen {
     private:
         PlayerCharacter hero;
-        std::vector<Collidable*> collidables;
+        GameElementArray elements;
 
     public:
         using Screen::Screen;

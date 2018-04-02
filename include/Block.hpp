@@ -12,6 +12,8 @@ namespace ds {
         bool destroyed;
 
     public:
+        using GameObject::GameObject;
+
         bool isDestructible() const;
         bool isDestroyed() const;
 

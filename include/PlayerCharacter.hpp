@@ -12,7 +12,7 @@ namespace ds {
         int agility;
     public:
         void init(ResourceLoader* loader);
-        void update(std::vector<Collidable*>* collidables);
+        void update(GameElementArray* elements);
         void draw(sf::RenderWindow* window);
         void setPosition(float x, float y);
         void handleKeys();

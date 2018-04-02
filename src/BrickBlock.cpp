@@ -1,7 +1,7 @@
 #include "../include/BrickBlock.hpp"
 
 void ds::BrickBlock::init() {
-    texture = loader->getTexture("menus.png");
+    texture = loader->getTexture("blocks.png");
 }
 
 void ds::BrickBlock::draw(sf::RenderWindow* window) {
@@ -10,4 +10,8 @@ void ds::BrickBlock::draw(sf::RenderWindow* window) {
     sprite.setPosition(rect.left, rect.top);
     sprite.setTextureRect(sf::IntRect(0, 0, 16, 16));
     window->draw(sprite);
+}
+
+bool ds::BrickBlock::isCollidable() {
+    return true;
 }

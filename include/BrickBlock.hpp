@@ -6,6 +6,10 @@
 namespace ds {
     class BrickBlock : public Block {
     public:
+        using Block::Block;
+
+        bool isCollidable();
+
         void draw(sf::RenderWindow* window);
         void init();
     };
