@@ -17,7 +17,7 @@ namespace ds {
         sf::Vector2i baseAttackDmg;
         sf::Vector2i currentAttackDmg;
         int level;
-        float speed;
+        int speed;
 
         ds::Animation standingLeft;
         ds::Animation standingRight;
