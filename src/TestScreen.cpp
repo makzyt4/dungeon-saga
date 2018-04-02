@@ -7,37 +7,12 @@ void ds::TestScreen::init() {
     hero.init(loader);
     hero.setPosition(400, 300);
 
-    Block* brick = new BrickBlock();
-    brick->setLoader(loader);
-    brick->init();
-    brick->setPosition(432, 320);
-
-    Block* brick2 = new BrickBlock();
-    brick2->setLoader(loader);
-    brick2->init();
-    brick2->setPosition(432, 336);
-
-    for (int i = 0; i < 7; i++) {
+    for (int i = 0; i < 10; i++) {
         Block* brick = new BrickBlock();
         brick->setLoader(loader);
         brick->init();
-        brick->setPosition(320 + i * 16, 352);
-
-        elements.addBlock(brick);
+        elements.addBlock(brick, 20 + i, 24);
     }
-
-    for (int i = 0; i < 10; i++) {
-        Block* brick = new BrickBlockBackground();
-        brick->setLoader(loader);
-        brick->init();
-        brick->setPosition(320 + i * 16, 304);
-
-        elements.addBlock(brick);
-    }
-
-
-    elements.addBlock(brick);
-    elements.addBlock(brick2);
 }
 
 void ds::TestScreen::update() {

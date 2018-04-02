@@ -17,6 +17,7 @@ namespace ds {
         GameElementArray elements;
         Text text;
 
+        void generateRooms();
     public:
         using Screen::Screen;
 
