@@ -27,6 +27,9 @@ void ds::TestScreen::init() {
     door->setLoader(loader);
     door->init();
     elements.addBlock(door, 22, 22);
+
+    healthBar.setLoader(loader);
+    healthBar.init();
 }
 
 void ds::TestScreen::update() {
@@ -42,9 +45,9 @@ void ds::TestScreen::update() {
     sf::Vector2i center = hero.getCenter();
 
 
-    sf::Vector2i textPos = sf::Vector2i(center.x - window->getSize().x / 4,
-                                        center.y - window->getSize().y / 4);
-    text.setPosition(textPos);
+    sf::Vector2i barPos = sf::Vector2i(center.x - window->getSize().x / 4 + 10,
+                                       center.y - window->getSize().y / 4 + 10);
+    healthBar.setPosition(barPos.x, barPos.y);
 
     generateView(hero.getCenter());
     hero.handleKeys();
@@ -57,6 +60,7 @@ void ds::TestScreen::draw() {
     drawBlocks();
     hero.draw(window);
     text.draw(window);
+    healthBar.draw(window);
 
     window->display();
 }
