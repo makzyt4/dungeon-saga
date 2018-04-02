@@ -7,3 +7,9 @@ sf::IntRect ds::Character::getRect() {
 ds::Animation* ds::Character::getCurrentAnimation() {
     return currentAnimation;
 }
+
+void ds::Character::jump() {
+    if (onGround) {
+        velocity.y -= jumpHeight;
+    }
+}

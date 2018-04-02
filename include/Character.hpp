@@ -21,6 +21,8 @@ namespace ds {
         sf::Vector2i currentAttackDmg;
         int level;
         float speed;
+        float jumpHeight;
+        bool onGround;
 
         ds::Animation standingLeft;
         ds::Animation standingRight;
@@ -32,6 +34,8 @@ namespace ds {
         virtual void init(ResourceLoader* loader) = 0;
         virtual void update(GameElementArray* elements) = 0;
         virtual void setPosition(float x, float y) = 0;
+
+        void jump();
 
         sf::IntRect getRect();
         ds::Animation* getCurrentAnimation();

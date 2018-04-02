@@ -8,6 +8,8 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     currentAttackDmg = baseAttackDmg;
     level = 1;
     speed = 1.0f;
+    jumpHeight = 2.9f;
+    onGround = false;
 
     sf::Texture* texture = loader->getTexture("hero.png");
     standingRight.setFrameTime(sf::seconds(0.5));
@@ -55,6 +57,7 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
 
     setPosition(position.x + velocity.x, position.y + velocity.y);
 
+    onGround = false;
     for (Block* block : elements->getBlocks()) {
         sf::IntRect tmpRect;
 
@@ -65,6 +68,7 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
         if (block->getRect().intersects(tmpRect)) {
             velocity.y = 0;
             position.y = tmpPosition.y;
+            onGround = true;
         }
 
         // If block above
@@ -121,6 +125,10 @@ void ds::PlayerCharacter::handleKeys() {
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         velocity.x = speed;
         direction = ds::LookingDirection::Right;
+    }
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        jump();
     }
 }
 
