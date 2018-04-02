@@ -2,7 +2,7 @@
 
 void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     direction = ds::LookingDirection::Right;
-    rect = sf::IntRect(0, 0, 12, 31);
+    rect = sf::IntRect(0, 0, 14, 31);
     health = sf::Vector2i(5, 5);
     baseAttackDmg = sf::Vector2i(1, 2);
     currentAttackDmg = baseAttackDmg;
@@ -56,12 +56,38 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
     setPosition(position.x + velocity.x, position.y + velocity.y);
 
     for (Block* block : elements->getBlocks()) {
-        if (block->getRect().intersects(rect)) {
-            setPosition(tmpPosition.x, tmpPosition.y);
+        sf::IntRect tmpRect;
+
+        // If block on the ground
+        tmpRect = rect;
+        tmpRect.top += velocity.y + 1;
+
+        if (block->getRect().intersects(tmpRect)) {
+            velocity.y = 0;
+            position.y = tmpPosition.y;
+        }
+
+        // If block on the left
+        tmpRect = rect;
+        tmpRect.left -= fabs(velocity.y) + 1;
+
+        if (block->getRect().intersects(tmpRect) && velocity.x < 0) {
+            velocity.x = 0;
+            position.x = tmpPosition.x;
+        }
+
+        // If block on the right
+        tmpRect = rect;
+        tmpRect.left += fabs(velocity.y) + 1;
+
+        if (block->getRect().intersects(tmpRect) && velocity.x > 0) {
+            velocity.x = 0;
+            position.x = tmpPosition.x;
         }
     }
 
     velocity.x *= 0.8;
+    velocity.y += 0.1;
 }
 
 void ds::PlayerCharacter::draw(sf::RenderWindow* window) {
