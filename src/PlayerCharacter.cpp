@@ -60,10 +60,18 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
 
         // If block on the ground
         tmpRect = rect;
-        tmpRect.top += velocity.y + 1;
+        tmpRect.top += fabs(velocity.y + 1);
 
         if (block->getRect().intersects(tmpRect)) {
             velocity.y = 0;
+            position.y = tmpPosition.y;
+        }
+
+        // If block above
+        tmpRect = rect;
+        tmpRect.top -= fabs(velocity.y + 1);
+
+        if (block->getRect().intersects(tmpRect)) {
             position.y = tmpPosition.y;
         }
 
