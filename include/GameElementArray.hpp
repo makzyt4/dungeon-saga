@@ -10,6 +10,8 @@ namespace ds {
         std::vector<Block*> blocks;
 
     public:
+        std::vector<Block*> getBlocks() const;
+
         void addBlock(Block* block);
         void drawAll(sf::RenderWindow* window);
     };

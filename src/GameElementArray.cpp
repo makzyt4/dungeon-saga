@@ -9,3 +9,7 @@ void ds::GameElementArray::drawAll(sf::RenderWindow* window) {
         block->draw(window);
     }
 }
+
+std::vector<ds::Block*> ds::GameElementArray::getBlocks() const {
+    return blocks;
+}

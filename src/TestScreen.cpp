@@ -7,9 +7,15 @@ void ds::TestScreen::init() {
     Block* brick = new BrickBlock();
     brick->setLoader(loader);
     brick->init();
-    brick->setPosition(420, 320);
+    brick->setPosition(450, 320);
+
+    Block* brick2 = new BrickBlock();
+    brick2->setLoader(loader);
+    brick2->init();
+    brick2->setPosition(350, 320);
 
     elements.addBlock(brick);
+    elements.addBlock(brick2);
 
     generateView();
 }

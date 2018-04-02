@@ -40,6 +40,8 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
 }
 
 void ds::PlayerCharacter::update(GameElementArray* elements) {
+    sf::Vector2f tmpPosition = position;
+
     currentAnimation->play();
 
     if (fabs(velocity.x) > 0.1) { // If moving
@@ -52,6 +54,13 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
     }
 
     setPosition(position.x + velocity.x, position.y + velocity.y);
+
+    for (Block* block : elements->getBlocks()) {
+        if (block->getRect().intersects(rect)) {
+            setPosition(tmpPosition.x, tmpPosition.y);
+        }
+    }
+
     velocity.x *= 0.8;
 }
 
