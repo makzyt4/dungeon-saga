@@ -59,7 +59,10 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
 
     onGround = false;
     for (Block* block : elements->getBlocks()) {
-        if (!block->isCollidable()) {
+        int dx = abs(block->getRect().left - getCenter().x);
+        int dy = abs(block->getRect().top - getCenter().y);
+
+        if (!block->isCollidable() || dx >= 64 || dy >= 64) {
             continue;
         }
 

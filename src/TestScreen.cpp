@@ -7,12 +7,12 @@ void ds::TestScreen::init() {
     hero.init(loader);
     hero.setPosition(400, 300);
 
-    for (int i = 0; i < 100; i++) {
-        for (int j = 0; j < 100; j++) {
+    for (int i = 0; i < 10; i++) {
+        for (int j = 0; j < 10; j++) {
             Block* brick = new BrickBlockBackground();
             brick->setLoader(loader);
             brick->init();
-            elements.addBlock(brick, i, j);
+            elements.addBlock(brick, 20 + i, 15 + j);
         }
     }
 
