@@ -14,6 +14,7 @@ namespace ds {
         void update();
         void draw(sf::RenderWindow* window);
         void setPosition(int x, int y);
+        void handleKeys(sf::Event* event);
     };
 }
 

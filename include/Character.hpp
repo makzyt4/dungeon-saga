@@ -13,6 +13,7 @@ namespace ds {
         LookingDirection direction;
         sf::IntRect rect;
         sf::Vector2i position;
+        sf::Vector2i velocity;
         sf::Vector2i health;
         sf::Vector2i baseAttackDmg;
         sf::Vector2i currentAttackDmg;

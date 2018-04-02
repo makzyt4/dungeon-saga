@@ -20,7 +20,7 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     standingLeft.addFrame(sf::IntRect(0, 32, 32, 32));
     standingLeft.addFrame(sf::IntRect(32, 32, 32, 32));
 
-    movingRight.setFrameTime(sf::seconds(0.2));
+    movingRight.setFrameTime(sf::seconds(0.15));
     movingRight.setSpriteSheet(texture);
     movingRight.addFrame(sf::IntRect(64, 0, 32, 32));
     movingRight.addFrame(sf::IntRect(96, 0, 32, 32));
@@ -28,7 +28,7 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     movingRight.addFrame(sf::IntRect(160, 0, 32, 32));
     movingRight.addFrame(sf::IntRect(192, 0, 32, 32));
 
-    movingLeft.setFrameTime(sf::seconds(0.2));
+    movingLeft.setFrameTime(sf::seconds(0.15));
     movingLeft.setSpriteSheet(texture);
     movingLeft.addFrame(sf::IntRect(64, 32, 32, 32));
     movingLeft.addFrame(sf::IntRect(96, 32, 32, 32));
@@ -41,6 +41,16 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
 
 void ds::PlayerCharacter::update() {
     currentAnimation->play();
+
+    if (velocity.x != 0) { // If moving
+        currentAnimation = direction == ds::LookingDirection::Left ?
+                           &movingLeft : &movingRight;
+    } else { // If standing
+        currentAnimation = direction == ds::LookingDirection::Left ?
+                           &standingLeft : &standingRight;
+    }
+
+    setPosition(position.x + velocity.x, position.y + velocity.y);
 }
 
 void ds::PlayerCharacter::draw(sf::RenderWindow* window) {
@@ -57,4 +67,16 @@ void ds::PlayerCharacter::setPosition(int x, int y) {
 
     rect.left = x + 10;
     rect.top = y + 1;
+}
+
+void ds::PlayerCharacter::handleKeys(sf::Event* event) {
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        velocity.x = -speed;
+        direction = ds::LookingDirection::Left;
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        velocity.x = speed;
+        direction = ds::LookingDirection::Right;
+    } else {
+        velocity.x *= 0.9;
+    }
 }
