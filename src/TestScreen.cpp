@@ -29,8 +29,6 @@ void ds::TestScreen::init() {
 
     elements.addBlock(brick);
     elements.addBlock(brick2);
-
-    generateView();
 }
 
 void ds::TestScreen::update() {
@@ -43,6 +41,7 @@ void ds::TestScreen::update() {
         }
     }
 
+    generateView(hero.getCenter());
     hero.handleKeys();
     hero.update(&elements);
 }

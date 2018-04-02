@@ -13,3 +13,11 @@ void ds::Character::jump() {
         velocity.y -= jumpHeight;
     }
 }
+
+sf::Vector2i ds::Character::getCenter() {
+    sf::Vector2i center;
+    center.x = rect.left + rect.width / 2;
+    center.y = rect.top + rect.height / 2;
+
+    return center;
+}

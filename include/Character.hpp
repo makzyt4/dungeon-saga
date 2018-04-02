@@ -39,6 +39,7 @@ namespace ds {
 
         sf::IntRect getRect();
         ds::Animation* getCurrentAnimation();
+        sf::Vector2i getCenter();
     };
 }
 
