@@ -19,7 +19,7 @@ void ds::TestScreen::update() {
     }
 
     hero.handleKeys();
-    hero.update();
+    hero.update(&collidables);
 }
 
 void ds::TestScreen::draw() {
