@@ -4,7 +4,7 @@
 #include <SFML/Graphics.hpp>
 #include "DrawableObject.hpp"
 #include "ResourceLoader.hpp"
-#include "Updatable.hpp"
+#include "Collidable.hpp"
 
 namespace ds {
     class GameObject : public DrawableObject, public Collidable {

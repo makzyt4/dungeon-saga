@@ -6,6 +6,7 @@
 #include "DrawableObject.hpp"
 #include "LookingDirection.hpp"
 #include "ResourceLoader.hpp"
+#include "Collidable.hpp"
 
 namespace ds {
     class Character : public DrawableObject, public Collidable {
