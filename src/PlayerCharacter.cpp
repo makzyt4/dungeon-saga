@@ -15,6 +15,27 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     standingRight.addFrame(sf::IntRect(0, 0, 32, 32));
     standingRight.addFrame(sf::IntRect(32, 0, 32, 32));
 
+    standingLeft.setFrameTime(sf::seconds(0.5));
+    standingLeft.setSpriteSheet(texture);
+    standingLeft.addFrame(sf::IntRect(0, 32, 32, 32));
+    standingLeft.addFrame(sf::IntRect(32, 32, 32, 32));
+
+    movingRight.setFrameTime(sf::seconds(0.2));
+    movingRight.setSpriteSheet(texture);
+    movingRight.addFrame(sf::IntRect(64, 0, 32, 32));
+    movingRight.addFrame(sf::IntRect(96, 0, 32, 32));
+    movingRight.addFrame(sf::IntRect(128, 0, 32, 32));
+    movingRight.addFrame(sf::IntRect(160, 0, 32, 32));
+    movingRight.addFrame(sf::IntRect(192, 0, 32, 32));
+
+    movingLeft.setFrameTime(sf::seconds(0.2));
+    movingLeft.setSpriteSheet(texture);
+    movingLeft.addFrame(sf::IntRect(64, 32, 32, 32));
+    movingLeft.addFrame(sf::IntRect(96, 32, 32, 32));
+    movingLeft.addFrame(sf::IntRect(128, 32, 32, 32));
+    movingLeft.addFrame(sf::IntRect(160, 32, 32, 32));
+    movingLeft.addFrame(sf::IntRect(192, 32, 32, 32));
+
     currentAnimation = &standingRight;
 }
 
