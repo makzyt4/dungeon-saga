@@ -1,6 +1,8 @@
 #ifndef DS_COLLIDABLE_HPP
 #define DS_COLLIDABLE_HPP
 
+#include <SFML/Graphics.hpp>
+
 namespace ds {
     class Collidable {
     protected:
