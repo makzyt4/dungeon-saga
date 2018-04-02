@@ -13,13 +13,13 @@ namespace ds {
     protected:
         LookingDirection direction;
         sf::IntRect rect;
-        sf::Vector2i position;
-        sf::Vector2i velocity;
+        sf::Vector2f position;
+        sf::Vector2f velocity;
         sf::Vector2i health;
         sf::Vector2i baseAttackDmg;
         sf::Vector2i currentAttackDmg;
         int level;
-        int speed;
+        float speed;
 
         ds::Animation standingLeft;
         ds::Animation standingRight;
@@ -30,7 +30,7 @@ namespace ds {
     public:
         virtual void init(ResourceLoader* loader) = 0;
         virtual void update() = 0;
-        virtual void setPosition(int x, int y) = 0;
+        virtual void setPosition(float x, float y) = 0;
 
         sf::IntRect getRect();
         ds::Animation* getCurrentAnimation();
