@@ -18,6 +18,7 @@ namespace ds {
         Text text;
 
         void generateRooms();
+        void drawBlocks();
     public:
         using Screen::Screen;
 

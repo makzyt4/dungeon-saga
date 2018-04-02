@@ -7,6 +7,15 @@ void ds::TestScreen::init() {
     hero.init(loader);
     hero.setPosition(400, 300);
 
+    for (int i = 0; i < 100; i++) {
+        for (int j = 0; j < 100; j++) {
+            Block* brick = new BrickBlockBackground();
+            brick->setLoader(loader);
+            brick->init();
+            elements.addBlock(brick, i, j);
+        }
+    }
+
     for (int i = 0; i < 10; i++) {
         Block* brick = new BrickBlock();
         brick->setLoader(loader);
@@ -33,7 +42,7 @@ void ds::TestScreen::update() {
 void ds::TestScreen::draw() {
     window->clear();
 
-    elements.drawAll(window);
+    drawBlocks();
     hero.draw(window);
     text.draw(window);
 
@@ -42,4 +51,15 @@ void ds::TestScreen::draw() {
 
 void ds::TestScreen::control() {
     sf::sleep(sf::milliseconds(17));
+}
+
+void ds::TestScreen::drawBlocks() {
+    for (Block* block : elements.getBlocks()) {
+        float distance =
+            std::sqrt(std::pow(hero.getRect().left - block->getRect().left, 2) +
+                      std::pow(hero.getRect().top - block->getRect().top, 2));
+        if (distance <= std::max(window->getSize().x, window->getSize().y) / 4) {
+            block->draw(window);
+        }
+    }
 }
