@@ -28,7 +28,7 @@ namespace ds {
 
     public:
         virtual void init(ResourceLoader* loader) = 0;
-        virtual void update(std::vector<Collidable>* collidables) = 0;
+        virtual void update(std::vector<Collidable*>* collidables) = 0;
         virtual void setPosition(float x, float y) = 0;
 
         sf::IntRect getRect();

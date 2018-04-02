@@ -11,7 +11,7 @@ namespace ds {
     class TestScreen : public Screen {
     private:
         PlayerCharacter hero;
-        std::vector<Collidable> collidables;
+        std::vector<Collidable*> collidables;
 
     public:
         using Screen::Screen;
