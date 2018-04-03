@@ -5,8 +5,19 @@
 
 namespace ds {
     class HealthBar : public MenuObject {
+    private:
+        int value;
+        int minValue;
+        int maxValue;
+        int width;
     public:
+        int getWidth() const;
+
+        void setValue(const int& value);
+        void setWidth(const int& width);
+
         void init();
+        void setValues(const int& min, const int& max);
         void setPosition(int x, int y);
         void draw(sf::RenderWindow* window);
     };
