@@ -9,7 +9,7 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     currentAttackDmg = baseAttackDmg;
     level = 1;
     speed = 1.0f;
-    jumpHeight = 2.9f;
+    jumpHeight = 3.5f;
     onGround = false;
 
     sf::Texture* texture = loader->getTexture("hero.png");

@@ -15,6 +15,7 @@ namespace ds {
         GameElementArray* elements;
         sf::Vector2i levelSize;
         sf::Vector2i offset;
+        std::vector<sf::IntRect> rooms;
 
         void surroundNotCollidableBlocks();
     public:
@@ -22,9 +23,11 @@ namespace ds {
         void setLoader(ResourceLoader* loader);
         void setLevelSize(const int& width, const int& height);
         void setElements(GameElementArray* elements);
+
         void generateRoom();
         void generateRooms(std::uint8_t number);
         void addPlayer(PlayerCharacter* Character);
+        void addCorridors();
     };
 }
 

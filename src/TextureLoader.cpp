@@ -10,7 +10,6 @@ sf::Texture* ds::TextureLoader::getTexture(std::string path) {
     sf::Texture* texture = new sf::Texture();
 
     if (it != textureMap.end()) {
-        // std::cout << "TextureLoader :: Found texture '" << path << "'\n";
         return it->second;
     } else if (!texture->loadFromFile(path.c_str())) {
         std::cout << "TextureLoader :: Could not load file '" << path << "'\n";

@@ -35,6 +35,8 @@ void ds::RoomGenerator::generateRoom() {
             elements->addBlock(block, offset.x + i, offset.y + j);
         }
     }
+
+    rooms.push_back(sf::IntRect(x, y, width, height));
 }
 
 void ds::RoomGenerator::generateRooms(std::uint8_t number) {
@@ -42,6 +44,7 @@ void ds::RoomGenerator::generateRooms(std::uint8_t number) {
         generateRoom();
     }
 
+    addCorridors();
     surroundNotCollidableBlocks();
 }
 
@@ -229,4 +232,52 @@ void ds::RoomGenerator::addPlayer(ds::PlayerCharacter* player) {
 
     sf::IntRect foundPosition = elements->getBlocks()[index]->getRect();
     player->setPosition(foundPosition.left, foundPosition.top);
+}
+
+void ds::RoomGenerator::addCorridors() {
+    for (sf::IntRect room : rooms) {
+        for (sf::IntRect room2 : rooms) {
+            if (room == room2
+                || room2.top < room.top
+                || room2.left < room.left) {
+                continue;
+            }
+
+            sf::IntRect room3 = room2;
+            room3.top = room.top;
+
+            if (room3.intersects(room)) {
+                int xMin = std::min(room.left, room3.left);
+                int xMax = xMin + std::max(room.width, room3.width);
+
+                int corridorX = (rand() % (xMax - xMin)) + xMin;
+
+                for (int i = room.top + room.height; i < room2.top; i++) {
+                    Block* block = new BrickBlockBackground();
+                    block->setLoader(loader);
+                    block->init();
+                    elements->addBlock(block, offset.x + corridorX,
+                                       offset.y + i);
+                }
+            }
+
+            room3 = room2;
+            room3.left = room.left;
+
+            if (room3.intersects(room)) {
+                int yMin = std::min(room.top, room3.top);
+                int yMax = yMin + std::max(room.height, room3.height);
+
+                int corridorY = (rand() % (yMax - yMin)) + yMin;
+
+                for (int i = room.left + room.width; i < room2.left; i++) {
+                    Block* block = new BrickBlockBackground();
+                    block->setLoader(loader);
+                    block->init();
+                    elements->addBlock(block, offset.x + i,
+                                       offset.y + corridorY);
+                }
+            }
+        }
+    }
 }
