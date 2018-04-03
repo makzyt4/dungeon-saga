@@ -1,5 +1,5 @@
-#ifndef DS_MAIN_HPP
-#define DS_MAIN_HPP
+#ifndef DS_MAIN_MAIN_HPP
+#define DS_MAIN_MAIN_HPP
 
 #include <iostream>
 
@@ -10,4 +10,4 @@ namespace ds {
     };
 }
 
-#endif // DS_MAIN_HPP
+#endif // DS_MAIN_MAIN_HPP
