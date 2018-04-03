@@ -1,6 +1,7 @@
 #ifndef DS_CHARACTER_HPP
 #define DS_CHARACTER_HPP
 
+#include <SFML/Audio.hpp>
 #include <SFML/Graphics.hpp>
 #include "Animation.hpp"
 #include "DrawableObject.hpp"
@@ -29,6 +30,9 @@ namespace ds {
         ds::Animation movingLeft;
         ds::Animation movingRight;
         ds::Animation* currentAnimation;
+
+        sf::Sound stepSound;
+        std::uint8_t stepDelay;
 
     public:
         virtual void init(ResourceLoader* loader) = 0;

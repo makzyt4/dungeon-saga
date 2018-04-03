@@ -1,6 +1,7 @@
 #include "../include/PlayerCharacter.hpp"
 
 void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
+    stepDelay = 0;
     direction = ds::LookingDirection::Right;
     rect = sf::IntRect(0, 0, 14, 31);
     health = sf::Vector2i(5, 5);
@@ -39,6 +40,9 @@ void ds::PlayerCharacter::init(ds::ResourceLoader* loader) {
     movingLeft.addFrame(sf::IntRect(192, 32, 32, 32));
 
     currentAnimation = &standingRight;
+
+    sf::SoundBuffer* buffer = loader->getSoundBuffer("step.ogg");
+    stepSound.setBuffer(*buffer);
 }
 
 void ds::PlayerCharacter::update(GameElementArray* elements) {
@@ -49,6 +53,11 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
     if (fabs(velocity.x) > 0.1) { // If moving
         currentAnimation = direction == ds::LookingDirection::Left ?
                            &movingLeft : &movingRight;
+        if (onGround && stepDelay == 0) {
+            stepSound.play();
+
+            stepDelay = 40;
+        }
     } else { // If standing
         velocity.x = 0;
         currentAnimation = direction == ds::LookingDirection::Left ?
@@ -107,6 +116,7 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
 
     velocity.x *= 0.8;
     velocity.y += 0.1;
+    stepDelay = std::max(stepDelay - 1, 0);
 }
 
 void ds::PlayerCharacter::draw(sf::RenderWindow* window) {

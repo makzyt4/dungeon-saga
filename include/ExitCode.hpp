@@ -6,6 +6,7 @@ namespace ds {
         Running,
         MainMenu,
         Game,
+        Test,
         Quit
     };
 }

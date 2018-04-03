@@ -19,6 +19,11 @@ int main() {
         screen->draw();
         screen->control();
         code = screen->getCode();
+
+        if (code == ds::ExitCode::Test) {
+            screen = new ds::TestScreen(window, loader);
+            screen->init();
+        }
     }
 
     return 0;

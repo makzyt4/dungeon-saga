@@ -9,6 +9,9 @@ void ds::ProgressBar::setWidth(const int& width) {
 }
 
 void ds::ProgressBar::init() {
+    minValue = 0;
+    maxValue = 1;
+    value = 1;
     texture = loader->getTexture("menus.png");
     width = 5;
     actionMoved = [](){};

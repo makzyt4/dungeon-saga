@@ -5,6 +5,10 @@ void ds::MainScreen::init() {
     layout->addElement(&optionsButton);
     layout->addElement(&quitButton);
 
+    startButton.setActionReleased([this]() {
+        code = ds::ExitCode::Test;
+    });
+
     quitButton.setActionReleased([this](){
         code = ds::ExitCode::Quit;
         window->close();
