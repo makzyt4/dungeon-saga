@@ -258,6 +258,8 @@ void ds::RoomGenerator::addCorridors() {
                     block->init();
                     elements->addBlock(block, offset.x + corridorX,
                                        offset.y + i);
+                    elements->addBlock(block, offset.x + corridorX + 1,
+                                       offset.y + i);
                 }
             }
 
