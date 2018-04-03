@@ -23,7 +23,6 @@ void ds::TextButton::init() {
     actionPressed = [](){};
     actionReleased = [](){};
     texture = loader->getTexture("menus.png");
-    font = loader->getFont("visitor.ttf");
     text = "";
 }
 
@@ -88,4 +87,5 @@ void ds::TextButton::draw(sf::RenderWindow* window) {
                      rect.top + (rect.height - text.getSize().y) / 2));
 
     text.draw(window);
+
 }
