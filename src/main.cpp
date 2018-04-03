@@ -5,6 +5,8 @@
 #include "../include/ExitCode.hpp"
 
 int main() {
+    srand(time(NULL));
+
     sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(800, 600),
                                 "Dungeon Saga");
     ds::ResourceLoader* loader = new ds::ResourceLoader();

@@ -1,32 +1,19 @@
 #include "../include/TestScreen.hpp"
 
 void ds::TestScreen::init() {
+    sf::Vector2i offset(800, 800);
+
+    generator.setLoader(loader);
+    generator.setElements(&elements);
+    generator.setLevelSize(5, 5);
+    generator.setOffset(offset);
+
     text.setPosition(sf::Vector2i(400, 300));
     text.setString("TEST");
 
     hero.init(loader);
-    hero.setPosition(400, 300);
-
-    for (int i = 0; i < 10; i++) {
-        for (int j = 0; j < 10; j++) {
-            Block* brick = new BrickBlockBackground();
-            brick->setLoader(loader);
-            brick->init();
-            elements.addBlock(brick, 20 + i, 15 + j);
-        }
-    }
-
-    for (int i = 0; i < 10; i++) {
-        Block* brick = new BrickBlock();
-        brick->setLoader(loader);
-        brick->init();
-        elements.addBlock(brick, 20 + i, 24);
-    }
-
-    Block* door = new BrickDoorBackground();
-    door->setLoader(loader);
-    door->init();
-    elements.addBlock(door, 22, 22);
+    hero.setPosition(offset.x * 16, offset.y * 16);
+    printf("hero=%d,%d\n", offset.x * 16, offset.y * 16);
 
     healthBar.setLoader(loader);
     healthBar.init();
@@ -36,6 +23,8 @@ void ds::TestScreen::init() {
 
     staminaBar.setLoader(loader);
     staminaBar.init();
+
+    generator.generateRoom();
 }
 
 void ds::TestScreen::update() {
