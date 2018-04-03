@@ -1,5 +1,5 @@
-#ifndef DS_LOADER_TEXTURELOADER_HPP
-#define DS_LOADER_TEXTURELOADER_HPP
+#ifndef DS_LOADER_AUDIOLOADER_HPP
+#define DS_LOADER_AUDIOLOADER_HPP
 
 #include <map>
 #include <SFML/Audio.hpp>
@@ -13,4 +13,4 @@ namespace ds {
     };
 }
 
-#endif // DS_LOADER_TEXTURELOADER_HPP
+#endif // DS_LOADER_AUDIOLOADER_HPP
