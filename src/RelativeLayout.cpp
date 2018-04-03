@@ -15,10 +15,6 @@ void ds::RelativeLayout::addElement(ds::MenuObject* element) {
 
 void ds::RelativeLayout::onMouseMoved(MenuObject* object, sf::Event* event,
                                       std::function<void()> func) {
-    if (selected == object) {
-        return;
-    }
-
     int x = event->mouseMove.x;
     int y = event->mouseMove.y;
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
