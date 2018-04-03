@@ -229,5 +229,4 @@ void ds::RoomGenerator::addPlayer(ds::PlayerCharacter* player) {
 
     sf::IntRect foundPosition = elements->getBlocks()[index]->getRect();
     player->setPosition(foundPosition.left, foundPosition.top);
-
 }

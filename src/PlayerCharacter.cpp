@@ -89,7 +89,7 @@ void ds::PlayerCharacter::update(GameElementArray* elements) {
 
         // If block above
         tmpRect = rect;
-        tmpRect.top -= fabs(velocity.y + 1);
+        tmpRect.top += fabs(velocity.y - 1);
 
         if (block->getRect().intersects(tmpRect)) {
             position.y = tmpPosition.y;
