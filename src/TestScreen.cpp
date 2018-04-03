@@ -13,7 +13,6 @@ void ds::TestScreen::init() {
 
     hero.init(loader);
     hero.setPosition(offset.x * 16, offset.y * 16);
-    printf("hero=%d,%d\n", offset.x * 16, offset.y * 16);
 
     healthBar.setLoader(loader);
     healthBar.init();
@@ -24,7 +23,7 @@ void ds::TestScreen::init() {
     staminaBar.setLoader(loader);
     staminaBar.init();
 
-    generator.generateRoom();
+    generator.generateRooms(5);
 }
 
 void ds::TestScreen::update() {

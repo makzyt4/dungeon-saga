@@ -33,7 +33,167 @@ void ds::RoomGenerator::generateRoom() {
             block->setLoader(loader);
             block->init();
             elements->addBlock(block, offset.x + i, offset.y + j);
-            printf("block=%d,%d\n", (offset.x + i) * 16, (offset.y + j) * 16);
+        }
+    }
+}
+
+void ds::RoomGenerator::generateRooms(std::uint8_t number) {
+    for (std::uint8_t i = 0; i < number; i++) {
+        generateRoom();
+    }
+
+    // Now surround background blocks with normal, static blocks
+    for (Block* block : elements->getBlocks()) {
+        bool emptyTop = true;
+        bool emptyBottom = true;
+        bool emptyLeft = true;
+        bool emptyRight = true;
+        bool emptyTopLeft = true;
+        bool emptyTopRight = true;
+        bool emptyBottomLeft = true;
+        bool emptyBottomRight = true;
+
+        // Top
+        sf::IntRect topRect = block->getRect();
+        topRect.top -= 16;
+
+        // Bottom
+        sf::IntRect bottomRect = block->getRect();
+        bottomRect.top += 16;
+
+        // Left
+        sf::IntRect leftRect = block->getRect();
+        leftRect.left -= 16;
+
+        // Left
+        sf::IntRect rightRect = block->getRect();
+        rightRect.left += 16;
+
+        // Top-left
+        sf::IntRect topLeftRect = block->getRect();
+        topLeftRect.left -= 16;
+        topLeftRect.top -= 16;
+
+        // Top-right
+        sf::IntRect topRightRect = block->getRect();
+        topRightRect.left += 16;
+        topRightRect.top -= 16;
+
+        // Bottom-left
+        sf::IntRect bottomLeftRect = block->getRect();
+        bottomLeftRect.left -= 16;
+        bottomLeftRect.top += 16;
+
+        // Bottom-right
+        sf::IntRect bottomRightRect = block->getRect();
+        bottomRightRect.left += 16;
+        bottomRightRect.top += 16;
+
+        for (Block* block2 : elements->getBlocks()) {
+            if (block2->isCollidable() || block == block2) {
+                continue;
+            }
+
+            // Top
+            if (topRect.intersects(block2->getRect())) {
+                emptyTop = false;
+            }
+
+            // Bottom
+            if (bottomRect.intersects(block2->getRect())) {
+                emptyBottom = false;
+            }
+
+            // Left
+            if (leftRect.intersects(block2->getRect())) {
+                emptyLeft = false;
+            }
+
+            // Right
+            if (rightRect.intersects(block2->getRect())) {
+                emptyRight = false;
+            }
+
+            // Top-left
+            if (topLeftRect.intersects(block2->getRect())) {
+                emptyTopLeft = false;
+            }
+
+            // Top-right
+            if (topRightRect.intersects(block2->getRect())) {
+                emptyTopRight = false;
+            }
+
+            // Bottom-left
+            if (bottomLeftRect.intersects(block2->getRect())) {
+                emptyBottomLeft = false;
+            }
+
+            // Bottom-right
+            if (bottomRightRect.intersects(block2->getRect())) {
+                emptyBottomRight = false;
+            }
+        }
+
+        int x = block->getRect().left / 16;
+        int y = block->getRect().top / 16;
+
+
+        if (emptyTop) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x, y - 1);
+        }
+        if (emptyBottom) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x, y + 1);
+        }
+        if (emptyLeft) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x - 1, y);
+        }
+        if (emptyRight) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x + 1, y);
+        }
+        if (emptyTopLeft) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x - 1, y - 1);
+        }
+        if (emptyTopRight) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x + 1, y - 1);
+        }
+        if (emptyBottomLeft) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x - 1, y + 1);
+        }
+        if (emptyBottomRight) {
+            Block* brick = new BrickBlock();
+            brick->setLoader(loader);
+            brick->init();
+
+            elements->addBlock(brick, x + 1, y + 1);
         }
     }
 }
