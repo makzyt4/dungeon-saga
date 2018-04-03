@@ -5,7 +5,7 @@ void ds::TestScreen::init() {
 
     generator.setLoader(loader);
     generator.setElements(&elements);
-    generator.setLevelSize(5, 5);
+    generator.setLevelSize(20, 20);
     generator.setOffset(offset);
 
     text.setPosition(sf::Vector2i(400, 300));
@@ -23,7 +23,8 @@ void ds::TestScreen::init() {
     staminaBar.setLoader(loader);
     staminaBar.init();
 
-    generator.generateRooms(5);
+    generator.generateRooms(10);
+    generator.addPlayer(&hero);
 }
 
 void ds::TestScreen::update() {

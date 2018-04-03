@@ -6,6 +6,7 @@
 #include "BrickBlockBackground.hpp"
 #include "BrickDoorBackground.hpp"
 #include "ResourceLoader.hpp"
+#include "PlayerCharacter.hpp"
 
 namespace ds {
     class RoomGenerator {
@@ -15,6 +16,7 @@ namespace ds {
         sf::Vector2i levelSize;
         sf::Vector2i offset;
 
+        void surroundNotCollidableBlocks();
     public:
         void setOffset(sf::Vector2i offset);
         void setLoader(ResourceLoader* loader);
@@ -22,6 +24,7 @@ namespace ds {
         void setElements(GameElementArray* elements);
         void generateRoom();
         void generateRooms(std::uint8_t number);
+        void addPlayer(PlayerCharacter* Character);
     };
 }
 

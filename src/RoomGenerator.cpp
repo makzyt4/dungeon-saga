@@ -17,7 +17,7 @@ void ds::RoomGenerator::setElements(GameElementArray* elements) {
 }
 
 void ds::RoomGenerator::generateRoom() {
-    bool isBigRoom = rand() % 5 == 0;
+    bool isBigRoom = rand() % 50 == 0;
 
     const int width = isBigRoom ? rand() % 21 + 10 : rand() % 6 + 5;
     const int height = isBigRoom ? rand() % 11 + 5 : rand() % 3 + 3;
@@ -42,6 +42,10 @@ void ds::RoomGenerator::generateRooms(std::uint8_t number) {
         generateRoom();
     }
 
+    surroundNotCollidableBlocks();
+}
+
+void ds::RoomGenerator::surroundNotCollidableBlocks() {
     // Now surround background blocks with normal, static blocks
     for (Block* block : elements->getBlocks()) {
         bool emptyTop = true;
@@ -196,4 +200,34 @@ void ds::RoomGenerator::generateRooms(std::uint8_t number) {
             elements->addBlock(brick, x + 1, y + 1);
         }
     }
+}
+
+void ds::RoomGenerator::addPlayer(ds::PlayerCharacter* player) {
+    bool foundPlaceForPlayer = false;
+    int index = 0;
+
+    while (!foundPlaceForPlayer) {
+        index = rand() % elements->getBlocks().size();
+        Block* block = elements->getBlocks()[index];
+
+        if (block->isCollidable()) {
+            continue;
+        }
+
+        sf::IntRect rect = block->getRect();
+        rect.top += 16;
+
+        for (Block* block2 : elements->getBlocks()) {
+            if (block2->isCollidable() || !rect.intersects(block2->getRect())) {
+                continue;
+            }
+
+            foundPlaceForPlayer = true;
+            break;
+        }
+    }
+
+    sf::IntRect foundPosition = elements->getBlocks()[index]->getRect();
+    player->setPosition(foundPosition.left, foundPosition.top);
+
 }
