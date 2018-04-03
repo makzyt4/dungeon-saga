@@ -11,6 +11,7 @@
 #include "BrickBlockBackground.hpp"
 #include "BrickDoorBackground.hpp"
 #include "HealthBar.hpp"
+#include "MagickaBar.hpp"
 #include "StaminaBar.hpp"
 
 namespace ds {
@@ -20,6 +21,7 @@ namespace ds {
         GameElementArray elements;
         Text text;
         HealthBar healthBar;
+        MagickaBar magickaBar;
         StaminaBar staminaBar;
 
         void generateRooms();

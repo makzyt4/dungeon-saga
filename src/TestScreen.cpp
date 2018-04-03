@@ -31,6 +31,9 @@ void ds::TestScreen::init() {
     healthBar.setLoader(loader);
     healthBar.init();
 
+    magickaBar.setLoader(loader);
+    magickaBar.init();
+
     staminaBar.setLoader(loader);
     staminaBar.init();
 }
@@ -51,7 +54,8 @@ void ds::TestScreen::update() {
     sf::Vector2i barPos = sf::Vector2i(center.x - window->getSize().x / 4 + 10,
                                        center.y - window->getSize().y / 4 + 10);
     healthBar.setPosition(barPos.x, barPos.y);
-    staminaBar.setPosition(barPos.x, barPos.y + 12);
+    magickaBar.setPosition(barPos.x, barPos.y + 12);
+    staminaBar.setPosition(barPos.x, barPos.y + 24);
 
     generateView(hero.getCenter());
     hero.handleKeys();
@@ -65,6 +69,7 @@ void ds::TestScreen::draw() {
     hero.draw(window);
     text.draw(window);
     healthBar.draw(window);
+    magickaBar.draw(window);
     staminaBar.draw(window);
 
     window->display();

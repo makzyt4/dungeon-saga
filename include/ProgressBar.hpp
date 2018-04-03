@@ -1,7 +1,9 @@
 #ifndef DS_PROGRESS_BAR_HPP
 #define DS_PROGRESS_BAR_HPP
 
+#include <sstream>
 #include "MenuObject.hpp"
+#include "Text.hpp"
 
 namespace ds {
     class ProgressBar : public MenuObject {

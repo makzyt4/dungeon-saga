@@ -56,4 +56,12 @@ void ds::ProgressBar::draw(sf::RenderWindow* window) {
     sprite3.setTextureRect(sf::IntRect(16, 72, 8, 8));
     sprite3.setPosition(rect.left + (width + 1) * 8, rect.top);
     window->draw(sprite3);
+
+    std::stringstream ss;
+    ss << value << "/" << maxValue;
+
+    Text text;
+    text.setString(ss.str());
+    text.setPosition(sf::Vector2i(rect.left + (width + 3) * 8, rect.top));
+    text.draw(window);
 }
