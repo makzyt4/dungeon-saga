@@ -1,4 +1,4 @@
-#include "../../includes/Main/Main.hpp"
+#include "../../include/Main/Main.hpp"
 
 ds::Main::Main() {
     printf("Hello, world!\n");
