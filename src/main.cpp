@@ -9,7 +9,7 @@ int main() {
                                 "Dungeon Saga");
     ds::ResourceLoader* loader = new ds::ResourceLoader();
 
-    ds::Screen* screen = new ds::TestScreen(window, loader);
+    ds::Screen* screen = new ds::MainScreen(window, loader);
     screen->init();
 
     ds::ExitCode code = ds::ExitCode::Running;

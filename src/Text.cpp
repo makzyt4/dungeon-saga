@@ -3,9 +3,6 @@
 ds::Text::Text() {
     fontSize = 1;
     color = sf::Color::White;
-    width = 0;
-    height = 0;
-    currentWidth = 0;
 }
 
 std::string ds::Text::getString() const {
@@ -21,6 +18,22 @@ std::size_t ds::Text::getFontSize() const {
 }
 
 sf::Vector2i ds::Text::getSize() const {
+    std::uint16_t height = 8;
+    std::uint16_t width = 0;
+    std::uint16_t currentWidth = 0;
+
+    for (const char c : string) {
+        if (c == '\n') {
+            height += 8 * fontSize;
+            currentWidth = 0;
+        } else if (c == '\r') {
+            currentWidth = 0;
+        } else {
+            currentWidth += 8 * fontSize;
+            width = std::max(currentWidth, width);
+        }
+    }
+
     sf::Vector2i size;
     size.x = width;
     size.y = height;
@@ -51,16 +64,11 @@ void ds::Text::draw(sf::RenderWindow* window) {
         if (c == '\n') {
             x = position.x;
             y += 8 * fontSize;
-            height += 8 * fontSize;
-            currentWidth = 0;
         } else if (c == '\r') {
             x = position.x;
-            currentWidth = 0;
         } else {
             font.drawCharacter(window, c, sf::Vector2i(x, y), fontSize, color);
             x += 8 * fontSize;
-            currentWidth += 8 * fontSize;
-            width = std::max((int&) currentWidth, width);
         }
     }
 }

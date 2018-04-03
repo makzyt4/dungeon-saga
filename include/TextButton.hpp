@@ -2,6 +2,7 @@
 #define DS_TEXT_BUTTON_HPP
 
 #include "MenuObject.hpp"
+#include "Text.hpp"
 
 namespace ds {
     class TextButton : public MenuObject {

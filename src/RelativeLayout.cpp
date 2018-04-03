@@ -82,8 +82,8 @@ void ds::RelativeLayout::onMouseLeftReleased(MenuObject* object,
 
 void ds::RelativeLayout::listenToElements(sf::Event* event) {
     for (MenuObject* element : elements) {
-        onMouseMoved(element, event, element->getActionMoved());
         onMouseLeftReleased(element, event, element->getActionReleased());
+        onMouseMoved(element, event, element->getActionMoved());
         onMouseLeftPressed(element, event, element->getActionPressed());
     }
 }

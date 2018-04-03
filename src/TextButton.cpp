@@ -80,13 +80,12 @@ void ds::TextButton::draw(sf::RenderWindow* window) {
         }
     }
 
-    sf::Text text;
-    text.setFont(*font);
-    text.setString(this->text);
-    text.setCharacterSize(20);
-    text.setFillColor(sf::Color::White);
-    text.setPosition(rect.left + (rect.width - text.getLocalBounds().width) / 2,
-            rect.top + (rect.height - text.getLocalBounds().height) / 2 - 10);
 
-    window->draw(text);
+    Text text;
+    text.setString(this->text);
+    text.setPosition(sf::Vector2i(
+                     rect.left + (rect.width - text.getSize().x) / 2,
+                     rect.top + (rect.height - text.getSize().y) / 2));
+
+    text.draw(window);
 }

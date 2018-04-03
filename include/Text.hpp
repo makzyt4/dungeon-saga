@@ -13,9 +13,6 @@ namespace ds {
         std::string string;
         std::size_t fontSize;
         Font font;
-        int width;
-        int height;
-        std::size_t currentWidth;
 
     public:
         Text();
