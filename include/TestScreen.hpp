@@ -11,6 +11,7 @@
 #include "BrickBlockBackground.hpp"
 #include "BrickDoorBackground.hpp"
 #include "HealthBar.hpp"
+#include "StaminaBar.hpp"
 
 namespace ds {
     class TestScreen : public Screen {
@@ -19,6 +20,7 @@ namespace ds {
         GameElementArray elements;
         Text text;
         HealthBar healthBar;
+        StaminaBar staminaBar;
 
         void generateRooms();
         void drawBlocks();
