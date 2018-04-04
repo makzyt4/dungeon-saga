@@ -5,9 +5,12 @@
 #include "../Graphics/DrawableObject.hpp"
 #include "../Graphics/Animation.hpp"
 #include "../Interface/Updatable.hpp"
+#include "../Interface/Collidable.hpp"
+#include "../Block/Block.hpp"
 
 namespace ds {
-    class Character : public DrawableObject, public Updatable {
+    class Character : public DrawableObject, public Updatable,
+                      public Collidable {
     protected:
         std::uint8_t health;
         std::uint8_t maxHealth;
@@ -31,6 +34,7 @@ namespace ds {
         void update();
         void draw();
         float getSpeed();
+        void collide(Block* block);
         virtual void init() = 0;
     };
 }

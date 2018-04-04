@@ -51,6 +51,10 @@ void ds::PlayerCharacter::setPosition(const sf::Vector2f& position) {
     rect.top = position.y + 1;
 }
 
+bool ds::PlayerCharacter::isCollidable() const {
+    return true;
+}
+
 void ds::PlayerCharacter::handleKeys(sf::Event* event) {
     velocity.x *= 0.9;
 

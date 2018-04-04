@@ -18,6 +18,26 @@ void ds::Character::update() {
                              position.y + velocity.y));
 }
 
+void ds::Character::collide(ds::Block* block) {
+    sf::IntRect tmpRect;
+
+    // Block to the left
+    tmpRect = block->getRect();
+    tmpRect.left -= velocity.x;
+
+    if (tmpRect.intersects(block->getRect())) {
+        velocity.x = 0;
+    }
+
+    // Block to the right
+    tmpRect = block->getRect();
+    tmpRect.left += velocity.x;
+
+    if (tmpRect.intersects(block->getRect())) {
+        velocity.x = 0;
+    }
+}
+
 float ds::Character::getSpeed() {
     return 1 + agility / 30.0f;
 }
