@@ -14,8 +14,8 @@ void ds::Layout::listenToAll(sf::Event* event) {
 
 void ds::Layout::drawAll() {
     for (Node* element : elements) {
-        sf::Vector2i position = element->getPosition();
-        element->setPosition(sf::Vector2i(position.x + this->position.x,
+        sf::Vector2f position = element->getPosition();
+        element->setPosition(sf::Vector2f(position.x + this->position.x,
                                           position.y + this->position.y));
         element->draw();
         element->setPosition(position);

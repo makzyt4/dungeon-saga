@@ -4,9 +4,10 @@
 #include "../Enum/LookingDirection.hpp"
 #include "../Graphics/DrawableObject.hpp"
 #include "../Graphics/Animation.hpp"
+#include "../Interface/Updatable.hpp"
 
 namespace ds {
-    class Character : public DrawableObject {
+    class Character : public DrawableObject, public Updatable {
     protected:
         std::uint8_t health;
         std::uint8_t maxHealth;
@@ -29,6 +30,7 @@ namespace ds {
         void jump();
         void update();
         void draw();
+        float getSpeed();
         virtual void init() = 0;
     };
 }

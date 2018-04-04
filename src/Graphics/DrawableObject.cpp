@@ -1,6 +1,6 @@
 #include "../../include/Graphics/DrawableObject.hpp"
 
-sf::Vector2i ds::DrawableObject::getPosition() const {
+sf::Vector2f ds::DrawableObject::getPosition() const {
     return position;
 }
 
@@ -8,8 +8,10 @@ sf::IntRect ds::DrawableObject::getRect() const {
     return rect;
 }
 
-void ds::DrawableObject::setPosition(const sf::Vector2i& position) {
-    this->position = position;
+void ds::DrawableObject::setPosition(const sf::Vector2f& position) {
+    this->position.x = position.x;
+    this->position.y = position.y;
+
     rect.left = position.x;
     rect.top = position.y;
 }

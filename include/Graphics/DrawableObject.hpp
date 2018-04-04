@@ -8,15 +8,15 @@
 namespace ds {
     class DrawableObject : public Drawable {
     protected:
-        sf::Vector2i position;
+        sf::Vector2f position;
         sf::IntRect rect;
         sf::RenderWindow* window;
         ResourceLoader* loader;
     public:
-        sf::Vector2i getPosition() const;
+        sf::Vector2f getPosition() const;
         sf::IntRect getRect() const;
 
-        void setPosition(const sf::Vector2i& position);
+        virtual void setPosition(const sf::Vector2f& position);
         void setRect(const sf::IntRect& rect);
 
         void setWindow(sf::RenderWindow* window);

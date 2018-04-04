@@ -7,12 +7,12 @@ void ds::TestScene::init() {
     player.setWindow(window);
     player.setLoader(loader);
     player.init();
-    player.setPosition(sf::Vector2i(400, 300));
+    player.setPosition(sf::Vector2f(400, 300));
 
     button.init();
     button.setText("TEST");
     button.setSize(sf::Vector2i(5, 3));
-    button.setPosition(sf::Vector2i(400, 300));
+    button.setPosition(sf::Vector2f(400, 300));
     button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
 }
@@ -31,6 +31,7 @@ void ds::TestScene::control() {
             window->close();
         }
         layout.listenToAll(&event);
+        player.handleKeys(&event);
     }
 
     sf::sleep(sf::milliseconds(17));

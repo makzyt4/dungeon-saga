@@ -43,8 +43,31 @@ void ds::PlayerCharacter::init() {
     rect.height = 31;
 }
 
-void ds::PlayerCharacter::setPosition(const sf::Vector2i& position) {
-    this->position = position;
+void ds::PlayerCharacter::setPosition(const sf::Vector2f& position) {
+    this->position.x = position.x;
+    this->position.y = position.y;
+
     rect.left = position.x + 10;
     rect.top = position.y + 1;
+}
+
+void ds::PlayerCharacter::handleKeys(sf::Event* event) {
+    velocity.x *= 0.9;
+
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        velocity.x = -getSpeed();
+        currentAnimation = &movingLeft;
+        direction = LookingDirection::Left;
+    } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
+        velocity.x = getSpeed();
+        currentAnimation = &movingRight;
+        direction = LookingDirection::Right;
+    }
+
+    if (abs(velocity.x) < 0.1) {
+        velocity.x = 0;
+        currentAnimation = direction == LookingDirection::Left ?
+                           &standingLeft :
+                           &standingRight;
+    }
 }

@@ -77,7 +77,7 @@ void ds::Button::draw() {
     Text text;
     text.setWindow(window);
     text.setString(this->text);
-    text.setPosition(sf::Vector2i(
+    text.setPosition(sf::Vector2f(
                      rect.left + (rect.width - text.getSize().x) / 2,
                      rect.top + (rect.height - text.getSize().y) / 2));
 
@@ -150,6 +150,6 @@ void ds::Button::onMouseReleasedAction(sf::Event* event) {
             mouseReleasedAction();
         }
     }
-    
+
     selected = false;
 }

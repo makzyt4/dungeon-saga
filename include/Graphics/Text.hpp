@@ -15,7 +15,6 @@ namespace ds {
         Text();
 
         std::string getString() const;
-        sf::Vector2i getPosition() const;
         std::size_t getFontSize() const;
         sf::Vector2i getSize() const;
 

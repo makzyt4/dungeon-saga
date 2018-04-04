@@ -9,10 +9,6 @@ std::string ds::Text::getString() const {
     return string;
 }
 
-sf::Vector2i ds::Text::getPosition() const {
-    return position;
-}
-
 std::size_t ds::Text::getFontSize() const {
     return fontSize;
 }
