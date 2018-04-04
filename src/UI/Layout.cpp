@@ -1,6 +1,7 @@
 #include "../../include/UI/Layout.hpp"
 
 void ds::Layout::addElement(Node* element) {
+    element->setWindow(window);
     element->setLoader(loader);
     elements.push_back(element);
 }

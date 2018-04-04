@@ -19,12 +19,15 @@ namespace ds {
 
         sf::IntRect getRect() const;
 
+        void setPosition(const sf::Vector2i& position);
         void setRect(const sf::IntRect& rect);
 
         void listen(sf::Event* event);
+
         virtual void setOnMouseHoverAction(std::function<void()> action) = 0;
         virtual void setOnMousePressedAction(std::function<void()> action) = 0;
         virtual void setOnMouseReleasedAction(std::function<void()> action) = 0;
+        virtual void init() = 0;
     };
 }
 
