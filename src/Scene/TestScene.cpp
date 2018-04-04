@@ -1,7 +1,12 @@
 #include "../../include/Scene/TestScene.hpp"
 
 void ds::TestScene::init() {
+    layout.setWindow(window);
+    layout.setLoader(loader);
 
+    panel.init();
+    panel.setSize(sf::Vector2i(10, 10));
+    layout.addElement(&panel);
 }
 
 void ds::TestScene::update() {
@@ -23,6 +28,6 @@ void ds::TestScene::control() {
 
 void ds::TestScene::draw() {
     window->clear();
-
+    layout.draw();
     window->display();
 }

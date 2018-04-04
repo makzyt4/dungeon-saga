@@ -14,6 +14,9 @@ namespace ds {
 
         void draw();
         void init();
+        void setOnMouseHoverAction(std::function<void()> action);
+        void setOnMousePressedAction(std::function<void()> action);
+        void setOnMouseReleasedAction(std::function<void()> action);
     };
 }
 

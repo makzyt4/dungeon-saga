@@ -55,3 +55,15 @@ void ds::Panel::draw() {
         }
     }
 }
+
+void ds::Panel::setOnMouseHoverAction(std::function<void()> func) {
+
+}
+
+void ds::Panel::setOnMousePressedAction(std::function<void()> func) {
+
+}
+
+void ds::Panel::setOnMouseReleasedAction(std::function<void()> func) {
+
+}

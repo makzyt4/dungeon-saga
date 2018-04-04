@@ -11,7 +11,8 @@ namespace ds {
     public:
         void addElement(Node* element);
         void listenToAll(sf::Event* event);
-        void drawAll(sf::RenderWindow* window);
+        void draw();
+        void drawAll();
     };
 }
 

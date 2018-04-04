@@ -2,9 +2,14 @@
 #define DS_SCENE_TESTSCENE_HPP
 
 #include "Scene.hpp"
+#include "../UI/Layout.hpp"
+#include "../UI/Panel.hpp"
 
 namespace ds {
     class TestScene : public Scene {
+    private:
+        Layout layout;
+        Panel panel;
     public:
         using Scene::Scene;
 

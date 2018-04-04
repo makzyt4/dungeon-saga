@@ -1,7 +1,7 @@
 #include "../../include/Loader/AudioLoader.hpp"
 
 sf::SoundBuffer* ds::AudioLoader::getSoundBuffer(std::string path) {
-    path = "../../res/audio/" + path;
+    path = "../res/audio/" + path;
     std::map<std::string, sf::SoundBuffer*>::iterator it = audioMap.find(path);
     sf::SoundBuffer* buffer = new sf::SoundBuffer();
 

@@ -24,10 +24,10 @@ namespace ds {
 
         void listen(sf::Event* event);
 
+        virtual void init() = 0;
         virtual void setOnMouseHoverAction(std::function<void()> action) = 0;
         virtual void setOnMousePressedAction(std::function<void()> action) = 0;
         virtual void setOnMouseReleasedAction(std::function<void()> action) = 0;
-        virtual void init() = 0;
     };
 }
 

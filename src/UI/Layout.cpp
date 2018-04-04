@@ -12,7 +12,7 @@ void ds::Layout::listenToAll(sf::Event* event) {
     }
 }
 
-void ds::Layout::drawAll(sf::RenderWindow* window) {
+void ds::Layout::drawAll() {
     for (Node* element : elements) {
         sf::Vector2i position = element->getPosition();
         element->setPosition(sf::Vector2i(position.x + this->position.x,
@@ -20,4 +20,8 @@ void ds::Layout::drawAll(sf::RenderWindow* window) {
         element->draw();
         element->setPosition(position);
     }
+}
+
+void ds::Layout::draw() {
+    drawAll();
 }
