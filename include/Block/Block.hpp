@@ -1,11 +1,12 @@
-#ifndef DS_GAME_BLOCK_HPP
-#define DS_GAME_BLOCK_HPP
+#ifndef DS_BLOCK_BLOCK_HPP
+#define DS_BLOCK_BLOCK_HPP
 
+#include <SFML/Graphics.hpp>
 #include "../Graphics/DrawableObject.hpp"
 
 namespace ds {
     class Block : public DrawableObject {
-    private:
+    protected:
         sf::IntRect rect;
     public:
         sf::IntRect getRect() const;
@@ -19,4 +20,4 @@ namespace ds {
     };
 }
 
-#endif // DS_GAME_BLOCK_HPP
+#endif // DS_BLOCK_BLOCK_HPP
