@@ -4,6 +4,7 @@
 namespace ds {
     class Collidable {
     public:
+        virtual bool isCollidable();
         virtual void collide(std::vector<Collidable> collidables) = 0;
     };
 }

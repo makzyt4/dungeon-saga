@@ -5,10 +5,9 @@
 #include "../Graphics/DrawableObject.hpp"
 
 namespace ds {
-    class Block : public DrawableObject {
+    class Block : public DrawableObject, public Collidable {
     public:
         void init();
-        virtual bool isCollidable() = 0;
         virtual bool isDestructible() = 0;
     };
 }
