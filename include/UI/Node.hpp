@@ -3,12 +3,13 @@
 
 #include <functional>
 #include <SFML/Graphics.hpp>
+#include "../Graphics/DrawableObject.hpp"
 
 namespace ds {
-    class Node {
+    class Node : public DrawableObject {
     protected:
-        sf::IntRect rect;
         sf::Event* event;
+        sf::IntRect rect;
 
         std::function<void()> mouseHoverAction;
         std::function<void()> mousePressedAction;

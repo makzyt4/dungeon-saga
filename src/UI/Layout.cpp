@@ -9,3 +9,9 @@ void ds::Layout::listenToAll(sf::Event* event) {
         element->listen(event);
     }
 }
+
+void ds::Layout::drawAll(sf::RenderWindow* window) {
+    for (Node* element : elements) {
+        element->draw();
+    }
+}
