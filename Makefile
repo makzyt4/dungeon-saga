@@ -22,7 +22,7 @@ else
 endif
 
 all: $(OBJECTS)
-	@ $(call MKDIR,bin)
+	@ $(call MKDIR,$(BIN))
 	$(CC) $^ -o $(TARGET) $(INCLUDES) $(LIBS) $(LDFLAGS)
 
 $(OBJ)/%.o: $(SRC)/%.cpp
@@ -34,4 +34,4 @@ make_directories:
 	echo Test
 
 clean:
-	$(call RMDIR,obj)
+	$(call RMDIR,$(OBJ))
