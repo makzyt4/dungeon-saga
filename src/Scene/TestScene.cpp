@@ -23,6 +23,7 @@ void ds::TestScene::control() {
             code = ds::ExitCode::Quit;
             window->close();
         }
+        layout.listenToAll(&event);
     }
 
     sf::sleep(sf::milliseconds(17));

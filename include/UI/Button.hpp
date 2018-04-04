@@ -9,6 +9,7 @@ namespace ds {
     private:
         sf::Vector2i size;
         std::string text;
+        bool selected;
     public:
         sf::Vector2i getSize() const;
         std::string getText() const;

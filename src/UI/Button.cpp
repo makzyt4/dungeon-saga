@@ -2,6 +2,7 @@
 
 void ds::Button::init() {
     text = "";
+    selected = false;
 }
 
 sf::Vector2i ds::Button::getSize() const {
@@ -26,31 +27,41 @@ void ds::Button::draw() {
     sf::Texture* texture = loader->getTexture("menus.png");
     sf::IntRect spriteRect;
 
+    int offset;
+
+    if (state == MenuState::Highlighted) {
+        offset = 1;
+    } else if (state == MenuState::Clicked) {
+        offset = 2;
+    } else {
+        offset = 0;
+    }
+
     for (int j = 0; j < size.y; j++) {
         for (int i = 0; i < size.x; i++) {
             if (i == 0) {
                 if (j == 0) {
-                    spriteRect = sf::IntRect(0, 0, 8, 8);
+                    spriteRect = sf::IntRect(0, offset * 24, 8, 8);
                 } else if (j == size.y - 1) {
-                    spriteRect = sf::IntRect(0, 16, 8, 8);
+                    spriteRect = sf::IntRect(0, 16 + offset * 24, 8, 8);
                 } else {
-                    spriteRect = sf::IntRect(0, 8, 8, 8);
+                    spriteRect = sf::IntRect(0, 8 + offset * 24, 8, 8);
                 }
             } else if (i == size.x - 1) {
                 if (j == 0) {
-                    spriteRect = sf::IntRect(16, 0, 8, 8);
+                    spriteRect = sf::IntRect(16, offset * 24, 8, 8);
                 } else if (j == size.y - 1) {
-                    spriteRect = sf::IntRect(16, 16, 8, 8);
+                    spriteRect = sf::IntRect(16, 16 + offset * 24, 8, 8);
                 } else {
-                    spriteRect = sf::IntRect(16, 8, 8, 8);
+                    spriteRect = sf::IntRect(16, 8 + offset * 24, 8, 8);
                 }
             } else {
                 if (j == 0) {
-                    spriteRect = sf::IntRect(8, 0, 8, 8);
+                    spriteRect = sf::IntRect(8, offset * 24, 8, 8);
                 } else if (j == size.y - 1) {
-                    spriteRect = sf::IntRect(8, 16, 8, 8);
+                    spriteRect = sf::IntRect(8, 16 + offset * 24, 8, 8);
                 } else {
-                    spriteRect = sf::IntRect(8, 8, 8, 8);
+                    spriteRect = sf::IntRect(8, 8 + offset * 24, 8, 8);
                 }
             }
 
@@ -74,13 +85,65 @@ void ds::Button::draw() {
 }
 
 void ds::Button::onMouseHoverAction(sf::Event* event) {
+    if (event->type != sf::Event::MouseMoved) {
+        return;
+    }
 
+    int x = event->mouseMove.x;
+    int y = event->mouseMove.y;
+    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
+
+    if (rect.contains(mouse.x, mouse.y)) {
+        state = ds::MenuState::Highlighted;
+        mouseHoverAction();
+    } else {
+        state = ds::MenuState::Normal;
+    }
 }
 
 void ds::Button::onMousePressedAction(sf::Event* event) {
+    bool leftClicked = event->mouseButton.button == sf::Mouse::Left;
 
+    if (event->type != sf::Event::MouseButtonPressed || !leftClicked) {
+        return;
+    }
+
+    int x = event->mouseButton.x;
+    int y = event->mouseButton.y;
+    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
+
+    if (rect.contains(mouse.x, mouse.y)) {
+        sf::SoundBuffer* buffer = loader->getSoundBuffer("click.ogg");
+        sf::Sound* sound = new sf::Sound();
+        sound->setBuffer(*buffer);
+        sound->play();
+        state = ds::MenuState::Clicked;
+        mousePressedAction();
+        selected = true;
+    } else {
+        selected = false;
+        state = ds::MenuState::Highlighted;
+    }
 }
 
 void ds::Button::onMouseReleasedAction(sf::Event* event) {
+    bool leftClicked = event->mouseButton.button == sf::Mouse::Left;
 
+    if (event->type != sf::Event::MouseButtonReleased || !leftClicked) {
+        return;
+    }
+
+    int x = event->mouseButton.x;
+    int y = event->mouseButton.y;
+    sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
+
+    state = ds::MenuState::Normal;
+
+    if (rect.contains(mouse.x, mouse.y)) {
+        state = ds::MenuState::Highlighted;
+
+        if (selected) {
+            mouseReleasedAction();
+        }
+    }
 }
