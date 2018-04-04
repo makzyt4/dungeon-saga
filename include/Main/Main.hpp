@@ -3,7 +3,7 @@
 
 #include <SFML/Graphics.hpp>
 #include "../../include/Loader/ResourceLoader.hpp"
-#include "../../include/Scene/MainScene.hpp"
+#include "../../include/Scene/TestScene.hpp"
 #include "../../include/Util/Settings.hpp"
 
 namespace ds {

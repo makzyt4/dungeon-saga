@@ -1,10 +1,10 @@
-#ifndef DS_SCENE_MAINSCENE_HPP
-#define DS_SCENE_MAINSCENE_HPP
+#ifndef DS_SCENE_TESTSCENE_HPP
+#define DS_SCENE_TESTSCENE_HPP
 
 #include "Scene.hpp"
 
 namespace ds {
-    class MainScene : public Scene {
+    class TestScene : public Scene {
     public:
         using Scene::Scene;
 
@@ -15,4 +15,4 @@ namespace ds {
     };
 }
 
-#endif // DS_MAINSCENE_SCENE_HPP
+#endif // DS_TESTSCENE_SCENE_HPP

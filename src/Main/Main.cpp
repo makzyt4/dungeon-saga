@@ -7,7 +7,7 @@ ds::Main::Main() {
 
     sf::RenderWindow* window = new sf::RenderWindow(videoMode, title, style);
     ResourceLoader* loader = new ResourceLoader();
-    Scene* scene = new ds::MainScene(window, loader);
+    Scene* scene = new ds::TestScene(window, loader);
     scene->init();
 
     ExitCode code = scene->getCode();

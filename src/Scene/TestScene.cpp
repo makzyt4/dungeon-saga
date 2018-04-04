@@ -1,14 +1,14 @@
-#include "../../include/Scene/MainScene.hpp"
+#include "../../include/Scene/TestScene.hpp"
 
-void ds::MainScene::init() {
-
-}
-
-void ds::MainScene::update() {
+void ds::TestScene::init() {
 
 }
 
-void ds::MainScene::control() {
+void ds::TestScene::update() {
+
+}
+
+void ds::TestScene::control() {
     sf::Event event;
 
     while (window->pollEvent(event)) {
@@ -21,7 +21,7 @@ void ds::MainScene::control() {
     sf::sleep(sf::milliseconds(17));
 }
 
-void ds::MainScene::draw() {
+void ds::TestScene::draw() {
     window->clear();
 
     window->display();
