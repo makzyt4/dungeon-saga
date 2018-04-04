@@ -5,8 +5,15 @@
 
 namespace ds {
     class Block : public DrawableObject {
+    private:
+        sf::IntRect rect;
     public:
-        virtual void init() = 0;
+        sf::IntRect getRect() const;
+
+        void setPosition(const sf::Vector2i& position);
+        void setRect(const sf::IntRect& rect);
+
+        void init();
         virtual bool isCollidable() = 0;
         virtual bool isDestructible() = 0;
     };

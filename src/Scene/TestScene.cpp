@@ -8,6 +8,7 @@ void ds::TestScene::init() {
     button.setText("TEST");
     button.setSize(sf::Vector2i(5, 3));
     button.setPosition(sf::Vector2i(400, 300));
+    button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
 }
 
