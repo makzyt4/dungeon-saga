@@ -52,7 +52,7 @@ void ds::Text::setColor(const sf::Color& color) {
     this->color = color;
 }
 
-void ds::Text::draw(sf::RenderWindow* window) {
+void ds::Text::draw() {
     int x = position.x;
     int y = position.y;
 

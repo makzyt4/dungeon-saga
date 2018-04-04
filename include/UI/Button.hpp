@@ -1,16 +1,20 @@
-#ifndef DS_UI_PANEL_HPP
-#define DS_UI_PANEL_HPP
+#ifndef DS_UI_BUTTON_HPP
+#define DS_UI_BUTTON_HPP
 
 #include "Node.hpp"
+#include "../Graphics/Text.hpp"
 
 namespace ds {
-    class Panel : public Node {
+    class Button : public Node {
     private:
         sf::Vector2i size;
+        std::string text;
     public:
         sf::Vector2i getSize() const;
+        std::string getText() const;
 
         void setSize(const sf::Vector2i& size);
+        void setText(const std::string& text);
 
         void draw();
         void init();
@@ -20,4 +24,4 @@ namespace ds {
     };
 }
 
-#endif // DS_UI_PANEL_HPP
+#endif // DS_UI_BUTTON_HPP

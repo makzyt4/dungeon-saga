@@ -1,20 +1,28 @@
-#include "../../include/UI/Panel.hpp"
+#include "../../include/UI/Button.hpp"
 
-void ds::Panel::init() {
-    // Nothing to do here...
+void ds::Button::init() {
+    text = "";
 }
 
-sf::Vector2i ds::Panel::getSize() const {
+sf::Vector2i ds::Button::getSize() const {
     return size;
 }
 
-void ds::Panel::setSize(const sf::Vector2i& size) {
+std::string ds::Button::getText() const {
+    return text;
+}
+
+void ds::Button::setSize(const sf::Vector2i& size) {
     this->size = sf::Vector2i(size.x, size.y);
     rect.width = size.x * 8;
     rect.height = size.y * 8;
 }
 
-void ds::Panel::draw() {
+void ds::Button::setText(const std::string& text) {
+    this->text = text;
+}
+
+void ds::Button::draw() {
     sf::Texture* texture = loader->getTexture("menus.png");
     sf::IntRect spriteRect;
 
@@ -54,16 +62,25 @@ void ds::Panel::draw() {
             window->draw(sprite);
         }
     }
+
+    Text text;
+    text.setWindow(window);
+    text.setString(this->text);
+    text.setPosition(sf::Vector2i(
+                     rect.left + (rect.width - text.getSize().x) / 2,
+                     rect.top + (rect.height - text.getSize().y) / 2));
+
+    text.draw();
 }
 
-void ds::Panel::onMouseHoverAction(sf::Event* event) {
+void ds::Button::onMouseHoverAction(sf::Event* event) {
 
 }
 
-void ds::Panel::onMousePressedAction(sf::Event* event) {
+void ds::Button::onMousePressedAction(sf::Event* event) {
 
 }
 
-void ds::Panel::onMouseReleasedAction(sf::Event* event) {
+void ds::Button::onMouseReleasedAction(sf::Event* event) {
 
 }

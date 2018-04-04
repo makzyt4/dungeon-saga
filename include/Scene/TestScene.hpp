@@ -3,13 +3,13 @@
 
 #include "Scene.hpp"
 #include "../UI/Layout.hpp"
-#include "../UI/Panel.hpp"
+#include "../UI/Button.hpp"
 
 namespace ds {
     class TestScene : public Scene {
     private:
         Layout layout;
-        Panel panel;
+        Button button;
     public:
         using Scene::Scene;
 

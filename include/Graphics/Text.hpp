@@ -23,7 +23,7 @@ namespace ds {
         void setFontSize(const std::uint8_t& size);
         void setColor(const sf::Color& color);
 
-        void draw(sf::RenderWindow* window);
+        void draw();
     };
 }
 

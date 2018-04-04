@@ -4,7 +4,7 @@ sf::Vector2i ds::DrawableObject::getPosition() const {
     return position;
 }
 
-void ds::DrawableObject::setPosition(sf::Vector2i) {
+void ds::DrawableObject::setPosition(const sf::Vector2i& position) {
     this->position = position;
 }
 

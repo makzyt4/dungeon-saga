@@ -4,10 +4,11 @@ void ds::TestScene::init() {
     layout.setWindow(window);
     layout.setLoader(loader);
 
-    panel.init();
-    panel.setSize(sf::Vector2i(5, 3));
-    panel.setPosition(sf::Vector2i(400, 300));
-    layout.addElement(&panel);
+    button.init();
+    button.setText("TEST");
+    button.setSize(sf::Vector2i(5, 3));
+    button.setPosition(sf::Vector2i(400, 300));
+    layout.addElement(&button);
 }
 
 void ds::TestScene::update() {

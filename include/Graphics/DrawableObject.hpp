@@ -14,7 +14,7 @@ namespace ds {
     public:
         sf::Vector2i getPosition() const;
 
-        void setPosition(sf::Vector2i);
+        void setPosition(const sf::Vector2i& position);
 
         void setWindow(sf::RenderWindow* window);
         void setLoader(ResourceLoader* loader);

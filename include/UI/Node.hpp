@@ -4,11 +4,12 @@
 #include <functional>
 #include <SFML/Graphics.hpp>
 #include "../Graphics/DrawableObject.hpp"
+#include "../Enum/MenuState.hpp"
 
 namespace ds {
     class Node : public DrawableObject {
     protected:
-        sf::Event* event;
+        MenuState state;
         sf::IntRect rect;
 
         std::function<void()> mouseHoverAction;
@@ -24,10 +25,14 @@ namespace ds {
 
         void listen(sf::Event* event);
 
+        void setOnMouseHoverAction(std::function<void()> action);
+        void setOnMousePressedAction(std::function<void()> action);
+        void setOnMouseReleasedAction(std::function<void()> action);
+
         virtual void init() = 0;
-        virtual void setOnMouseHoverAction(std::function<void()> action) = 0;
-        virtual void setOnMousePressedAction(std::function<void()> action) = 0;
-        virtual void setOnMouseReleasedAction(std::function<void()> action) = 0;
+        virtual void onMouseHoverAction(sf::Event* event) = 0;
+        virtual void onMousePressedAction(sf::Event* event) = 0;
+        virtual void onMouseReleasedAction(sf::Event* event) = 0;
     };
 }
 
