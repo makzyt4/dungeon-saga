@@ -93,11 +93,12 @@ void ds::Button::onMouseHoverAction(sf::Event* event) {
     int y = event->mouseMove.y;
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
 
+    state = ds::MenuState::Normal;
     if (rect.contains(mouse.x, mouse.y)) {
         state = ds::MenuState::Highlighted;
         mouseHoverAction();
-    } else {
-        state = ds::MenuState::Normal;
+    } else if (selected) {
+        state = ds::MenuState::Clicked;
     }
 }
 
@@ -111,6 +112,7 @@ void ds::Button::onMousePressedAction(sf::Event* event) {
     int x = event->mouseButton.x;
     int y = event->mouseButton.y;
     sf::Vector2f mouse = window->mapPixelToCoords(sf::Vector2i(x, y));
+    selected = false;
 
     if (rect.contains(mouse.x, mouse.y)) {
         sf::SoundBuffer* buffer = loader->getSoundBuffer("click.ogg");
@@ -119,9 +121,7 @@ void ds::Button::onMousePressedAction(sf::Event* event) {
         sound->play();
         state = ds::MenuState::Clicked;
         mousePressedAction();
-        selected = true;
     } else {
-        selected = false;
         state = ds::MenuState::Highlighted;
     }
 }

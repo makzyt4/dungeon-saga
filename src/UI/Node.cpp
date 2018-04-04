@@ -22,8 +22,8 @@ void ds::Node::setRect(const sf::IntRect& rect) {
 }
 
 void ds::Node::listen(sf::Event* event) {
-    onMouseReleasedAction(event);
     onMouseHoverAction(event);
+    onMouseReleasedAction(event);
     onMousePressedAction(event);
 }
 
