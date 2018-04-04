@@ -44,10 +44,6 @@ void ds::Text::setString(const std::string& string) {
     this->string = string;
 }
 
-void ds::Text::setPosition(const sf::Vector2i& position) {
-    this->position = position;
-}
-
 void ds::Text::setFontSize(const std::uint8_t& fontSize) {
     this->fontSize = fontSize;
 }

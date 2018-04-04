@@ -20,7 +20,6 @@ namespace ds {
         sf::Vector2i getSize() const;
 
         void setString(const std::string& string);
-        void setPosition(const sf::Vector2i& position);
         void setFontSize(const std::uint8_t& size);
         void setColor(const sf::Color& color);
 
