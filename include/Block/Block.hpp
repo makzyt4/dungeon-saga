@@ -5,7 +5,7 @@
 #include "../Graphics/DrawableObject.hpp"
 
 namespace ds {
-    class Block : public DrawableObject, public Collidable {
+    class Block : public DrawableObject {
     public:
         void init();
         virtual bool isDestructible() = 0;

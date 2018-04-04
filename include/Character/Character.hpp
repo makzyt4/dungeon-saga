@@ -15,8 +15,8 @@ namespace ds {
         std::uint8_t agility;
         std::uint8_t intelligence;
         sf::Vector2f velocity;
-        bool onGround;
         LookingDirection direction;
+        bool onGround;
 
         Animation standingRight;
         Animation standingLeft;
