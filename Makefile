@@ -9,8 +9,8 @@ LDFLAGS := -lsfml-graphics -lsfml-window -lsfml-system -lsfml-audio
 
 ifeq ($(OS),Windows_NT)
 	TARGET=bin/dungeon-saga.exe
-	LIBS=-L"C:/Program Files/SFML/lib"
-	INCLUDES=-I"C:/Program Files/SFML/include"
+	LIBS=-L"C:/SFML/lib"
+	INCLUDES=-I"C:/SFML/include"
 	MKDIR=if not exist "$(1)" md "$(1)"
 	RMDIR=rd /s /q "$(1)"
 else

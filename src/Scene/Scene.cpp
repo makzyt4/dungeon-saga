@@ -3,6 +3,7 @@
 ds::Scene::Scene(sf::RenderWindow* window, ds::ResourceLoader* loader) {
     this->window = window;
     this->loader = loader;
+    code = ds::ExitCode::Running;
 }
 
 ds::ExitCode ds::Scene::getCode() const {
