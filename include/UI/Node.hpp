@@ -10,18 +10,12 @@ namespace ds {
     class Node : public DrawableObject {
     protected:
         MenuState state;
-        sf::IntRect rect;
 
         std::function<void()> mouseHoverAction;
         std::function<void()> mousePressedAction;
         std::function<void()> mouseReleasedAction;
     public:
         Node();
-
-        sf::IntRect getRect() const;
-
-        void setPosition(const sf::Vector2i& position);
-        void setRect(const sf::IntRect& rect);
 
         void listen(sf::Event* event);
 
