@@ -4,12 +4,14 @@
 #include "Scene.hpp"
 #include "../UI/Layout.hpp"
 #include "../UI/Button.hpp"
+#include "../Character/PlayerCharacter.hpp"
 
 namespace ds {
     class TestScene : public Scene {
     private:
         Layout layout;
         Button button;
+        PlayerCharacter player;
     public:
         using Scene::Scene;
 

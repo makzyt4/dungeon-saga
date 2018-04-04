@@ -4,6 +4,11 @@ void ds::TestScene::init() {
     layout.setWindow(window);
     layout.setLoader(loader);
 
+    player.setWindow(window);
+    player.setLoader(loader);
+    player.init();
+    player.setPosition(sf::Vector2i(400, 300));
+
     button.init();
     button.setText("TEST");
     button.setSize(sf::Vector2i(5, 3));
@@ -13,6 +18,7 @@ void ds::TestScene::init() {
 }
 
 void ds::TestScene::update() {
+    player.update();
     generateView();
 }
 
@@ -32,6 +38,7 @@ void ds::TestScene::control() {
 
 void ds::TestScene::draw() {
     window->clear();
-    layout.draw();
+    player.draw();
+    // layout.draw();
     window->display();
 }

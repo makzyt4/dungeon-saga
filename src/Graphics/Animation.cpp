@@ -44,7 +44,7 @@ void ds::Animation::addFrame(const sf::IntRect& frame) {
 }
 
 void ds::Animation::play() {
-    if (timer.isRunning()) {
+    if (!timer.isRunning()) {
         return;
     }
 
