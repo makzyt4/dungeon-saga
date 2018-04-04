@@ -9,7 +9,7 @@ sf::Vector2i ds::Panel::getSize() const {
 }
 
 void ds::Panel::setSize(const sf::Vector2i& size) {
-    this->size = size;
+    this->size = sf::Vector2i(size.x, size.y);
     rect.width = size.x * 8;
     rect.height = size.y * 8;
 }

@@ -5,12 +5,13 @@ void ds::TestScene::init() {
     layout.setLoader(loader);
 
     panel.init();
-    panel.setSize(sf::Vector2i(10, 10));
+    panel.setSize(sf::Vector2i(5, 3));
+    panel.setPosition(sf::Vector2i(400, 300));
     layout.addElement(&panel);
 }
 
 void ds::TestScene::update() {
-
+    generateView();
 }
 
 void ds::TestScene::control() {
