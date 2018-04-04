@@ -2,9 +2,10 @@
 #define DS_UI_LAYOUT_HPP
 
 #include "Node.hpp"
+#include "../Graphics/DrawableObject.hpp"
 
 namespace ds {
-    class Layout {
+    class Layout : public DrawableObject {
     private:
         std::vector<Node*> elements;
     public:

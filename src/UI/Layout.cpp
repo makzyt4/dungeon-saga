@@ -1,6 +1,7 @@
 #include "../../include/UI/Layout.hpp"
 
 void ds::Layout::addElement(Node* element) {
+    element->setLoader(loader);
     elements.push_back(element);
 }
 
@@ -12,6 +13,10 @@ void ds::Layout::listenToAll(sf::Event* event) {
 
 void ds::Layout::drawAll(sf::RenderWindow* window) {
     for (Node* element : elements) {
+        sf::Vector2i position = element->getPosition();
+        element->setPosition(sf::Vector2i(position.x + this->position.x,
+                                          position.y + this->position.y));
         element->draw();
+        element->setPosition(position);
     }
 }

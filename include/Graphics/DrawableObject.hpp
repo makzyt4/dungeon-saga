@@ -12,6 +12,10 @@ namespace ds {
         sf::RenderWindow* window;
         ResourceLoader* loader;
     public:
+        sf::Vector2i getPosition() const;
+
+        void setPosition(sf::Vector2i);
+
         void setWindow(sf::RenderWindow* window);
         void setLoader(ResourceLoader* loader);
     };
