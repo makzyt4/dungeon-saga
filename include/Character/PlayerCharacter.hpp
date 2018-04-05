@@ -8,7 +8,7 @@ namespace ds {
     public:
         void init();
         void setPosition(const sf::Vector2f& position) override;
-        void handleKeys(sf::Event* event);
+        void handleKeys();
         bool isCollidable() const;
         bool isFlying() const;
     };

@@ -14,8 +14,8 @@ ds::Main::Main() {
 
     do {
         scene->update();
-        scene->draw();
         scene->control();
+        scene->draw();
         code = scene->getCode();
     } while (code != ExitCode::Quit);
 }

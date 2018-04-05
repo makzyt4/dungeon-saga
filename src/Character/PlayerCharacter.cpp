@@ -59,27 +59,17 @@ bool ds::PlayerCharacter::isFlying() const {
     return false;
 }
 
-void ds::PlayerCharacter::handleKeys(sf::Event* event) {
-    velocity.x *= 0.9;
-
+void ds::PlayerCharacter::handleKeys() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
+        printf("A");
         velocity.x = -getSpeed();
-        currentAnimation = &movingLeft;
         direction = LookingDirection::Left;
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         velocity.x = getSpeed();
-        currentAnimation = &movingRight;
         direction = LookingDirection::Right;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
         jump();
-    }
-
-    if (abs(velocity.x) < 0.01) {
-        velocity.x = 0;
-        currentAnimation = direction == LookingDirection::Left ?
-                           &standingLeft :
-                           &standingRight;
     }
 }

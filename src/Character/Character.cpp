@@ -14,6 +14,7 @@ void ds::Character::jump() {
 }
 
 void ds::Character::update() {
+
     currentAnimation->play();
     setPosition(sf::Vector2f(position.x + velocity.x,
                              position.y + velocity.y));
@@ -21,6 +22,20 @@ void ds::Character::update() {
     if (!onGround) {
         velocity.y += 0.12;
     }
+
+    printf("%f\n", velocity.x);
+
+    if (fabs(velocity.x) > 0.1) {
+        currentAnimation = direction == LookingDirection::Left ?
+                           &movingLeft :
+                           &movingRight;
+    } else {
+        velocity.x = 0;
+        currentAnimation = direction == LookingDirection::Left ?
+                           &standingLeft :
+                           &standingRight;
+    }
+    velocity.x *= 0.9;
 }
 
 void ds::Character::collide(std::vector<ds::Block*>* blocks) {
@@ -59,7 +74,6 @@ void ds::Character::collide(std::vector<ds::Block*>* blocks) {
 
         if (block->getRect().intersects(tmpRect) && velocity.x < 0) {
             position.x = tmpPosition.x - velocity.x;
-            velocity.x = 0;
         }
 
         // If block on the right
@@ -68,7 +82,6 @@ void ds::Character::collide(std::vector<ds::Block*>* blocks) {
 
         if (block->getRect().intersects(tmpRect) && velocity.x > 0) {
             position.x = tmpPosition.x - velocity.x;
-            velocity.x = 0;
         }
     }
 }

@@ -52,9 +52,9 @@ void ds::TestScene::control() {
             window->close();
         }
         // layout.listenToAll(&event);
-        player.handleKeys(&event);
     }
 
+    player.handleKeys();
     sf::sleep(sf::milliseconds(17));
 }
 
