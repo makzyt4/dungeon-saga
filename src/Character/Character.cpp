@@ -23,8 +23,6 @@ void ds::Character::update() {
         velocity.y += 0.12;
     }
 
-    printf("%f\n", velocity.x);
-
     if (fabs(velocity.x) > 0.1) {
         currentAnimation = direction == LookingDirection::Left ?
                            &movingLeft :

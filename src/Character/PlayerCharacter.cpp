@@ -61,7 +61,6 @@ bool ds::PlayerCharacter::isFlying() const {
 
 void ds::PlayerCharacter::handleKeys() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        printf("A");
         velocity.x = -getSpeed();
         direction = LookingDirection::Left;
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
