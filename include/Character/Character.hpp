@@ -36,6 +36,7 @@ namespace ds {
         float getSpeed();
         void collide(Block* block);
         virtual void init() = 0;
+        virtual bool isFlying() const = 0;
     };
 }
 

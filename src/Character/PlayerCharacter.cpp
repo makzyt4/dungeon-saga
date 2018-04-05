@@ -55,6 +55,10 @@ bool ds::PlayerCharacter::isCollidable() const {
     return true;
 }
 
+bool ds::PlayerCharacter::isFlying() const {
+    return false;
+}
+
 void ds::PlayerCharacter::handleKeys(sf::Event* event) {
     velocity.x *= 0.9;
 

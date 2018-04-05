@@ -10,6 +10,7 @@ namespace ds {
         void setPosition(const sf::Vector2f& position) override;
         void handleKeys(sf::Event* event);
         bool isCollidable() const;
+        bool isFlying() const;
     };
 }
 
