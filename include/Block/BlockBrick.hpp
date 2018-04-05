@@ -6,8 +6,8 @@
 namespace ds {
     class BlockBrick : public Block {
         void draw();
-        bool isCollidable();
-        bool isDestructible();
+        bool isCollidable() const;
+        bool isDestructible() const;
     };
 }
 

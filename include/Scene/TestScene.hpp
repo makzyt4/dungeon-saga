@@ -5,6 +5,7 @@
 #include "../UI/Layout.hpp"
 #include "../UI/Button.hpp"
 #include "../Character/PlayerCharacter.hpp"
+#include "../Game/Level.hpp"
 
 namespace ds {
     class TestScene : public Scene {
@@ -12,6 +13,7 @@ namespace ds {
         Layout layout;
         Button button;
         PlayerCharacter player;
+        Level level = Level(0);
     public:
         using Scene::Scene;
 

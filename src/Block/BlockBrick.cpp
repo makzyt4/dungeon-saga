@@ -9,10 +9,10 @@ void ds::BlockBrick::draw() {
     window->draw(sprite);
 }
 
-bool ds::BlockBrick::isCollidable() {
+bool ds::BlockBrick::isCollidable() const {
     return true;
 }
 
-bool ds::BlockBrick::isDestructible() {
+bool ds::BlockBrick::isDestructible() const {
     return false;
 }

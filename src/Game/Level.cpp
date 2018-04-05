@@ -1,13 +1,7 @@
 #include "../../include/Game/Level.hpp"
 
-ds::Level::Level(const std::size_t& width, const std::size_t& height) {
-    for (int i = 0; i < height; i++) {
-        std::vector<Block*> row;
-        for (int j = 0; j < width; j++) {
-            row.push_back(NULL);
-        }
-        blocks.push_back(row);
-    }
+ds::Level::Level(const std::uint8_t& difficulty) {
+    // TODO More complex when the difficulty is higher
 }
 
 void ds::Level::setPlayer(PlayerCharacter* player) {
@@ -16,5 +10,30 @@ void ds::Level::setPlayer(PlayerCharacter* player) {
 
 void ds::Level::addBlock(ds::Block* block, const std::size_t& x,
                          const std::size_t& y) {
-    blocks[y][x] = block;
+    block->setWindow(window);
+    block->setLoader(loader);
+    block->init();
+    block->setPosition(sf::Vector2f(x * 16, y * 16));
+
+    for (Block* b : blocks) {
+        if (block->getRect().intersects(b->getRect())) {
+            blocks.erase(std::remove(blocks.begin(), blocks.end(), b),
+                         blocks.end());
+        }
+    }
+
+    blocks.push_back(block);
+}
+
+void ds::Level::update() {
+
+}
+
+void ds::Level::draw() {
+    for (Block* block : blocks) {
+        block->draw();
+    }
+    if (player) {
+        player->draw();
+    }
 }

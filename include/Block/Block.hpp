@@ -9,7 +9,7 @@ namespace ds {
     class Block : public DrawableObject, public Collidable {
     public:
         void init();
-        virtual bool isDestructible() = 0;
+        virtual bool isDestructible() const = 0;
     };
 }
 
