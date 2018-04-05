@@ -7,16 +7,20 @@
 #include "../Interface/Updatable.hpp"
 #include "../Interface/Collidable.hpp"
 #include "../Block/Block.hpp"
+#include "../Util/RegeneratedValue.hpp"
 
 namespace ds {
     class Character : public DrawableObject, public Updatable,
                       public Collidable {
     protected:
-        std::uint8_t health;
-        std::uint8_t maxHealth;
-        std::uint8_t strength;
-        std::uint8_t agility;
-        std::uint8_t intelligence;
+        std::int16_t strength;
+        std::int16_t agility;
+        std::int16_t intelligence;
+
+        RegeneratedValue health;
+        RegeneratedValue stamina;
+        RegeneratedValue magicka;
+
         sf::Vector2f velocity;
         sf::Vector2f lastPosition;
         LookingDirection direction;

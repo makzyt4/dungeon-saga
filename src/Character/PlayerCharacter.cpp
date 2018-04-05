@@ -1,8 +1,6 @@
 #include "../../include/Character/PlayerCharacter.hpp"
 
 void ds::PlayerCharacter::init() {
-    health = 10;
-    maxHealth = 10;
     strength = 1;
     agility = 1;
     intelligence = 1;
