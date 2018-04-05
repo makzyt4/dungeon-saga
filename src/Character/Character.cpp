@@ -16,25 +16,48 @@ void ds::Character::update() {
     currentAnimation->play();
     setPosition(sf::Vector2f(position.x + velocity.x,
                              position.y + velocity.y));
+
+    if (!onGround) {
+        velocity.y += 0.12;
+    }
 }
 
-void ds::Character::collide(ds::Block* block) {
+void ds::Character::collide(std::vector<ds::Block*>* blocks) {
     sf::IntRect tmpRect;
+    onGround = false;
 
-    // Block to the left
-    tmpRect = block->getRect();
-    tmpRect.left -= velocity.x;
+    for (Block* block : *blocks) {
+        if (!block->isCollidable()) {
+            continue;
+        }
 
-    if (tmpRect.intersects(block->getRect())) {
-        velocity.x = 0;
-    }
+        // Block below
+        tmpRect = rect;
+        tmpRect.top += 1 + abs(velocity.y);
 
-    // Block to the right
-    tmpRect = block->getRect();
-    tmpRect.left += velocity.x;
+        if (tmpRect.intersects(block->getRect())) {
+            velocity.y = 0;
+            setPosition(sf::Vector2f(position.x, position.y));
+            onGround = true;
+        }
 
-    if (tmpRect.intersects(block->getRect())) {
-        velocity.x = 0;
+        // Block to the left
+        tmpRect = rect;
+        tmpRect.left -= 1 + abs(velocity.x);
+
+        if (tmpRect.intersects(block->getRect())) {
+            setPosition(sf::Vector2f(position.x + 1, position.y));
+            velocity.x = 0;
+        }
+
+        // Block to the right
+        tmpRect = rect;
+        tmpRect.left += 1 + abs(velocity.x);
+
+        if (tmpRect.intersects(block->getRect())) {
+            setPosition(sf::Vector2f(position.x - 1, position.y));
+            velocity.x = 0;
+        }
     }
 }
 

@@ -26,14 +26,13 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x,
 }
 
 void ds::Level::update() {
-
+    player->update();
+    player->collide(&blocks);
 }
 
 void ds::Level::draw() {
     for (Block* block : blocks) {
         block->draw();
     }
-    if (player) {
-        player->draw();
-    }
+    player->draw();
 }

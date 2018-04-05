@@ -10,7 +10,7 @@ void ds::TestScene::init() {
     player.setWindow(window);
     player.setLoader(loader);
     player.init();
-    player.setPosition(sf::Vector2f(400, 300));
+    player.setPosition(sf::Vector2f(400, 368));
 
     button.init();
     button.setText("TEST");
@@ -19,19 +19,25 @@ void ds::TestScene::init() {
     button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
 
+    for (int i = 0; i < 10; i++) {
+        level.addBlock(new BlockBrick(), 20 + i, 22);
+    }
+
+    level.addBlock(new BlockBrick(), 20, 23);
     level.addBlock(new BlockBrick(), 20, 24);
+    level.addBlock(new BlockBrick(), 29, 23);
+    level.addBlock(new BlockBrick(), 29, 24);
 
     for (int i = 0; i < 10; i++) {
         level.addBlock(new BlockBrick(), 20 + i, 25);
     }
 
-    level.addBlock(new BlockBrick(), 29, 24);
 
     level.setPlayer(&player);
 }
 
 void ds::TestScene::update() {
-    player.update();
+    level.update();
     generateView();
 }
 

@@ -3,6 +3,7 @@
 
 namespace ds {
     class Collidable {
+    public:
         virtual bool isCollidable() const = 0;
     };
 }

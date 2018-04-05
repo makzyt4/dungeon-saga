@@ -18,6 +18,7 @@ namespace ds {
         std::uint8_t agility;
         std::uint8_t intelligence;
         sf::Vector2f velocity;
+        sf::Vector2f lastPosition;
         LookingDirection direction;
         bool onGround;
 
@@ -34,7 +35,7 @@ namespace ds {
         void update();
         void draw();
         float getSpeed();
-        void collide(Block* block);
+        void collide(std::vector<Block*>* blocks);
         virtual void init() = 0;
         virtual bool isFlying() const = 0;
     };
