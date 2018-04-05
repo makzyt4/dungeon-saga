@@ -17,8 +17,12 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x,
 
     for (Block* b : blocks) {
         if (block->getRect().intersects(b->getRect())) {
-            blocks.erase(std::remove(blocks.begin(), blocks.end(), b),
-                         blocks.end());
+            std::vector<Block*>::iterator position = std::find(blocks.begin(),
+                                                            blocks.end(), b);
+            if (position != blocks.end()) {
+                printf("ZNALEZIONO\n");
+                blocks.erase(position);
+            }
         }
     }
 

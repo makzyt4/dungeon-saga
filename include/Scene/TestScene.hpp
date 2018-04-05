@@ -6,6 +6,7 @@
 #include "../UI/Button.hpp"
 #include "../Character/PlayerCharacter.hpp"
 #include "../Game/Level.hpp"
+#include "../Block/BlockBackground.hpp"
 
 namespace ds {
     class TestScene : public Scene {
