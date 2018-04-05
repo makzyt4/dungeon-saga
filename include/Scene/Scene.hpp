@@ -24,7 +24,7 @@ namespace ds {
         ExitCode getCode() const;
 
         void generateView();
-        void generateView(sf::Vector2i center);
+        void generateView(sf::Vector2f center);
 
         virtual void init() = 0;
     };

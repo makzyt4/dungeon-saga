@@ -24,12 +24,12 @@ void ds::Character::update() {
     }
 
     if (fabs(velocity.x) > 0.1) {
-        currentAnimation = direction == LookingDirection::Left ?
+        currentAnimation = direction == Direction::Left ?
                            &movingLeft :
                            &movingRight;
     } else {
         velocity.x = 0;
-        currentAnimation = direction == LookingDirection::Left ?
+        currentAnimation = direction == Direction::Left ?
                            &standingLeft :
                            &standingRight;
     }
@@ -86,4 +86,9 @@ void ds::Character::collide(std::vector<ds::Block*>* blocks) {
 
 float ds::Character::getSpeed() {
     return 1 + agility / 30.0f;
+}
+
+sf::Vector2f ds::Character::getCenter() {
+    return sf::Vector2f(rect.left + rect.width / 2.0f,
+                        rect.top + rect.height / 2.0f);
 }

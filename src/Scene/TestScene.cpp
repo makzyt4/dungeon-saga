@@ -10,7 +10,9 @@ void ds::TestScene::init() {
     player.setWindow(window);
     player.setLoader(loader);
     player.init();
-    player.setPosition(sf::Vector2f(400, 368));
+    level.setPlayer(&player);
+
+    level.generateLevel(10);
 
     button.init();
     button.setText("TEST");
@@ -40,12 +42,11 @@ void ds::TestScene::init() {
         }
     }
 
-    level.setPlayer(&player);
 }
 
 void ds::TestScene::update() {
     level.update();
-    generateView();
+    generateView(player.getCenter());
 }
 
 void ds::TestScene::control() {

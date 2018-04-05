@@ -18,7 +18,7 @@ void ds::Scene::generateView() {
     window->setView(view);
 }
 
-void ds::Scene::generateView(sf::Vector2i center) {
+void ds::Scene::generateView(sf::Vector2f center) {
     int width = window->getSize().x;
     int height = window->getSize().y;
     sf::View view(sf::FloatRect(0, 0, width, height));

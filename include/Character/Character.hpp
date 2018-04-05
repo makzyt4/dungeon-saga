@@ -23,7 +23,7 @@ namespace ds {
 
         sf::Vector2f velocity;
         sf::Vector2f lastPosition;
-        LookingDirection direction;
+        Direction direction;
         bool onGround;
 
         Animation standingRight;
@@ -40,6 +40,7 @@ namespace ds {
         void draw();
         float getSpeed();
         void collide(std::vector<Block*>* blocks);
+        sf::Vector2f getCenter();
         virtual void init() = 0;
         virtual bool isFlying() const = 0;
     };

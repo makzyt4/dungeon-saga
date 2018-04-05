@@ -1,11 +1,13 @@
-#ifndef DS_ENUM_LOOKINGDIRECTION_HPP
-#define DS_ENUM_LOOKINGDIRECTION_HPP
+#ifndef DS_ENUM_DIRECTION_HPP
+#define DS_ENUM_DIRECTION_HPP
 
 namespace ds {
-    enum class LookingDirection {
+    enum class Direction {
         Left,
-        Right
+        Right,
+        Up,
+        Down
     };
 }
 
-#endif // DS_ENUM_LOOKINGDIRECTION_HPP
+#endif // DS_ENUM_DIRECTION_HPP

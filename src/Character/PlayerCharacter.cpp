@@ -47,7 +47,7 @@ void ds::PlayerCharacter::init() {
     movingLeft.addFrame(sf::IntRect(192, 32, 32, 32));
 
     currentAnimation = &standingRight;
-    direction = LookingDirection::Right;
+    direction = Direction::Right;
 
     rect.width = 12;
     rect.height = 31;
@@ -72,10 +72,10 @@ bool ds::PlayerCharacter::isFlying() const {
 void ds::PlayerCharacter::handleKeys() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
         velocity.x = -getSpeed();
-        direction = LookingDirection::Left;
+        direction = Direction::Left;
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
         velocity.x = getSpeed();
-        direction = LookingDirection::Right;
+        direction = Direction::Right;
     }
 
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
