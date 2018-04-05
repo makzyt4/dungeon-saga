@@ -4,3 +4,6 @@ void ds::Block::init() {
     rect.width = 16;
     rect.height = 16;
 }
+
+void ds::Block::update() {
+}

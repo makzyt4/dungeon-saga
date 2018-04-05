@@ -4,11 +4,13 @@
 #include <SFML/Graphics.hpp>
 #include "../Graphics/DrawableObject.hpp"
 #include "../Interface/Collidable.hpp"
+#include "../Interface/Updatable.hpp"
 
 namespace ds {
-    class Block : public DrawableObject, public Collidable {
+    class Block : public DrawableObject, public Collidable, public Updatable {
     public:
-        void init();
+        virtual void init();
+        virtual void update();
         virtual bool isDestructible() const = 0;
     };
 }
