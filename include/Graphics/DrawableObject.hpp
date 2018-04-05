@@ -1,6 +1,7 @@
 #ifndef DS_INTERFACE_DRAWABLEOBJECT_HPP
 #define DS_INTERFACE_DRAWABLEOBJECT_HPP
 
+#include <cmath>
 #include <SFML/Graphics.hpp>
 #include "../Interface/Drawable.hpp"
 #include "../Loader/ResourceLoader.hpp"

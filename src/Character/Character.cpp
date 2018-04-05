@@ -20,13 +20,11 @@ void ds::Character::update() {
 
     if (!onGround) {
         velocity.y += 0.12;
-    } else {
-        velocity.y = 0;
     }
 }
 
 void ds::Character::collide(std::vector<ds::Block*>* blocks) {
-    sf::IntRect tmpRect;
+    sf::Vector2f tmpPosition = position;
     onGround = false;
 
     for (Block* block : *blocks) {
@@ -34,40 +32,42 @@ void ds::Character::collide(std::vector<ds::Block*>* blocks) {
             continue;
         }
 
-        // Block above
+        sf::IntRect tmpRect;
+
+        // If block on the ground
         tmpRect = rect;
-        tmpRect.top -= abs(velocity.x);
+        tmpRect.top += fabs(velocity.y + 1);
 
-        if (tmpRect.intersects(block->getRect())) {
-            setPosition(sf::Vector2f(position.x, position.y + 1));
-            velocity.y *= -1;
-        }
-
-        // Block below
-        tmpRect = rect;
-        tmpRect.top += 1 + abs(velocity.y);
-
-        if (tmpRect.intersects(block->getRect())) {
+        if (block->getRect().intersects(tmpRect) && velocity.y >= 0) {
             velocity.y = 0;
-            setPosition(sf::Vector2f(position.x, position.y));
+            position.y = tmpPosition.y;
             onGround = true;
         }
 
-        // Block to the left
+        // If block above
         tmpRect = rect;
-        tmpRect.left -= 1 + abs(velocity.x);
+        tmpRect.top -= fabs(velocity.y + 1);
 
-        if (tmpRect.intersects(block->getRect())) {
-            setPosition(sf::Vector2f(position.x + 1, position.y));
+        if (block->getRect().intersects(tmpRect) && velocity.y < 0) {
+            position.y = tmpPosition.y;
+            velocity.y = fabs(velocity.y);
+        }
+
+        // If block on the left
+        tmpRect = rect;
+        tmpRect.left -= fabs(velocity.x) + 1;
+
+        if (block->getRect().intersects(tmpRect) && velocity.x < 0) {
+            position.x = tmpPosition.x - velocity.x;
             velocity.x = 0;
         }
 
-        // Block to the right
+        // If block on the right
         tmpRect = rect;
-        tmpRect.left += 1 + abs(velocity.x);
+        tmpRect.left += fabs(velocity.x) + 1;
 
-        if (tmpRect.intersects(block->getRect())) {
-            setPosition(sf::Vector2f(position.x - 1, position.y));
+        if (block->getRect().intersects(tmpRect) && velocity.x > 0) {
+            position.x = tmpPosition.x - velocity.x;
             velocity.x = 0;
         }
     }

@@ -76,7 +76,7 @@ void ds::PlayerCharacter::handleKeys(sf::Event* event) {
         jump();
     }
 
-    if (abs(velocity.x) < 0.1) {
+    if (abs(velocity.x) < 0.01) {
         velocity.x = 0;
         currentAnimation = direction == LookingDirection::Left ?
                            &standingLeft :
