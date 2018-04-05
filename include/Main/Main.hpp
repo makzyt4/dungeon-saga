@@ -1,6 +1,7 @@
 #ifndef DS_MAIN_MAIN_HPP
 #define DS_MAIN_MAIN_HPP
 
+#include <ctime>
 #include <SFML/Graphics.hpp>
 #include "../../include/Loader/ResourceLoader.hpp"
 #include "../../include/Scene/TestScene.hpp"

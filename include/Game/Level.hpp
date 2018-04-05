@@ -11,12 +11,11 @@ namespace ds {
         PlayerCharacter* player;
         std::vector<Block*> blocks;
     public:
-        Level(const std::uint8_t& difficulty);
-
         void setPlayer(PlayerCharacter* player);
         void addBlock(Block* block, const size_t& x, const size_t& y);
         void update();
         void draw();
+        void generateLevel(const std::uint8_t& complexity);
     };
 }
 

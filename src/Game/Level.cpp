@@ -1,9 +1,5 @@
 #include "../../include/Game/Level.hpp"
 
-ds::Level::Level(const std::uint8_t& difficulty) {
-    // TODO More complex when the difficulty is higher
-}
-
 void ds::Level::setPlayer(PlayerCharacter* player) {
     this->player = player;
 }
@@ -18,9 +14,8 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x,
     for (Block* b : blocks) {
         if (block->getRect().intersects(b->getRect())) {
             std::vector<Block*>::iterator position = std::find(blocks.begin(),
-                                                            blocks.end(), b);
+                                                               blocks.end(), b);
             if (position != blocks.end()) {
-                printf("ZNALEZIONO\n");
                 blocks.erase(position);
             }
         }
@@ -42,4 +37,8 @@ void ds::Level::draw() {
         block->draw();
     }
     player->draw();
+}
+
+void generateLevel(const std::uint8_t& complexity) {
+
 }

@@ -15,7 +15,7 @@ namespace ds {
         Layout layout;
         Button button;
         PlayerCharacter player;
-        Level level = Level(0);
+        Level level;
     public:
         using Scene::Scene;
 

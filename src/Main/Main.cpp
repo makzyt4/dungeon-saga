@@ -1,6 +1,8 @@
 #include "../../include/Main/Main.hpp"
 
 ds::Main::Main() {
+    srand(time(NULL));
+
     sf::VideoMode videoMode = settings.getVideoMode();
     sf::String title = settings.getTitle();
     sf::Uint32 style = settings.getStyle();
