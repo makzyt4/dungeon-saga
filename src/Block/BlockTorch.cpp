@@ -19,7 +19,7 @@ void ds::BlockTorch::draw() {
 }
 
 bool ds::BlockTorch::isCollidable() const {
-    return true;
+    return false;
 }
 
 bool ds::BlockTorch::isDestructible() const {

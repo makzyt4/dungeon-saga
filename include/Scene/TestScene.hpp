@@ -7,6 +7,7 @@
 #include "../Character/PlayerCharacter.hpp"
 #include "../Game/Level.hpp"
 #include "../Block/BlockBackground.hpp"
+#include "../Block/BlockTorch.hpp"
 
 namespace ds {
     class TestScene : public Scene {

@@ -30,6 +30,9 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x,
 }
 
 void ds::Level::update() {
+    for (Block* b : blocks) {
+        b->update();
+    }
     player->collide(&blocks);
     player->update();
 }

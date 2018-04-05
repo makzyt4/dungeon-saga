@@ -36,7 +36,7 @@ void ds::TestScene::init() {
 
     for (int j = 0; j < 3; j++) {
         for (int i = 0; i < 8; i++) {
-            level.addBlock(new BlockBackground(), 21 + i, 22 + j);
+            level.addBlock(new BlockTorch(), 21 + i, 22 + j);
         }
     }
 
