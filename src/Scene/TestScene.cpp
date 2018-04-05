@@ -20,18 +20,20 @@ void ds::TestScene::init() {
     layout.addElement(&button);
 
     for (int i = 0; i < 10; i++) {
-        level.addBlock(new BlockBrick(), 20 + i, 22);
+        level.addBlock(new BlockBrick(), 20 + i, 21);
     }
 
+
+    level.addBlock(new BlockBrick(), 20, 22);
     level.addBlock(new BlockBrick(), 20, 23);
     level.addBlock(new BlockBrick(), 20, 24);
+    level.addBlock(new BlockBrick(), 29, 22);
     level.addBlock(new BlockBrick(), 29, 23);
     level.addBlock(new BlockBrick(), 29, 24);
 
     for (int i = 0; i < 10; i++) {
         level.addBlock(new BlockBrick(), 20 + i, 25);
     }
-
 
     level.setPlayer(&player);
 }

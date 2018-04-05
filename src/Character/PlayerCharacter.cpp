@@ -72,6 +72,10 @@ void ds::PlayerCharacter::handleKeys(sf::Event* event) {
         direction = LookingDirection::Right;
     }
 
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space)) {
+        jump();
+    }
+
     if (abs(velocity.x) < 0.1) {
         velocity.x = 0;
         currentAnimation = direction == LookingDirection::Left ?
