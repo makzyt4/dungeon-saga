@@ -51,8 +51,8 @@ void ds::Level::generateLevel(const std::uint8_t& rooms) {
         const uint8_t direction = rand() % 4;
 
         if (i == 0) {
-            player->setPosition(sf::Vector2f(16 * (startX + width),
-                                             16 * (startY + height)));
+            player->setPosition(sf::Vector2f(16 * (startX + width - 1),
+                                             16 * (startY + height - 1)));
         }
 
         for (int w = 0; w < width; w++) {
@@ -61,30 +61,10 @@ void ds::Level::generateLevel(const std::uint8_t& rooms) {
             }
         }
 
-        printf("startX=%d, startY=%d\n", startX, startY);
-
-        startX = rand() % 2 == 0 ? startX + width - 1 : startX;
-        startY = rand() % 2 == 0 ? startY + height - 1: startY;
+        startX = rand() % 2 == 0 ? startX + width - 2 : startX;
+        startY = rand() % 2 == 0 ? startY + height - 2: startY;
     }
 
-    bool found = false;
-    for (Block* b1 : blocks) {
-        sf::IntRect tmpRect = b1->getRect();
-        tmpRect.top += 16;
+    // Surround with normal blocks
 
-        for (Block* b2 : blocks) {
-            if (b1 == b2) {
-                continue;
-            }
-
-            if (tmpRect.intersects(b2->getRect()) && !b2->isCollidable()) {
-                found = true;
-                break;
-            }
-        }
-
-        if (found) {
-            break;
-        }
-    }
 }

@@ -12,7 +12,7 @@ void ds::TestScene::init() {
     player.init();
     level.setPlayer(&player);
 
-    level.generateLevel(10);
+    level.generateLevel(100);
 
     button.init();
     button.setText("TEST");
