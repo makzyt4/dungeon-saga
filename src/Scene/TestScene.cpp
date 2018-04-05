@@ -19,9 +19,13 @@ void ds::TestScene::init() {
     button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
 
+    level.addBlock(new BlockBrick(), 20, 24);
+
     for (int i = 0; i < 10; i++) {
-        level.addBlock(new BlockBrick(), 10, 10);
+        level.addBlock(new BlockBrick(), 20 + i, 25);
     }
+
+    level.addBlock(new BlockBrick(), 29, 24);
 
     level.setPlayer(&player);
 }
@@ -39,7 +43,7 @@ void ds::TestScene::control() {
             code = ds::ExitCode::Quit;
             window->close();
         }
-        layout.listenToAll(&event);
+        // layout.listenToAll(&event);
         player.handleKeys(&event);
     }
 
@@ -48,7 +52,7 @@ void ds::TestScene::control() {
 
 void ds::TestScene::draw() {
     window->clear();
-    layout.draw();
+    // layout.draw();
     level.draw();
     window->display();
 }
