@@ -6,6 +6,18 @@ void ds::PlayerCharacter::init() {
     intelligence = 1;
     onGround = false;
 
+    health = RegeneratedValue(0, 10, 10);
+    health.setRegeneration(0);
+    health.setRegenerationTime(sf::seconds(5));
+
+    stamina = RegeneratedValue(0, 10, 10);
+    stamina.setRegeneration(1);
+    stamina.setRegenerationTime(sf::seconds(1));
+
+    magicka = RegeneratedValue(0, 10, 10);
+    magicka.setRegeneration(0);
+    magicka.setRegenerationTime(sf::seconds(5));
+
     sf::Texture* texture = loader->getTexture("hero.png");
 
     standingRight.setFrameTime(sf::seconds(0.5));
