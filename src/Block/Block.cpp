@@ -7,3 +7,7 @@ void ds::Block::init() {
 
 void ds::Block::update() {
 }
+
+bool ds::Block::isClimbable() {
+    return false;
+}

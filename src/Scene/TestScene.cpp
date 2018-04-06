@@ -10,15 +10,15 @@ void ds::TestScene::init() {
     player.setWindow(window);
     player.setLoader(loader);
     player.init();
-    player.setPosition(sf::Vector2f(400, 364));
+    //player.setPosition(sf::Vector2f(400, 364));
+    player.setPosition(sf::Vector2f(1280, 1280));
     level.setPlayer(&player);
 
-    level.generateLevel(80, 80, 100);
 
     button.init();
     button.setText("TEST");
     button.setSize(sf::Vector2i(5, 3));
-    button.setPosition(sf::Vector2f(400, 300));
+    button.setPosition(sf::Vector2f(448, 300));
     button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
 
@@ -43,6 +43,7 @@ void ds::TestScene::init() {
         }
     }
 
+    level.generateLevel(80, 80, 100);
 }
 
 void ds::TestScene::update() {
