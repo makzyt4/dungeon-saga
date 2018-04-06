@@ -71,10 +71,10 @@ bool ds::PlayerCharacter::isFlying() const {
 
 void ds::PlayerCharacter::handleKeys() {
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::A)) {
-        velocity.x = -getSpeed();
+        velocity.x -= getAcceleration();
         direction = Direction::Left;
     } else if (sf::Keyboard::isKeyPressed(sf::Keyboard::D)) {
-        velocity.x = getSpeed();
+        velocity.x += getAcceleration();
         direction = Direction::Right;
     }
 

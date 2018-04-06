@@ -10,9 +10,10 @@ void ds::TestScene::init() {
     player.setWindow(window);
     player.setLoader(loader);
     player.init();
+    player.setPosition(sf::Vector2f(400, 364));
     level.setPlayer(&player);
 
-    level.generateLevel(100);
+    level.generateLevel(80, 80, 100);
 
     button.init();
     button.setText("TEST");

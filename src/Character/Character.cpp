@@ -7,14 +7,18 @@ void ds::Character::draw() {
 }
 
 void ds::Character::jump() {
-    // TODO inverse
-    if (!onGround) {
+    if (onGround) {
         velocity.y = -(2 + agility / 100.0f);
         onGround = false;
     }
 }
 
 void ds::Character::update() {
+    if (velocity.x < -getMaxSpeed()) {
+        velocity.x = -getMaxSpeed();
+    } else if (velocity.x > getMaxSpeed()) {
+        velocity.x = getMaxSpeed();
+    }
 
     currentAnimation->play();
     setPosition(sf::Vector2f(position.x + velocity.x,
@@ -85,8 +89,12 @@ void ds::Character::collide(std::vector<ds::Block*>* blocks) {
     }
 }
 
-float ds::Character::getSpeed() {
-    return 1 + agility / 30.0f;
+float ds::Character::getAcceleration() {
+    return agility / 10.0f;
+}
+
+float ds::Character::getMaxSpeed() {
+    return 3 + agility / 10.0f;
 }
 
 sf::Vector2f ds::Character::getCenter() {

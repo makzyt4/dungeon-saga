@@ -39,32 +39,7 @@ void ds::Level::draw() {
     player->draw();
 }
 
-void ds::Level::generateLevel(const std::uint8_t& rooms) {
-    const int offset = 80;
-    int startX = offset;
-    int startY = offset;
-
-    for (int i = 0; i < rooms; i++) {
-        int width = rand() % 4 + 5;
-        int height = rand() % 2 + 3;
-
-        const uint8_t direction = rand() % 4;
-
-        if (i == 0) {
-            player->setPosition(sf::Vector2f(16 * (startX + width - 1),
-                                             16 * (startY + height - 1)));
-        }
-
-        for (int w = 0; w < width; w++) {
-            for (int h = 0; h < height; h++) {
-                addBlock(new BlockBackground(), startX + w, startY + h);
-            }
-        }
-
-        startX = rand() % 2 == 0 ? startX + width - 2 : startX;
-        startY = rand() % 2 == 0 ? startY + height - 2: startY;
-    }
-
+void ds::Level::generateLevel(int startX, int startY,
+                              const std::uint8_t& rooms) {
     // Surround with normal blocks
-
 }

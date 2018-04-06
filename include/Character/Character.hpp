@@ -38,7 +38,8 @@ namespace ds {
         void jump();
         void update();
         void draw();
-        float getSpeed();
+        float getAcceleration();
+        float getMaxSpeed();
         void collide(std::vector<Block*>* blocks);
         sf::Vector2f getCenter();
         virtual void init() = 0;

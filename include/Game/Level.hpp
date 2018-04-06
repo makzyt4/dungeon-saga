@@ -18,7 +18,7 @@ namespace ds {
         void addBlock(Block* block, const size_t& x, const size_t& y);
         void update();
         void draw();
-        void generateLevel(const std::uint8_t& rooms);
+        void generateLevel(int startX, int startY, const std::uint8_t& rooms);
     };
 }
 
