@@ -43,7 +43,7 @@ void ds::TestScene::init() {
         }
     }
 
-    level.generateLevel(80, 80, 10, rand() % 2);
+    level.generateLevel();
 }
 
 void ds::TestScene::update() {
