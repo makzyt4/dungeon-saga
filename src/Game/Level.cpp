@@ -48,3 +48,13 @@ void ds::Level::generateLevel() {
     bool startUp = rand() % 2;
     generator.generateRooms(sf::Vector2i(80, 80), 10, startUp);
 }
+
+bool ds::Level::isSpaceAvailable(const sf::IntRect& rect) {
+    for (Block* block : blocks) {
+        if (rect.intersects(block->getRect())) {
+            return false;
+        }
+    }
+
+    return true;
+}

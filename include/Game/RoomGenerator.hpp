@@ -24,8 +24,15 @@ namespace ds {
 
         void generateRoomUpStartTwoExits(const sf::Vector2i& position,
                                          const std::uint8_t& rooms);
-
+        void generateRoomDownStartTwoExits(const sf::Vector2i& position,
+                                           const std::uint8_t& rooms);
+        void generateRoomDownStartOneExit(const sf::Vector2i& position,
+                                          const std::uint8_t& rooms);
         void generateCorridorWithColumns(const sf::Vector2i& position,
+                                         const std::uint8_t& rooms);
+        void generateCorridor(const sf::Vector2i& position,
+                              const std::uint8_t& rooms);
+        void generateCorridorWithWindows(const sf::Vector2i& position,
                                          const std::uint8_t& rooms);
     };
 }
