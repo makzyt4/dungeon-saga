@@ -8,6 +8,8 @@
 
 namespace ds {
     class Block : public DrawableObject, public Collidable, public Updatable {
+    protected:
+        bool destroyed = false;
     public:
         virtual void init();
         virtual void update();

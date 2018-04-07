@@ -7,6 +7,7 @@
 #include "../Block/BlockWindow.hpp"
 #include "../Block/BlockLadder.hpp"
 #include "../Block/BlockColumn.hpp"
+#include "../Block/BlockBroken.hpp"
 
 namespace ds {
     class Level;
@@ -23,6 +24,8 @@ namespace ds {
                            const bool& startUp);
 
         void generateRoomUpStartTwoExits(const sf::Vector2i& position,
+                                         const std::uint8_t& rooms);
+        void generateRoomUpStartOneExit(const sf::Vector2i& position,
                                          const std::uint8_t& rooms);
         void generateRoomDownStartTwoExits(const sf::Vector2i& position,
                                            const std::uint8_t& rooms);

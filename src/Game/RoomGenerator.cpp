@@ -18,7 +18,7 @@ void ds::RoomGenerator::generateRooms(const sf::Vector2i& pos,
     rooms--;
 
     if (startUp) {
-        int roomIndex = rand() % 4;
+        int roomIndex = rand() % 5;
 
         if (roomIndex == 0) {
             generateCorridorWithColumns(pos, rooms);
@@ -28,6 +28,8 @@ void ds::RoomGenerator::generateRooms(const sf::Vector2i& pos,
             generateRoomUpStartTwoExits(pos, rooms);
         } else if (roomIndex == 3) {
             generateCorridorWithWindows(pos, rooms);
+        } else if (roomIndex == 4) {
+            generateRoomUpStartOneExit(pos, rooms);
         }
     } else {
         int roomIndex = rand() % 5;
@@ -80,6 +82,48 @@ void ds::RoomGenerator::generateRoomUpStartTwoExits(const sf::Vector2i& pos,
     level->addBlock(new BlockLadder(), pos.x + 8, pos.y + 3);
 
     generateRooms(sf::Vector2i(pos.x + 10, pos.y + 4), rooms, true);
+    generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, false);
+}
+
+void ds::RoomGenerator::generateRoomUpStartOneExit(const sf::Vector2i& pos,
+                                                   const std::uint8_t& rooms) {
+    sf::IntRect rect;
+    rect.left = pos.x + 16;
+    rect.top = pos.y - 32;
+    rect.width = 16 * 10;
+    rect.height = 16 * 7;
+
+    if (!level->isSpaceAvailable(rect)) {
+        return;
+    }
+
+    for (int i = 3; i <= 7; i += 2) {
+        level->addBlock(new BlockWindow(), pos.x + i, pos.y - 1);
+    }
+
+    for (int w = 0; w < 10; w++) {
+        for (int h = 0; h < 7; h++) {
+            Block* block = (h == 3) ?
+                           reinterpret_cast<Block*>(new BlockBrick()) :
+                           reinterpret_cast<Block*>(new BlockBackground());
+
+            level->addBlock(block, pos.x + w + 1, pos.y + h - 2);
+        }
+    }
+
+    for (int h = 0; h < 4; h++) {
+        level->addBlock(new BlockLadder(), pos.x + 1, pos.y + h + 1);
+        level->addBlock(new BlockLadder(), pos.x + 10, pos.y + h + 1);
+        if (h != 0) {
+            level->addBlock(new BlockBroken(), pos.x + 3, pos.y + h + 1);
+            level->addBlock(new BlockBroken(), pos.x + 8, pos.y + h + 1);
+        }
+    }
+
+    for (int i = 2; i <= 8; i += 2) {
+        level->addBlock(new BlockWindow(), pos.x + i, pos.y - 1);
+    }
+
     generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, false);
 }
 
