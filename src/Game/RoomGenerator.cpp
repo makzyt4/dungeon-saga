@@ -67,8 +67,8 @@ void ds::RoomGenerator::generateRoomUpStartTwoExits(const sf::Vector2i& pos,
     }
 
     for (int i = 3; i <= 7; i += 2) {
-        level->addBlock(new BlockWindow(), pos.x + i, pos.y - 2);
-        level->addBlock(new BlockTorch(), pos.x + i, pos.y + 1);
+        level->addBlock(new BlockWindow(), pos.x + i, pos.y - 1);
+        level->addBlock(new BlockTorch(), pos.x + i, pos.y + 2);
     }
 
     level->addBlock(new BlockBrick(), pos.x + 1, pos.y + 1);
@@ -149,6 +149,7 @@ void ds::RoomGenerator::generateCorridorWithWindows(const sf::Vector2i& pos,
     for (int i = 2; i <= 8; i += 2) {
         level->addBlock(new BlockWindow(), pos.x + i, pos.y - 1);
     }
+
     generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, rand() % 2);
 }
 
@@ -214,6 +215,10 @@ void ds::RoomGenerator::generateRoomDownStartOneExit(const sf::Vector2i& pos,
                            reinterpret_cast<Block*>(new BlockBrick());
             level->addBlock(block, pos.x + w + 1, pos.y - h);
         }
+    }
+
+    for (int i = 3; i <= 9; i += 2) {
+        level->addBlock(new BlockWindow(), pos.x + i, pos.y - 5);
     }
 
     generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, true);

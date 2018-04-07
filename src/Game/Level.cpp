@@ -52,9 +52,11 @@ void ds::Level::generateLevel() {
 bool ds::Level::isSpaceAvailable(const sf::IntRect& rect) {
     for (Block* block : blocks) {
         if (rect.intersects(block->getRect())) {
+            printf("ZAJETE\n");
             return false;
         }
     }
+    printf("WOLNE\n");
 
     return true;
 }

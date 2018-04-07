@@ -59,7 +59,6 @@ void ds::TestScene::control() {
             code = ds::ExitCode::Quit;
             window->close();
         }
-        // layout.listenToAll(&event);
     }
 
     player.handleKeys();
