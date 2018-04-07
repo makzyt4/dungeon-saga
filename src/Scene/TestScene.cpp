@@ -11,7 +11,7 @@ void ds::TestScene::init() {
     player.setLoader(loader);
     player.init();
     //player.setPosition(sf::Vector2f(400, 364));
-    player.setPosition(sf::Vector2f(1280, 1240));
+    player.setPosition(sf::Vector2f(1296, 1256));
     level.setPlayer(&player);
 
 

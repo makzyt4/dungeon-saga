@@ -7,8 +7,9 @@ void ds::Character::draw() {
 }
 
 void ds::Character::jump() {
-    // invert
-    if (!onGround) {
+    // TODO invert
+    // if (!onGround) {
+    if (true) {
         velocity.y = -(2 + agility / 100.0f);
         onGround = false;
     }

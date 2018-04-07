@@ -47,16 +47,54 @@ void ds::Level::draw() {
 void ds::Level::generateLevel() {
     bool startUp = rand() % 2;
     generator.generateRooms(sf::Vector2i(80, 80), 10, startUp);
+    surroundBlocks();
+}
+
+void ds::Level::surroundBlocks() {
+    for (Block* block : blocks) {
+        if (block->isCollidable()) {
+            continue;
+        }
+
+        sf::Vector2f point;
+
+        for (int i = -1; i <= 1; i++) {
+            for (int j = -1; j <= 1; j++) {
+                if (i == 0 && j == 0) {
+                    continue;
+                }
+
+                bool clear = true;
+                point = block->getCenter();
+                point.x += i * block->getRect().width;
+                point.y += j * block->getRect().height;
+
+                for (Block* block2 : blocks) {
+                    if (block == block2) {
+                        continue;
+                    }
+
+                    if (block2->getRect().contains(point.x, point.y)) {
+                        clear = false;
+                        break;
+                    }
+                }
+
+                if (clear) {
+                    addBlock(new BlockBrick(), block->getRect().left / 16 + i,
+                                               block->getRect().top / 16 + j);
+                }
+            }
+        }
+    }
 }
 
 bool ds::Level::isSpaceAvailable(const sf::IntRect& rect) {
     for (Block* block : blocks) {
         if (rect.intersects(block->getRect())) {
-            printf("ZAJETE\n");
             return false;
         }
     }
-    printf("WOLNE\n");
 
     return true;
 }

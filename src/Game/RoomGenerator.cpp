@@ -76,10 +76,10 @@ void ds::RoomGenerator::generateRoomUpStartTwoExits(const sf::Vector2i& pos,
     level->addBlock(new BlockBrick(), pos.x + 1, pos.y + 1);
     level->addBlock(new BlockBrick(), pos.x + 9, pos.y + 1);
     level->addBlock(new BlockBrick(), pos.x + 10, pos.y + 1);
-    level->addBlock(new BlockLadder(), pos.x + 8, pos.y + 4);
     level->addBlock(new BlockLadder(), pos.x + 8, pos.y + 1);
     level->addBlock(new BlockLadder(), pos.x + 8, pos.y + 2);
     level->addBlock(new BlockLadder(), pos.x + 8, pos.y + 3);
+    level->addBlock(new BlockLadder(), pos.x + 8, pos.y + 4);
 
     generateRooms(sf::Vector2i(pos.x + 10, pos.y + 4), rooms, true);
     generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, false);

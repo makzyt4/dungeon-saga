@@ -10,7 +10,11 @@ namespace ds {
     class Block : public DrawableObject, public Collidable, public Updatable {
     protected:
         bool destroyed = false;
+        bool playerSpawn = false;
+        bool treasureSpawn = false;
+        bool enemySpawn = false;
     public:
+        sf::Vector2f getCenter();
         virtual void init();
         virtual void update();
         virtual bool isClimbable() const;

@@ -22,6 +22,7 @@ namespace ds {
         void update();
         void draw();
         void generateLevel();
+        void surroundBlocks();
         bool isSpaceAvailable(const sf::IntRect& rect);
     };
 }
