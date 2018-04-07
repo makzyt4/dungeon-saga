@@ -11,7 +11,7 @@ void ds::TestScene::init() {
     player.setLoader(loader);
     player.init();
     //player.setPosition(sf::Vector2f(400, 364));
-    player.setPosition(sf::Vector2f(1280, 1280));
+    player.setPosition(sf::Vector2f(1280, 1240));
     level.setPlayer(&player);
 
 
@@ -43,7 +43,7 @@ void ds::TestScene::init() {
         }
     }
 
-    level.generateLevel(80, 80, 100);
+    level.generateLevel(80, 80, 10, rand() % 2);
 }
 
 void ds::TestScene::update() {

@@ -11,7 +11,7 @@ namespace ds {
     public:
         virtual void init();
         virtual void update();
-        virtual bool isClimbable();
+        virtual bool isClimbable() const;
         virtual bool isDestructible() const = 0;
     };
 }

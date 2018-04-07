@@ -8,6 +8,8 @@
 #include "../Block/BlockBackground.hpp"
 #include "../Block/BlockTorch.hpp"
 #include "../Block/BlockWindow.hpp"
+#include "../Block/BlockLadder.hpp"
+#include "../Block/BlockColumn.hpp"
 
 namespace ds {
     class Level : public DrawableObject, public Updatable {
@@ -20,7 +22,7 @@ namespace ds {
         void addBlock(Block* block, const size_t& x, const size_t& y);
         void update();
         void draw();
-        void generateLevel(int startX, int startY, std::uint8_t rooms);
+        void generateLevel(int startX, int startY, std::uint8_t rooms, bool startUp);
     };
 }
 

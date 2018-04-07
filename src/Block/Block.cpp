@@ -8,6 +8,6 @@ void ds::Block::init() {
 void ds::Block::update() {
 }
 
-bool ds::Block::isClimbable() {
+bool ds::Block::isClimbable() const {
     return false;
 }
