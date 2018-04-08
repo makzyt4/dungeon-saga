@@ -95,6 +95,13 @@ void ds::Character::collide(std::vector<ds::Block*>* blocks) {
             position.x = tmpPosition.x - velocity.x;
         }
     }
+
+    for (Block* block : *blocks) {
+        if (rect.intersects(block->getRect()) && block->isClimbable()) {
+            onGround = true;
+            break;
+        }
+    }
 }
 
 float ds::Character::getAcceleration() {
