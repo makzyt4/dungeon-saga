@@ -49,6 +49,8 @@ void ds::PlayerCharacter::init() {
     currentAnimation = &standingRight;
     direction = Direction::Right;
 
+    stepBuffer = loader->getSoundBuffer("step.ogg");
+
     rect.width = 12;
     rect.height = 31;
 }

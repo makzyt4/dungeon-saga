@@ -1,7 +1,10 @@
 #ifndef DS_GAME_LEVEL_HPP
 #define DS_GAME_LEVEL_HPP
 
+#define _USE_MATH_DEFINES
+
 #include <algorithm>
+#include <cmath>
 #include <vector>
 #include "../Character/PlayerCharacter.hpp"
 #include "RoomGenerator.hpp"

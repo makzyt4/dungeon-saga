@@ -36,16 +36,19 @@ void ds::Level::update() {
 }
 
 void ds::Level::draw() {
+    const float maxDistance = std::max(window->getSize().x / 2, window->getSize().y / 2);
+
     for (Block* block : blocks) {
         const float dx = block->getCenter().x - player->getCenter().x; 
         const float dy = block->getCenter().y - player->getCenter().y; 
-
+     
         const float distance = std::sqrt(dx * dx + dy * dy);
 
-        if (distance < std::max(window->getSize().x, window->getSize().y)) {
+        if (distance < maxDistance) {
             block->draw();
         }
     }
+
     player->draw();
 }
 

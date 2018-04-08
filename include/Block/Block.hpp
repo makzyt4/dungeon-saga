@@ -13,8 +13,13 @@ namespace ds {
         bool playerSpawn = false;
         bool treasureSpawn = false;
         bool enemySpawn = false;
+        bool shadow = false;
     public:
+        bool isShadow();
         sf::Vector2f getCenter();
+
+        void setShadow(const bool& shadow);
+
         virtual void init();
         virtual void update();
         virtual bool isClimbable() const;

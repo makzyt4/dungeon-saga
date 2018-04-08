@@ -7,15 +7,15 @@ void ds::Character::draw() {
 }
 
 void ds::Character::jump() {
-    // TODO invert
-    // if (!onGround) {
-    if (true) {
+     if (onGround) {
         velocity.y = -(2 + agility / 100.0f);
         onGround = false;
     }
 }
 
 void ds::Character::update() {
+    stepDelay = std::max(0, stepDelay - 1);
+
     if (velocity.x < -getMaxSpeed()) {
         velocity.x = -getMaxSpeed();
     } else if (velocity.x > getMaxSpeed()) {
@@ -34,6 +34,12 @@ void ds::Character::update() {
         currentAnimation = direction == Direction::Left ?
                            &movingLeft :
                            &movingRight;
+        if (stepDelay == 0 && onGround) {
+            sf::Sound* sound = new sf::Sound();
+            sound->setBuffer(*stepBuffer);
+            sound->play();
+            stepDelay = 40;
+        }
     } else {
         velocity.x = 0;
         currentAnimation = direction == Direction::Left ?

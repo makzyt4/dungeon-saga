@@ -32,6 +32,10 @@ namespace ds {
         Animation movingLeft;
 
         Animation* currentAnimation;
+
+        sf::SoundBuffer* stepBuffer;
+
+        int stepDelay = 0;
     public:
         // TODO void attack();
         // TODO void die();
