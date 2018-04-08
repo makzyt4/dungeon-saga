@@ -9,8 +9,7 @@ void ds::Level::setPlayer(PlayerCharacter* player) {
     this->player = player;
 }
 
-void ds::Level::addBlock(ds::Block* block, const std::size_t& x,
-                         const std::size_t& y) {
+void ds::Level::addBlock(ds::Block* block, const std::size_t& x, const std::size_t& y) {
     block->setWindow(window);
     block->setLoader(loader);
     block->init();
@@ -18,8 +17,7 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x,
 
     for (Block* b : blocks) {
         if (block->getRect().intersects(b->getRect())) {
-            std::vector<Block*>::iterator position = std::find(blocks.begin(),
-                                                               blocks.end(), b);
+            std::vector<Block*>::iterator position = std::find(blocks.begin(), blocks.end(), b);
             if (position != blocks.end()) {
                 blocks.erase(position);
             }
@@ -39,14 +37,21 @@ void ds::Level::update() {
 
 void ds::Level::draw() {
     for (Block* block : blocks) {
-        block->draw();
+        const float dx = block->getCenter().x - player->getCenter().x; 
+        const float dy = block->getCenter().y - player->getCenter().y; 
+
+        const float distance = std::sqrt(dx * dx + dy * dy);
+
+        if (distance < std::max(window->getSize().x, window->getSize().y)) {
+            block->draw();
+        }
     }
     player->draw();
 }
 
-void ds::Level::generateLevel() {
+void ds::Level::generateLevel(const std::uint8_t& rooms) {
     bool startUp = rand() % 2;
-    generator.generateRooms(sf::Vector2i(80, 80), 10, startUp);
+    generator.generateRooms(sf::Vector2i(80, 80), rooms, startUp);
     surroundBlocks();
 }
 
@@ -81,8 +86,7 @@ void ds::Level::surroundBlocks() {
                 }
 
                 if (clear) {
-                    addBlock(new BlockBrick(), block->getRect().left / 16 + i,
-                                               block->getRect().top / 16 + j);
+                    addBlock(new BlockBrick(), block->getRect().left / 16 + i, block->getRect().top / 16 + j);
                 }
             }
         }

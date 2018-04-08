@@ -34,3 +34,6 @@
 # Project dirs
 bin/
 obj/
+
+# Editor files
+.vscode/

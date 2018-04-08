@@ -43,7 +43,7 @@ void ds::TestScene::init() {
         }
     }
 
-    level.generateLevel();
+    level.generateLevel(20);
 }
 
 void ds::TestScene::update() {

@@ -9,9 +9,7 @@ ds::RoomGenerator::RoomGenerator(Level* level) {
     this->level = level;
 }
 
-void ds::RoomGenerator::generateRooms(const sf::Vector2i& pos,
-                                      std::uint8_t rooms,
-                                      const bool& startUp) {
+void ds::RoomGenerator::generateRooms(const sf::Vector2i& pos, std::uint8_t rooms, const bool& startUp) {
     if (rooms == 0) {
         return;
     }
@@ -48,8 +46,7 @@ void ds::RoomGenerator::generateRooms(const sf::Vector2i& pos,
     }
 }
 
-void ds::RoomGenerator::generateRoomUpStartTwoExits(const sf::Vector2i& pos,
-                                                    const std::uint8_t& rooms) {
+void ds::RoomGenerator::generateRoomUpStartTwoExits(const sf::Vector2i& pos, const std::uint8_t& rooms) {
     sf::IntRect rect;
     rect.left = pos.x + 16;
     rect.top = pos.y - 32;
@@ -62,9 +59,7 @@ void ds::RoomGenerator::generateRoomUpStartTwoExits(const sf::Vector2i& pos,
 
     for (int w = 0; w < 10; w++) {
         for (int h = 0; h < 7; h++) {
-            level->addBlock(new BlockBackground(),
-                            pos.x + w + 1,
-                            pos.y + h - 2);
+            level->addBlock(new BlockBackground(), pos.x + w + 1, pos.y + h - 2);
         }
     }
 
@@ -85,8 +80,7 @@ void ds::RoomGenerator::generateRoomUpStartTwoExits(const sf::Vector2i& pos,
     generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, false);
 }
 
-void ds::RoomGenerator::generateRoomUpStartOneExit(const sf::Vector2i& pos,
-                                                   const std::uint8_t& rooms) {
+void ds::RoomGenerator::generateRoomUpStartOneExit(const sf::Vector2i& pos, const std::uint8_t& rooms) {
     sf::IntRect rect;
     rect.left = pos.x + 16;
     rect.top = pos.y - 32;
@@ -127,8 +121,7 @@ void ds::RoomGenerator::generateRoomUpStartOneExit(const sf::Vector2i& pos,
     generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, false);
 }
 
-void ds::RoomGenerator::generateCorridorWithColumns(const sf::Vector2i& pos,
-                                                    const std::uint8_t& rooms) {
+void ds::RoomGenerator::generateCorridorWithColumns(const sf::Vector2i& pos, const std::uint8_t& rooms) {
     sf::IntRect rect;
     rect.left = pos.x + 32;
     rect.top = pos.y - 32;
@@ -172,8 +165,7 @@ void ds::RoomGenerator::generateCorridor(const sf::Vector2i& pos,
     generateRooms(sf::Vector2i(pos.x + 10, pos.y), rooms, rand() % 2);
 }
 
-void ds::RoomGenerator::generateCorridorWithWindows(const sf::Vector2i& pos,
-                                                    const std::uint8_t& rooms) {
+void ds::RoomGenerator::generateCorridorWithWindows(const sf::Vector2i& pos, const std::uint8_t& rooms) {
     sf::IntRect rect;
     rect.left = pos.x + 32;
     rect.top = pos.y - 32;

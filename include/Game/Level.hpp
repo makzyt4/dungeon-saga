@@ -21,7 +21,7 @@ namespace ds {
         void addBlock(Block* block, const size_t& x, const size_t& y);
         void update();
         void draw();
-        void generateLevel();
+        void generateLevel(const std::uint8_t& rooms);
         void surroundBlocks();
         bool isSpaceAvailable(const sf::IntRect& rect);
     };
