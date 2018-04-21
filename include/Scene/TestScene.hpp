@@ -16,6 +16,9 @@ namespace ds {
         Button button;
         PlayerCharacter player;
         Level level;
+
+        int tick = 0;
+        sf::Clock clock;
     public:
         using Scene::Scene;
 

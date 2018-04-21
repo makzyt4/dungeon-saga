@@ -10,7 +10,6 @@ void ds::TestScene::init() {
     player.setWindow(window);
     player.setLoader(loader);
     player.init();
-    //player.setPosition(sf::Vector2f(400, 364));
     player.setPosition(sf::Vector2f(1296, 1256));
     level.setPlayer(&player);
 
@@ -22,33 +21,19 @@ void ds::TestScene::init() {
     button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
 
-    // for (int i = 0; i < 10; i++) {
-    //     level.addBlock(new BlockBrick(), 20 + i, 21);
-    // }
-
-    // level.addBlock(new BlockBrick(), 20, 22);
-    // level.addBlock(new BlockBrick(), 20, 23);
-    // level.addBlock(new BlockBrick(), 20, 24);
-    // level.addBlock(new BlockBrick(), 29, 22);
-    // level.addBlock(new BlockBrick(), 29, 23);
-    // level.addBlock(new BlockBrick(), 29, 24);
-
-    // for (int i = 0; i < 10; i++) {
-    //     level.addBlock(new BlockBrick(), 20 + i, 25);
-    // }
-
-    // for (int j = 0; j < 3; j++) {
-    //     for (int i = 0; i < 8; i++) {
-    //         level.addBlock(new BlockTorch(), 21 + i, 22 + j);
-    //     }
-    // }
-
     level.generateLevel(10);
 }
 
 void ds::TestScene::update() {
+    if (clock.getElapsedTime().asSeconds() >= 1) {
+        printf("FPS: %d\n", tick);
+        tick = 0;
+        clock.restart();
+    }
+
     level.update();
     generateView(player.getCenter());
+    tick++;
 }
 
 void ds::TestScene::control() {
