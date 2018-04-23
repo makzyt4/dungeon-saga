@@ -47,7 +47,7 @@ void ds::TestScene::control() {
     }
 
     player.handleKeys();
-    sf::sleep(sf::milliseconds(17));
+    sf::sleep(sf::milliseconds(13));
 }
 
 void ds::TestScene::draw() {
