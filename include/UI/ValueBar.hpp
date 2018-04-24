@@ -3,6 +3,7 @@
 
 #include "../Graphics/DrawableObject.hpp"
 #include "../Util/RegeneratedValue.hpp"
+#include "../Graphics/Text.hpp"
 
 namespace ds {
     class ValueBar : public DrawableObject {

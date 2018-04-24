@@ -35,4 +35,20 @@ void ds::ValueBar::draw() {
         sprite.setPosition(rect.left + i * 8, rect.top);
         window->draw(sprite);
     }
+
+    std::string textValue = std::to_string(value->getValue()) + "/" + std::to_string(value->getMax());
+
+    ds::Text text;
+    text.setWindow(window);
+    text.setString(textValue);
+    text.setPosition(sf::Vector2f(
+                     1 + rect.left + (BAR_LENGTH * 8 - text.getSize().x) / 2,
+                     1 + rect.top + text.getSize().y / 2));
+    text.setColor(sf::Color::Black);
+    text.draw();
+    text.setPosition(sf::Vector2f(
+                     rect.left + (BAR_LENGTH * 8 - text.getSize().x) / 2,
+                     rect.top + text.getSize().y / 2));
+    text.setColor(sf::Color::White);
+    text.draw();
 }
