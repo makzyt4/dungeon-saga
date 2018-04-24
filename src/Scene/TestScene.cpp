@@ -52,8 +52,8 @@ void ds::TestScene::update() {
                                player.getCenter().y - window->getSize().y / 4);
 
     healthBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 5));
-    staminaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 30));
-    magickaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 55));
+    staminaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 20));
+    magickaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 35));
 
     tick++;
 }
@@ -69,7 +69,7 @@ void ds::TestScene::control() {
     }
 
     player.handleKeys();
-    sf::sleep(sf::milliseconds(13));
+    sf::sleep(sf::milliseconds(10));
 }
 
 void ds::TestScene::draw() {

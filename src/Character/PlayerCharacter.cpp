@@ -19,6 +19,8 @@ void ds::PlayerCharacter::init() {
     magicka.setRegeneration(0);
     magicka.setRegenerationTime(sf::seconds(5));
 
+    experience = RegeneratedValue(0, 0, 100);
+
     sf::Texture* texture = loader->getTexture("hero.png");
 
     standingRight.setFrameTime(sf::seconds(0.5));

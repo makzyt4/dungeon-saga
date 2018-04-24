@@ -49,6 +49,7 @@ namespace ds {
         RegeneratedValue health;
         RegeneratedValue stamina;
         RegeneratedValue magicka;
+        RegeneratedValue experience;
     };
 }
 

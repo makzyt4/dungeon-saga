@@ -17,16 +17,16 @@ void ds::ValueBar::draw() {
     sf::RectangleShape shape;
     shape.setFillColor(color);
     shape.setPosition(rect.left, rect.top);
-    shape.setSize(sf::Vector2f(8 * BAR_LENGTH * value->fillRatio(), 16));
+    shape.setSize(sf::Vector2f(8 * BAR_LENGTH * value->fillRatio(), 8));
     window->draw(shape);
 
     for (int i = 0; i < BAR_LENGTH; i++) {
         if (i == 0) {
-            spriteRect = sf::IntRect(0, 72, 8, 16);
+            spriteRect = sf::IntRect(0, 72, 8, 8);
         } else if (i == BAR_LENGTH - 1) {
-            spriteRect = sf::IntRect(16, 72, 8, 16);
+            spriteRect = sf::IntRect(16, 72, 8, 8);
         } else {
-            spriteRect = sf::IntRect(8, 72, 8, 16);
+            spriteRect = sf::IntRect(8, 72, 8, 8);
         }
 
         sf::Sprite sprite;
@@ -43,12 +43,12 @@ void ds::ValueBar::draw() {
     text.setString(textValue);
     text.setPosition(sf::Vector2f(
                      1 + rect.left + (BAR_LENGTH * 8 - text.getSize().x) / 2,
-                     1 + rect.top + text.getSize().y / 2));
+                     1 + rect.top));
     text.setColor(sf::Color::Black);
     text.draw();
     text.setPosition(sf::Vector2f(
                      rect.left + (BAR_LENGTH * 8 - text.getSize().x) / 2,
-                     rect.top + text.getSize().y / 2));
+                     rect.top));
     text.setColor(sf::Color::White);
     text.draw();
 }
