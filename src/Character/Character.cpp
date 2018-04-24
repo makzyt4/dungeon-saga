@@ -36,6 +36,7 @@ void ds::Character::update() {
     }
 
     currentAnimation->play();
+
     setPosition(sf::Vector2f(position.x + velocity.x,
                              position.y + velocity.y));
 

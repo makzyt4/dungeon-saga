@@ -16,6 +16,8 @@ namespace ds {
         PlayerCharacter* player;
         std::vector<Block*> blocks;
         RoomGenerator generator;
+
+        sf::Clock playerClock;
     public:
         Level();
 

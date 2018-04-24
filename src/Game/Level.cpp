@@ -28,11 +28,15 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x, const std::size
 }
 
 void ds::Level::update() {
-    for (Block* b : blocks) {
-        b->update();
+    if (playerClock.getElapsedTime() > sf::milliseconds(17)) {
+        for (Block* b : blocks) {
+            b->update();
+        }
+
+        player->collide(&blocks);
+        player->update();
+        playerClock.restart();
     }
-    player->collide(&blocks);
-    player->update();
 }
 
 void ds::Level::draw() {
