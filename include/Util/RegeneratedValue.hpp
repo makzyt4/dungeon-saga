@@ -19,6 +19,8 @@ namespace ds {
         RegeneratedValue(const int& min, const int& max, const int& value);
 
         int getValue() const;
+        int getMin() const;
+        int getMax() const;
 
         void setMin(const int& value);
         void setMax(const int& value);

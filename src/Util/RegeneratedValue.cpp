@@ -49,6 +49,14 @@ int ds::RegeneratedValue::getValue() const {
     return value;
 }
 
+int ds::RegeneratedValue::getMin() const {
+    return min;
+}
+
+int ds::RegeneratedValue::getMax() const {
+    return max;
+}
+
 float ds::RegeneratedValue::fillRatio() const {
     return (float)(value - min) / (float)(max - min);
 }
