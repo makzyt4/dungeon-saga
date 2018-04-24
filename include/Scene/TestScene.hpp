@@ -21,7 +21,9 @@ namespace ds {
         int tick = 0;
         sf::Clock clock;
 
+        ValueBar healthBar;
         ValueBar staminaBar;
+        ValueBar magickaBar;
     public:
         using Scene::Scene;
 

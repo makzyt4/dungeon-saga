@@ -20,10 +20,20 @@ void ds::TestScene::init() {
     button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
 
+    healthBar.setWindow(window);
+    healthBar.setLoader(loader);
+    healthBar.setColor(sf::Color::Red);
+    healthBar.setValue(&player.health);
+
     staminaBar.setWindow(window);
     staminaBar.setLoader(loader);
     staminaBar.setColor(sf::Color::Green);
     staminaBar.setValue(&player.stamina);
+
+    magickaBar.setWindow(window);
+    magickaBar.setLoader(loader);
+    magickaBar.setColor(sf::Color::Blue);
+    magickaBar.setValue(&player.magicka);
 
     level.generateLevel(10);
 }
@@ -41,7 +51,9 @@ void ds::TestScene::update() {
     sf::Vector2f fixedPosition(player.getCenter().x - window->getSize().x / 4, 
                                player.getCenter().y - window->getSize().y / 4);
 
-    staminaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 25));
+    healthBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 5));
+    staminaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 30));
+    magickaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 55));
 
     tick++;
 }
@@ -64,6 +76,11 @@ void ds::TestScene::draw() {
     window->clear();
     // layout.draw();
     level.draw();
+
+    // Draw UI
+    healthBar.draw();
     staminaBar.draw();
+    magickaBar.draw();
+
     window->display();
 }
