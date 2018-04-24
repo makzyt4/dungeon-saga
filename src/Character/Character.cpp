@@ -7,13 +7,26 @@ void ds::Character::draw() {
 }
 
 void ds::Character::jump() {
-     if (onGround) {
+    float velocityY = -(2 + agility / 100.0f);
+
+    if (climbing) {
+        velocity.y = velocityY;
+        onGround = false;
+        return;
+    }
+
+    if (onGround && stamina.getValue() >= 3) {
+        stamina.addValue(-3);
         velocity.y = -(2 + agility / 100.0f);
         onGround = false;
     }
 }
 
 void ds::Character::update() {
+    stamina.update();
+    health.update();
+    magicka.update();
+
     stepDelay = std::max(0, stepDelay - 1);
 
     if (velocity.x < -getMaxSpeed()) {
@@ -52,6 +65,7 @@ void ds::Character::update() {
 void ds::Character::collide(std::vector<ds::Block*>* blocks) {
     sf::Vector2f tmpPosition = position;
     onGround = false;
+    climbing = false;
 
     for (Block* block : *blocks) {
         if (!block->isCollidable()) {
@@ -98,7 +112,7 @@ void ds::Character::collide(std::vector<ds::Block*>* blocks) {
 
     for (Block* block : *blocks) {
         if (rect.intersects(block->getRect()) && block->isClimbable()) {
-            onGround = true;
+            climbing = true;
             break;
         }
     }

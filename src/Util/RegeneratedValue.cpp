@@ -33,8 +33,9 @@ void ds::RegeneratedValue::setRegenerationTime(const sf::Time& time) {
 
 void ds::RegeneratedValue::addValue(const int& value) {
     this->value += value;
-    this->value = std::min(max, value);
-    this->value = std::max(min, value);
+
+    if (this->value > max) this->value = max;
+    if (this->value < min) this->value = min;
 }
 
 void ds::RegeneratedValue::update() {
@@ -42,6 +43,10 @@ void ds::RegeneratedValue::update() {
         addValue(regeneration);
         clock.restart();
     }
+}
+
+int ds::RegeneratedValue::getValue() const {
+    return value;
 }
 
 float ds::RegeneratedValue::fillRatio() const {

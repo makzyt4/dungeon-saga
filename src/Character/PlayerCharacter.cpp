@@ -5,6 +5,7 @@ void ds::PlayerCharacter::init() {
     agility = 1;
     intelligence = 1;
     onGround = false;
+    climbing = false;
 
     health = RegeneratedValue(0, 10, 10);
     health.setRegeneration(0);

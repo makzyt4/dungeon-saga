@@ -21,6 +21,7 @@ namespace ds {
         sf::Vector2f lastPosition;
         Direction direction;
         bool onGround;
+        bool climbing;
 
         Animation standingRight;
         Animation standingLeft;
