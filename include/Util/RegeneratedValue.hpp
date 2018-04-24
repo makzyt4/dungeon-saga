@@ -28,6 +28,7 @@ namespace ds {
 
         void addValue(const int& value);
         void update();
+        float fillRatio() const;
     };
 }
 

@@ -22,6 +22,8 @@ void ds::TestScene::init() {
 
     staminaBar.setWindow(window);
     staminaBar.setLoader(loader);
+    staminaBar.setColor(sf::Color::Green);
+    staminaBar.setValue(&player.stamina);
 
     level.generateLevel(10);
 }

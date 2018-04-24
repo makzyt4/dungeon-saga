@@ -17,10 +17,6 @@ namespace ds {
         std::int16_t agility;
         std::int16_t intelligence;
 
-        RegeneratedValue health;
-        RegeneratedValue stamina;
-        RegeneratedValue magicka;
-
         sf::Vector2f velocity;
         sf::Vector2f lastPosition;
         Direction direction;
@@ -48,6 +44,10 @@ namespace ds {
         sf::Vector2f getCenter();
         virtual void init() = 0;
         virtual bool isFlying() const = 0;
+
+        RegeneratedValue health;
+        RegeneratedValue stamina;
+        RegeneratedValue magicka;
     };
 }
 

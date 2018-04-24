@@ -14,6 +14,12 @@ void ds::ValueBar::draw() {
 
     const int BAR_LENGTH = 10;
 
+    sf::RectangleShape shape;
+    shape.setFillColor(color);
+    shape.setPosition(rect.left, rect.top);
+    shape.setSize(sf::Vector2f(8 * BAR_LENGTH * value->fillRatio(), 16));
+    window->draw(shape);
+
     for (int i = 0; i < BAR_LENGTH; i++) {
         if (i == 0) {
             spriteRect = sf::IntRect(0, 72, 8, 16);

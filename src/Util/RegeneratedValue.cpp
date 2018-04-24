@@ -43,3 +43,7 @@ void ds::RegeneratedValue::update() {
         clock.restart();
     }
 }
+
+float ds::RegeneratedValue::fillRatio() const {
+    return (float)(value - min) / (float)(max - min);
+}
