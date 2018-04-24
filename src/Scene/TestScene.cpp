@@ -35,6 +35,10 @@ void ds::TestScene::init() {
     magickaBar.setColor(sf::Color::Blue);
     magickaBar.setValue(&player.magicka);
 
+    expBar.setWindow(window);
+    expBar.setLoader(loader);
+    expBar.setValue(&player.experience);
+
     level.generateLevel(10);
 }
 
@@ -54,6 +58,7 @@ void ds::TestScene::update() {
     healthBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 5));
     staminaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 20));
     magickaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 35));
+    expBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 50));
 
     tick++;
 }
@@ -81,6 +86,7 @@ void ds::TestScene::draw() {
     healthBar.draw();
     staminaBar.draw();
     magickaBar.draw();
+    expBar.draw();
 
     window->display();
 }

@@ -9,6 +9,7 @@
 #include "../Block/BlockBackground.hpp"
 #include "../Block/BlockTorch.hpp"
 #include "../UI/ValueBar.hpp"
+#include "../UI/ExperienceBar.hpp"
 
 namespace ds {
     class TestScene : public Scene {
@@ -24,6 +25,8 @@ namespace ds {
         ValueBar healthBar;
         ValueBar staminaBar;
         ValueBar magickaBar;
+
+        ExperienceBar expBar;
     public:
         using Scene::Scene;
 
