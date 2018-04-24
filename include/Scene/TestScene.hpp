@@ -8,6 +8,7 @@
 #include "../Game/Level.hpp"
 #include "../Block/BlockBackground.hpp"
 #include "../Block/BlockTorch.hpp"
+#include "../UI/ValueBar.hpp"
 
 namespace ds {
     class TestScene : public Scene {
@@ -19,6 +20,8 @@ namespace ds {
 
         int tick = 0;
         sf::Clock clock;
+
+        ValueBar staminaBar;
     public:
         using Scene::Scene;
 

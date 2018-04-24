@@ -13,13 +13,15 @@ void ds::TestScene::init() {
     player.setPosition(sf::Vector2f(1296, 1256));
     level.setPlayer(&player);
 
-
     button.init();
     button.setText("TEST");
     button.setSize(sf::Vector2i(5, 3));
     button.setPosition(sf::Vector2f(448, 300));
     button.setOnMouseReleasedAction([](){printf("TEST\n");});
     layout.addElement(&button);
+
+    staminaBar.setWindow(window);
+    staminaBar.setLoader(loader);
 
     level.generateLevel(10);
 }
@@ -33,6 +35,12 @@ void ds::TestScene::update() {
 
     level.update();
     generateView(player.getCenter());
+
+    sf::Vector2f fixedPosition(player.getCenter().x - window->getSize().x / 4, 
+                               player.getCenter().y - window->getSize().y / 4);
+
+    staminaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 25));
+
     tick++;
 }
 
@@ -54,5 +62,6 @@ void ds::TestScene::draw() {
     window->clear();
     // layout.draw();
     level.draw();
+    staminaBar.draw();
     window->display();
 }

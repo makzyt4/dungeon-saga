@@ -7,11 +7,9 @@
 namespace ds {
     class ValueBar : public DrawableObject {
     private:
-        sf::Vector2f position;
         sf::Color color;
         RegeneratedValue* value;
     public:
-        void setPosition(const sf::Vector2f& position);
         void setColor(const sf::Color& color);
         void setValue(RegeneratedValue* value);
 
