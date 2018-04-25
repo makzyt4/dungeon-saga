@@ -43,6 +43,14 @@ void ds::TestScene::init() {
     bombText.setLoader(loader);
     bombText.setColor(sf::Color::White);
 
+    hPotionText.setWindow(window);
+    hPotionText.setLoader(loader);
+    hPotionText.setColor(sf::Color::White);
+
+    mPotionText.setWindow(window);
+    mPotionText.setLoader(loader);
+    mPotionText.setColor(sf::Color::White);
+
     level.generateLevel(10);
 }
 
@@ -68,7 +76,13 @@ void ds::TestScene::update() {
     expBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 50));
 
     bombText.setString("[B] Bombs: " + std::to_string(player.bombs));
-    bombText.setPosition(sf::Vector2f(fixedEndPosition.x - 120, fixedEndPosition.y - 10));
+    bombText.setPosition(sf::Vector2f(fixedEndPosition.x - 150, fixedEndPosition.y - 10));
+
+    mPotionText.setString("[J] M.Pot: " + std::to_string(player.mPotions));
+    mPotionText.setPosition(sf::Vector2f(fixedEndPosition.x - 150, fixedEndPosition.y - 20));
+
+    hPotionText.setString("[H] H.Pot: " + std::to_string(player.hPotions));
+    hPotionText.setPosition(sf::Vector2f(fixedEndPosition.x - 150, fixedEndPosition.y - 30));
 
     tick++;
 }
@@ -99,6 +113,8 @@ void ds::TestScene::draw() {
     expBar.draw();
 
     bombText.draw();
+    hPotionText.draw();
+    mPotionText.draw();
 
     window->display();
 }

@@ -29,6 +29,8 @@ namespace ds {
         ExperienceBar expBar;
 
         Text bombText;
+        Text hPotionText;
+        Text mPotionText;
     public:
         using Scene::Scene;
 
