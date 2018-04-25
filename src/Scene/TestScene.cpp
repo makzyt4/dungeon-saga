@@ -39,6 +39,10 @@ void ds::TestScene::init() {
     expBar.setLoader(loader);
     expBar.setValue(&player.experience);
 
+    bombText.setWindow(window);
+    bombText.setLoader(loader);
+    bombText.setColor(sf::Color::White);
+
     level.generateLevel(10);
 }
 
@@ -55,10 +59,16 @@ void ds::TestScene::update() {
     sf::Vector2f fixedPosition(player.getCenter().x - window->getSize().x / 4, 
                                player.getCenter().y - window->getSize().y / 4);
 
+    sf::Vector2f fixedEndPosition(player.getCenter().x + window->getSize().x / 4, 
+                                  player.getCenter().y + window->getSize().y / 4);
+
     healthBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 5));
     staminaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 20));
     magickaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 35));
     expBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 50));
+
+    bombText.setString("[B] Bombs: " + std::to_string(player.bombs));
+    bombText.setPosition(sf::Vector2f(fixedEndPosition.x - 120, fixedEndPosition.y - 10));
 
     tick++;
 }
@@ -87,6 +97,8 @@ void ds::TestScene::draw() {
     staminaBar.draw();
     magickaBar.draw();
     expBar.draw();
+
+    bombText.draw();
 
     window->display();
 }

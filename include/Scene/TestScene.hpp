@@ -27,6 +27,8 @@ namespace ds {
         ValueBar magickaBar;
 
         ExperienceBar expBar;
+
+        Text bombText;
     public:
         using Scene::Scene;
 
