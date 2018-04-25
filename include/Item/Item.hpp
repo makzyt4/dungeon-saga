@@ -4,14 +4,10 @@
 #include <SFML/Graphics.hpp>
 #include "../Graphics/DrawableObject.hpp"
 #include "../Enum/ItemType.hpp"
-#include "../Game/Level.hpp"
 
 namespace ds {
-    class Item {
+    class Item : public DrawableObject {
     protected:
-        ItemType type;
-        std::string name = "UnknownItem";
-
         // Potion
         int healthBonus = 0;
         int magickaBonus = 0;
@@ -24,10 +20,13 @@ namespace ds {
         int meleeDamage = 3;
     
     public:
+        ItemType type;
+        std::string name = "UnknownItem";
+
         sf::Sprite sprite;
 
-        virtual void use(Level* level);
         virtual void init();
+        void draw();
     };
 }
 

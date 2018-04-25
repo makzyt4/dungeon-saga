@@ -6,7 +6,6 @@
 namespace ds {
     class BombItem : public Item {
     public:
-        void use(Level* level);
         void init();
     };
 }

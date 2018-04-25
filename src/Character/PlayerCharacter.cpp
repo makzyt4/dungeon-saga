@@ -52,6 +52,19 @@ void ds::PlayerCharacter::init() {
     currentAnimation = &standingRight;
     direction = Direction::Right;
 
+    for (int i = 0; i < 6; i++) {
+        items[i] = NULL;
+    }
+
+    // TODO remove this
+    BombItem* bomb = new BombItem();
+    bomb->setWindow(window);
+    bomb->setLoader(loader);
+    bomb->init();
+    items[0] = bomb;
+
+    printf("%s\n", items[0]->name.c_str());
+
     stepBuffer = loader->getSoundBuffer("step.ogg");
 
     rect.width = 12;

@@ -6,9 +6,8 @@
 
 namespace ds {
     class ItemSlot : public Node {
-    private:
-        Item* item = NULL;
     public:
+        Item* item = NULL;
         bool selected = false;
 
         void draw();

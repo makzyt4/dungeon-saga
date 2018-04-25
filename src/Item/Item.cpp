@@ -3,5 +3,5 @@
 void ds::Item::init() {
 }
 
-void ds::Item::use(Level* level) {
+void ds::Item::draw() {
 }

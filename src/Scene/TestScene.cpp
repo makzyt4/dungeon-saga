@@ -68,6 +68,7 @@ void ds::TestScene::update() {
 
     for (int i = 0; i < 6; i++) {
         slots[i].setPosition(sf::Vector2f(fixedPosition.x + 100 + 40 * i, fixedPosition.y + 5));
+        slots[i].item = player.items[i];
     }
 
     tick++;
