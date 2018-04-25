@@ -7,7 +7,7 @@
 #include "../Game/Level.hpp"
 
 namespace ds {
-    class Item : public DrawableObject {
+    class Item {
     protected:
         ItemType type;
         std::string name = "UnknownItem";
@@ -24,8 +24,10 @@ namespace ds {
         int meleeDamage = 3;
     
     public:
-        virtual void use(Level* level) = 0;
-        virtual void init() = 0;
+        sf::Sprite sprite;
+
+        virtual void use(Level* level);
+        virtual void init();
     };
 }
 

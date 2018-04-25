@@ -10,6 +10,7 @@
 #include "../Block/BlockTorch.hpp"
 #include "../UI/ValueBar.hpp"
 #include "../UI/ExperienceBar.hpp"
+#include "../UI/ItemSlot.hpp"
 
 namespace ds {
     class TestScene : public Scene {
@@ -27,6 +28,8 @@ namespace ds {
         ValueBar magickaBar;
 
         ExperienceBar expBar;
+
+        ItemSlot slots[6];
     public:
         using Scene::Scene;
 
