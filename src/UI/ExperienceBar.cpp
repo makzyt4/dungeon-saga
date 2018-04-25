@@ -12,5 +12,10 @@ void ds::ExperienceBar::draw() {
     outlineShape.setPosition(rect.left, rect.top);
     outlineShape.setSize(sf::Vector2f(80, 4));
 
+    sf::RectangleShape fillShape;
+    fillShape.setFillColor(sf::Color::White);
+    fillShape.setPosition(rect.left, rect.top);
+    fillShape.setSize(sf::Vector2f(80 * value->fillRatio(), 4));
+
     window->draw(outlineShape);
 }
