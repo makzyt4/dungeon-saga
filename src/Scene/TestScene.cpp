@@ -39,12 +39,6 @@ void ds::TestScene::init() {
     expBar.setLoader(loader);
     expBar.setValue(&player.experience);
 
-    for (int i = 0; i < 6; i++) {
-        slots[i].setWindow(window);
-        slots[i].setLoader(loader);
-        slots[i].selected = i == 0;
-    }
-
     level.generateLevel(10);
 }
 
@@ -66,11 +60,6 @@ void ds::TestScene::update() {
     magickaBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 35));
     expBar.setPosition(sf::Vector2f(fixedPosition.x + 10, fixedPosition.y + 50));
 
-    for (int i = 0; i < 6; i++) {
-        slots[i].setPosition(sf::Vector2f(fixedPosition.x + 100 + 40 * i, fixedPosition.y + 5));
-        slots[i].item = player.items[i];
-    }
-
     tick++;
 }
 
@@ -81,16 +70,6 @@ void ds::TestScene::control() {
         if (event.type == sf::Event::Closed) {
             code = ds::ExitCode::Quit;
             window->close();
-        }
-
-        if (event.type == sf::Event::KeyPressed) {
-            if (event.key.code >= sf::Keyboard::Num1 && event.key.code <= sf::Keyboard::Num6) {
-                int selectedIndex = event.key.code - sf::Keyboard::Num1;
-
-                for (int i = 0; i < 6; i++) {
-                    slots[i].selected = i == selectedIndex;
-                }
-            }
         }
     }
 
@@ -108,10 +87,6 @@ void ds::TestScene::draw() {
     staminaBar.draw();
     magickaBar.draw();
     expBar.draw();
-
-    for (int i = 0; i < 6; i++) {
-        slots[i].draw();
-    }
 
     window->display();
 }

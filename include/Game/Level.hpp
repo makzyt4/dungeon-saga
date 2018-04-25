@@ -8,7 +8,6 @@
 #include <vector>
 #include "../Character/PlayerCharacter.hpp"
 #include "RoomGenerator.hpp"
-#include "../Item/Item.hpp"
 
 namespace ds {
     class Level : public DrawableObject, public Updatable {

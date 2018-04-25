@@ -7,6 +7,10 @@ void ds::PlayerCharacter::init() {
     onGround = false;
     climbing = false;
 
+    bombs = 0;
+    hPotions = 0;
+    mPotions = 0;
+
     health = RegeneratedValue(0, 10, 10);
     health.setRegeneration(0);
     health.setRegenerationTime(sf::seconds(5));
@@ -51,19 +55,6 @@ void ds::PlayerCharacter::init() {
 
     currentAnimation = &standingRight;
     direction = Direction::Right;
-
-    for (int i = 0; i < 6; i++) {
-        items[i] = NULL;
-    }
-
-    // TODO remove this
-    BombItem* bomb = new BombItem();
-    bomb->setWindow(window);
-    bomb->setLoader(loader);
-    bomb->init();
-    items[0] = bomb;
-
-    printf("%s\n", items[0]->name.c_str());
 
     stepBuffer = loader->getSoundBuffer("step.ogg");
 
