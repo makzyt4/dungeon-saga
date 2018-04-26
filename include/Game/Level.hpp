@@ -8,6 +8,7 @@
 #include <vector>
 #include "../Character/PlayerCharacter.hpp"
 #include "RoomGenerator.hpp"
+#include "Bomb.hpp"
 
 namespace ds {
     class Level : public DrawableObject, public Updatable {
@@ -18,6 +19,8 @@ namespace ds {
         RoomGenerator generator;
         sf::Clock levelClock;
     public:
+        std::vector<Bomb*> bombs;
+
         Level();
 
         void setPlayer(PlayerCharacter* player);

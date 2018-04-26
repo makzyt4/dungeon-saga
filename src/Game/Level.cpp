@@ -33,6 +33,10 @@ void ds::Level::update() {
             b->update();
         }
 
+        for (Bomb* bomb : bombs) {
+            bomb->update();
+        }
+
         player->collide(&blocks);
         player->update();
         levelClock.restart();
@@ -51,6 +55,10 @@ void ds::Level::draw() {
         if (distance < maxDistance) {
             block->draw();
         }
+    }
+
+    for (Bomb* bomb : bombs) {
+        bomb->draw();
     }
 
     player->draw();

@@ -103,8 +103,15 @@ void ds::TestScene::control() {
             } else if (event.key.code == sf::Keyboard::J && player.mPotions > 0) {
                 player.mPotions--;
                 player.magicka.addValue(5);
+            } else if (event.key.code == sf::Keyboard::B && player.bombs > 0) {
+                player.bombs--;
+                Bomb* bomb = new Bomb();
+                bomb->setWindow(window);
+                bomb->setLoader(loader);
+                bomb->init();
+                bomb->setPosition(sf::Vector2f(player.getPosition().x, player.getPosition().y + 8));
+                level.bombs.push_back(bomb);
             }
-            // TODO bomb
         }
     }
 
