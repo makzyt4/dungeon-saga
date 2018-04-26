@@ -7,10 +7,10 @@
 
 namespace ds {
     class Bomb : public DrawableObject, public Updatable {
-    private:
+    public:
         bool exploded;
         sf::Clock bombClock;
-    public:
+
         void init();
         void draw();
         void update();

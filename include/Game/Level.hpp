@@ -26,6 +26,7 @@ namespace ds {
         void setPlayer(PlayerCharacter* player);
 
         void addBlock(Block* block, const size_t& x, const size_t& y);
+        void explode(const float& x, const float& y, const float& radius);
         void update();
         void draw();
         void generateLevel(const std::uint8_t& rooms);

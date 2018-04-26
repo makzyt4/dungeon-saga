@@ -8,13 +8,13 @@
 
 namespace ds {
     class Block : public DrawableObject, public Collidable, public Updatable {
-    protected:
+    public:
         bool destroyed = false;
         bool playerSpawn = false;
         bool treasureSpawn = false;
         bool enemySpawn = false;
         bool shadow = false;
-    public:
+
         bool isShadow();
         sf::Vector2f getCenter();
 

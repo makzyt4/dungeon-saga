@@ -27,6 +27,23 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x, const std::size
     blocks.push_back(block);
 }
 
+void ds::Level::explode(const float& x, const float& y, const float& radius) {
+    printf("EXPLOSION\n");
+
+    for (Block* b : blocks) {
+        const float dx = b->getCenter().x - x; 
+        const float dy = b->getCenter().y - y; 
+     
+        const float distance = std::sqrt(dx * dx + dy * dy);
+
+        if (distance > radius) {
+            continue;
+        }
+
+        b->destroyed = true;
+    }
+}
+
 void ds::Level::update() {
     if (levelClock.getElapsedTime() > sf::milliseconds(17)) {
         for (Block* b : blocks) {
@@ -35,6 +52,15 @@ void ds::Level::update() {
 
         for (Bomb* bomb : bombs) {
             bomb->update();
+
+            if (bomb->exploded) {
+                explode(bomb->getPosition().x + 8, bomb->getPosition().y + 8, 100);
+
+                std::vector<Bomb*>::iterator position = std::find(bombs.begin(), bombs.end(), bomb);
+                if (position != bombs.end()) {
+                    bombs.erase(position);
+                }
+            }
         }
 
         player->collide(&blocks);

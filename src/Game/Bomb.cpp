@@ -18,7 +18,7 @@ void ds::Bomb::draw() {
         sf::Sprite sprite;
         sprite.setTexture(*texture);
         sprite.setTextureRect(sf::IntRect(0, 0, 16, 16));
-        sprite.setPosition(rect.left, rect.top);
+        sprite.setPosition(rect.left + 8, rect.top + 8);
         window->draw(sprite);
     }
 }
