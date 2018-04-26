@@ -3,6 +3,7 @@
 
 #include "../Graphics/DrawableObject.hpp"
 #include "../Interface/Updatable.hpp"
+#include "../Graphics/Text.hpp"
 
 namespace ds {
     class Bomb : public DrawableObject, public Updatable {

@@ -6,6 +6,14 @@ void ds::Bomb::init() {
 
 void ds::Bomb::draw() {
     if (!exploded) {
+        ds::Text clockText;
+        clockText.setWindow(window);
+        clockText.setLoader(loader);
+        clockText.setColor(sf::Color::White);
+        clockText.setString(std::to_string(5 - (int) bombClock.getElapsedTime().asSeconds()));
+        clockText.setPosition(sf::Vector2f(rect.left + 8, rect.top - 8));
+        clockText.draw();
+
         sf::Texture* texture = loader->getTexture("objects.png");
         sf::Sprite sprite;
         sprite.setTexture(*texture);
