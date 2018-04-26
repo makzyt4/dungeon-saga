@@ -7,19 +7,19 @@ void ds::PlayerCharacter::init() {
     onGround = false;
     climbing = false;
 
-    bombs = 0;
-    hPotions = 0;
-    mPotions = 0;
+    bombs = 5;
+    hPotions = 5;
+    mPotions = 5;
 
-    health = RegeneratedValue(0, 10, 10);
+    health = RegeneratedValue(0, 10, 1);
     health.setRegeneration(0);
     health.setRegenerationTime(sf::seconds(5));
 
-    stamina = RegeneratedValue(0, 10, 10);
+    stamina = RegeneratedValue(0, 10, 1);
     stamina.setRegeneration(1);
     stamina.setRegenerationTime(sf::seconds(1));
 
-    magicka = RegeneratedValue(0, 10, 10);
+    magicka = RegeneratedValue(0, 10, 1);
     magicka.setRegeneration(0);
     magicka.setRegenerationTime(sf::seconds(5));
 

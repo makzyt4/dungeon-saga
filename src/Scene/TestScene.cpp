@@ -95,6 +95,17 @@ void ds::TestScene::control() {
             code = ds::ExitCode::Quit;
             window->close();
         }
+
+        if (event.type == sf::Event::KeyPressed) {
+            if (event.key.code == sf::Keyboard::H && player.hPotions > 0) {
+                player.hPotions--;
+                player.health.addValue(5);
+            } else if (event.key.code == sf::Keyboard::J && player.mPotions > 0) {
+                player.mPotions--;
+                player.magicka.addValue(5);
+            }
+            // TODO bomb
+        }
     }
 
     player.handleKeys();
