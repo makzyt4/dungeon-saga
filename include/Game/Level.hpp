@@ -19,6 +19,8 @@ namespace ds {
         std::vector<Animation> effects;
         RoomGenerator generator;
         sf::Clock levelClock;
+
+        sf::SoundBuffer* bombBuffer;
     public:
         std::vector<Bomb*> bombs;
 
@@ -30,6 +32,7 @@ namespace ds {
         void explode(const float& x, const float& y, const float& radius);
         void update();
         void draw();
+        void init();
         void generateLevel(const std::uint8_t& rooms);
         void surroundBlocks();
         bool isSpaceAvailable(const sf::IntRect& rect);

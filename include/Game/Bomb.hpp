@@ -11,8 +11,9 @@ namespace ds {
     private:
         Animation explosion;
     public:
-        bool exploded;
+        bool exploding;
         bool explosionEnded;
+        bool exploded;
         sf::Clock bombClock;
 
         void init();

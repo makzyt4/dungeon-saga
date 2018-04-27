@@ -1,8 +1,9 @@
 #include "../../include/Game/Bomb.hpp"
 
 void ds::Bomb::init() {
-    exploded = false;
+    exploding = false;
     explosionEnded = false;
+    exploded = false;
 
     sf::Texture* explosionTexture = loader->getTexture("explosion.png");
     
@@ -17,7 +18,7 @@ void ds::Bomb::init() {
 }
 
 void ds::Bomb::draw() {
-    if (!exploded) {
+    if (!exploding) {
         ds::Text clockText;
         clockText.setWindow(window);
         clockText.setLoader(loader);
@@ -48,6 +49,6 @@ void ds::Bomb::draw() {
 
 void ds::Bomb::update() {
     if (bombClock.getElapsedTime() > sf::seconds(5)) {
-        exploded = true;
+        exploding = true;
     }
 }

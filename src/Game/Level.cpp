@@ -5,6 +5,10 @@ ds::Level::Level() {
     generator = RoomGenerator(this);
 }
 
+void ds::Level::init() {
+    bombBuffer = loader->getSoundBuffer("bomb.ogg");
+}
+
 void ds::Level::setPlayer(PlayerCharacter* player) {
     this->player = player;
 }
@@ -30,6 +34,10 @@ void ds::Level::addBlock(ds::Block* block, const std::size_t& x, const std::size
 void ds::Level::explode(const float& x, const float& y, const float& radius) {
     printf("EXPLOSION\n");
 
+    sf::Sound* bombSound = new sf::Sound();
+    bombSound->setBuffer(*bombBuffer);
+    bombSound->play();
+
     for (Block* b : blocks) {
         const float dx = b->getCenter().x - x; 
         const float dy = b->getCenter().y - y; 
@@ -53,9 +61,12 @@ void ds::Level::update() {
         for (Bomb* bomb : bombs) {
             bomb->update();
 
-            if (bomb->explosionEnded) {
-                explode(bomb->getPosition().x + 8, bomb->getPosition().y + 8, 100);
+            if (bomb->exploding && !bomb->exploded) {
+                explode(bomb->getPosition().x + 8, bomb->getPosition().y + 8, 32);
+                bomb->exploded = true;
+            }
 
+            if (bomb->explosionEnded) {
                 std::vector<Bomb*>::iterator position = std::find(bombs.begin(), bombs.end(), bomb);
                 if (position != bombs.end()) {
                     bombs.erase(position);

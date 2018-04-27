@@ -6,6 +6,7 @@ void ds::TestScene::init() {
 
     level.setWindow(window);
     level.setLoader(loader);
+    level.init();
 
     player.setWindow(window);
     player.setLoader(loader);
