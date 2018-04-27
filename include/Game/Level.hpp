@@ -16,6 +16,7 @@ namespace ds {
         sf::Vector2f spawnCoords;
         PlayerCharacter* player;
         std::vector<Block*> blocks;
+        std::vector<Animation> effects;
         RoomGenerator generator;
         sf::Clock levelClock;
     public:

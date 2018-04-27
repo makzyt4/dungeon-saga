@@ -53,7 +53,7 @@ void ds::Level::update() {
         for (Bomb* bomb : bombs) {
             bomb->update();
 
-            if (bomb->exploded) {
+            if (bomb->explosionEnded) {
                 explode(bomb->getPosition().x + 8, bomb->getPosition().y + 8, 100);
 
                 std::vector<Bomb*>::iterator position = std::find(bombs.begin(), bombs.end(), bomb);
@@ -66,6 +66,10 @@ void ds::Level::update() {
         player->collide(&blocks);
         player->update();
         levelClock.restart();
+
+        for (Animation effect : effects) {
+            effect.play();
+        }
     }
 }
 
